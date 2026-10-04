@@ -22,7 +22,7 @@ Panel ordering is a disclosed deterministic heuristic. Its literature and essent
 
 ## Try it in two minutes
 
-The browser review requires no sign-in. It displays saved calculations and recorded agent results. The public demo link will be added after deployment is verified; the local setup below provides the same review path.
+Open [the public demo](https://arag0n1421.github.io/next-experiment/panel/) or inspect [the public repository](https://github.com/Arag0n1421/next-experiment). The browser review requires no sign-in and displays saved calculations and recorded agent results. The local setup below provides the same review path.
 
 1. **Inspect UBA3.** Open the panel at `/panel`, choose **Without IL6** and **UBA3**, then select **Inspect the guides**. The aggregate signal is about **+4.174**; leaving one guide out produces **−0.055**. This is a sensitivity check on existing data, and explains why the next step requests more guide-resolved evidence.
 2. **Compare the same gene across conditions.** Change **Screen condition** to **With IL6**. UBA3 remains selected, so its measurements can be compared directly. Changing the research priority is a separate action that selects the first gene in its newly ordered shortlist.
@@ -86,7 +86,7 @@ Full policy and runner-gate tests require the pinned Omnigent installation, with
 
 [SCIENCE.md](SCIENCE.md) documents the estimator, sources, controls and assumptions. The GEO matrix and publisher supplement differ; published beta/FDR values are external context, not ground truth for our approximate estimator. No statistical reproduction, new biological discovery, preserved cell identity, rejuvenation, longevity benefit or agent-selection advantage is established.
 
-[DELIVERY.md](DELIVERY.md) records current verification. [SUBMISSION.md](SUBMISSION.md) lists the local artifacts and remaining submission steps. The existing 119.8-second narrated walkthrough shows the earlier saved-run interface. The source package, video and browser review are local artifacts; publication and hackathon submission remain separate steps.
+[DELIVERY.md](DELIVERY.md) records implementation verification. [SUBMISSION.md](SUBMISSION.md) lists the artifacts and submission steps. The source repository and saved-evidence browser demo are public. The existing 119.8-second narrated walkthrough documents an earlier local interface. Preparing the three submission videos (each no longer than 60 seconds) and completing final submissions are separate steps.
 
 ## License
 
