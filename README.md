@@ -20,11 +20,17 @@ In the completed UBA3 investigation, a strong aggregate count signal became unst
 
 Panel ordering is a disclosed deterministic heuristic. Its literature and essentiality context is a curated snapshot, not live literature retrieval or a model-generated ranking. Both browser pages display saved results. Proposed biological experiments and hypothetical added-guide examples are labelled separately from observations.
 
-## Review in a few minutes
+## Try it in two minutes
 
-1. Open `/panel` for the question, method, six candidates and evidence sources.
-2. Follow the link to `/` for the completed UBA3 loop: two possible tests, one executed test, and the resulting change in the next decision.
-3. Inspect the exact records and limits through [the jury review map](reviews/JURY-REVIEW-MAP.md), organized by the challenge's five judging criteria. [BRIEF-COMPLIANCE.md](BRIEF-COMPLIANCE.md) maps the detailed requirements.
+The browser review requires no sign-in. It displays saved calculations and recorded agent results. The public demo link will be added after deployment is verified; the local setup below provides the same review path.
+
+1. **Inspect UBA3.** Open the panel at `/panel`, choose **Without IL6** and **UBA3**, then select **Inspect the guides**. The aggregate signal is about **+4.174**; leaving one guide out produces **−0.055**. This is a sensitivity check on existing data, and explains why the next step requests more guide-resolved evidence.
+2. **Compare the same gene across conditions.** Change **Screen condition** to **With IL6**. UBA3 remains selected, so its measurements can be compared directly. Changing the research priority is a separate action that selects the first gene in its newly ordered shortlist.
+3. **Look beyond a high score.** Choose **TP53** and read **What the published evidence adds**. The source paper's cell-identity concern remains visible even when count support is strong. Count support alone is not an aging benefit.
+4. **Follow the executed investigation.** Select **Follow the executed agent run**. Review the competing explanations, two possible tests, selected guide-sensitivity analysis, observed result and updated decision. The next biological experiment remains proposed.
+5. **Inspect the implementation.** Use [the jury review map](reviews/JURY-REVIEW-MAP.md), [agent specifications](agents/lab/config.yaml), [scientific tools](science/screen.py) and [permissions](POLICY.md) to trace the claims to code and records. [BRIEF-COMPLIANCE.md](BRIEF-COMPLIANCE.md) maps the challenge requirements.
+
+Starting a new Omnigent investigation is a separate action using the launcher below and requires your own supported model-provider login. Browser navigation does not run agents or spend model credits.
 
 ## What we observed
 
@@ -81,3 +87,7 @@ Full policy and runner-gate tests require the pinned Omnigent installation, with
 [SCIENCE.md](SCIENCE.md) documents the estimator, sources, controls and assumptions. The GEO matrix and publisher supplement differ; published beta/FDR values are external context, not ground truth for our approximate estimator. No statistical reproduction, new biological discovery, preserved cell identity, rejuvenation, longevity benefit or agent-selection advantage is established.
 
 [DELIVERY.md](DELIVERY.md) records current verification. [SUBMISSION.md](SUBMISSION.md) lists the local artifacts and remaining submission steps. The existing 119.8-second narrated walkthrough shows the earlier saved-run interface. The source package, video and browser review are local artifacts; publication and hackathon submission remain separate steps.
+
+## License
+
+The project's original software and documentation are available under the [MIT License](LICENSE). External research data, publications and third-party source materials retain their own terms; see the [license scope notes](LICENSE-NOTES.md).
