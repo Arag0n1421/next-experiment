@@ -1,0 +1,181 @@
+{
+  "id": "d8edc9f95f0c4934ae9b4358fd89e98f",
+  "kind": "scientific_tool",
+  "created_utc": "2026-10-03T22:59:25.369880+00:00",
+  "payload": {
+    "duration_seconds": 5.3023,
+    "evidence_type": "computed_from_observed_counts",
+    "input_hashes": {
+      "countmatrix.xlsx": "64bb772834a1bacc0304826277546b9a2ec06972ead229ef5687b3fdc7cb6fe1"
+    },
+    "limitations": [
+      "Exploratory full-data reanalysis; no independent held-out evaluation or measured agent advantage.",
+      "Approximate log2 count enrichment, not MAGeCK MLE beta scores, a reproduced publication analysis, p-values or FDR.",
+      "Positive enrichment means relative persistence/expansion of guide-bearing cells; it does not prove rejuvenation, preserved cell identity, safety or longevity.",
+      "Negative enrichment may reflect impaired cell fitness; count depletion does not uniquely establish a senescence mechanism.",
+      "Two measured repeats only; guide leave-one-out is a sensitivity check, not new biological replication.",
+      "Operational thresholds are explicit heuristics, not calibrated probabilities or gene-level statistical significance.",
+      "All pooled measurements already exist; no wet-lab experiment or cost savings were demonstrated."
+    ],
+    "observations": {
+      "baseline_count_sensitivity": [
+        {
+          "baseline_min_each_repeat": 10,
+          "conditions": {
+            "with_il6": {
+              "loo_range": [
+                1.3535775974063609,
+                3.0350683155503693
+              ],
+              "repeat_scores": [
+                2.4216933162973096,
+                1.1505273218900107
+              ],
+              "score": 1.6276552136944729
+            },
+            "without_il6": {
+              "loo_range": [
+                -0.05537750982703127,
+                4.240686089034867
+              ],
+              "repeat_scores": [
+                3.4063777104288295,
+                3.6032144690806804
+              ],
+              "score": 4.174004221202191
+            }
+          },
+          "eligible_guides": 3
+        },
+        {
+          "baseline_min_each_repeat": 20,
+          "conditions": {
+            "with_il6": {
+              "loo_range": [
+                1.3535775974063609,
+                3.0350683155503693
+              ],
+              "repeat_scores": [
+                2.4216933162973096,
+                1.1505273218900107
+              ],
+              "score": 1.6276552136944729
+            },
+            "without_il6": {
+              "loo_range": [
+                -0.05537750982703127,
+                4.240686089034867
+              ],
+              "repeat_scores": [
+                3.4063777104288295,
+                3.6032144690806804
+              ],
+              "score": 4.174004221202191
+            }
+          },
+          "eligible_guides": 3
+        },
+        {
+          "baseline_min_each_repeat": 50,
+          "conditions": {
+            "with_il6": {
+              "loo_range": [
+                1.0794999811182486,
+                1.6276552136944729
+              ],
+              "repeat_scores": [
+                1.715082978321898,
+                0.9920722164908236
+              ],
+              "score": 1.3535775974063609
+            },
+            "without_il6": {
+              "loo_range": [
+                -4.284759240856253,
+                4.307367956867543
+              ],
+              "repeat_scores": [
+                0.04838789894094386,
+                -0.025779182929654088
+              ],
+              "score": 0.011304358005644666
+            }
+          },
+          "eligible_guides": 2
+        }
+      ],
+      "conditions": {
+        "with_il6": {
+          "fixed_checklist_pass": false,
+          "leave_one_out": {
+            "omissions": [
+              {
+                "omitted_guide": "UBA3_-_69129084",
+                "score": 1.3535775974063609
+              },
+              {
+                "omitted_guide": "UBA3_-_69129128",
+                "score": 3.0350683155503693
+              },
+              {
+                "omitted_guide": "UBA3_+_69129500",
+                "score": 2.7609906992622575
+              }
+            ],
+            "score_max": 3.0350683155503693,
+            "score_min": 1.3535775974063609,
+            "sign_reversal": false,
+            "status": "computed",
+            "threshold_reversal": false
+          },
+          "score": 1.6276552136944729
+        },
+        "without_il6": {
+          "fixed_checklist_pass": false,
+          "leave_one_out": {
+            "omissions": [
+              {
+                "omitted_guide": "UBA3_-_69129084",
+                "score": 0.011304358005644666
+              },
+              {
+                "omitted_guide": "UBA3_-_69129128",
+                "score": 4.240686089034867
+              },
+              {
+                "omitted_guide": "UBA3_+_69129500",
+                "score": -0.05537750982703127
+              }
+            ],
+            "score_max": 4.240686089034867,
+            "score_min": -0.05537750982703127,
+            "sign_reversal": true,
+            "status": "computed",
+            "threshold_reversal": true
+          },
+          "score": 4.174004221202191
+        }
+      },
+      "eligible_guides": 3,
+      "gene": "UBA3"
+    },
+    "parameters": {
+      "analysis_version": "0.1.0",
+      "baseline_filter": "same guides pass baseline-count threshold in both D0 repeats",
+      "baseline_min_each_repeat": 20,
+      "effect_threshold_log2": 0.5,
+      "gene_summary": "median of guide mean log2 enrichments across two repeats",
+      "max_repeat_difference_log2": 1.0,
+      "min_eligible_guides": 3,
+      "min_positive_guide_fraction": 0.6,
+      "normalization": "total library depth to geometric-mean depth, then non-targeting median centering per contrast",
+      "pseudocount_normalized_reads": 1.0
+    },
+    "resource_use": {
+      "api_cost_usd": 0,
+      "model_calls": 0
+    },
+    "status": "computed",
+    "tool": "guide-check"
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "status": "passed",
+  "evaluation_status": "Retrospective computational comparison; no held-out biological or LLM advantage measured",
+  "headline": "89.5% fewer leave-one-out recomputations with 0 changed checklist decisions.",
+  "metrics": {
+    "Gene-condition decisions": 36862,
+    "Decision mismatches": 0,
+    "Reference mismatches": 0,
+    "Eager LOO recomputations": 111274,
+    "Adaptive LOO recomputations": 11739,
+    "LOO work reduction percent": 89.45,
+    "Eager rule evaluations": 221172,
+    "Adaptive rule evaluations": 79347,
+    "Eager median seconds": 2.6311,
+    "Adaptive median seconds": 0.6468,
+    "Checklist kernel speedup": 4.068,
+    "Shared setup seconds (excluded)": 5.131,
+    "Passing decisions": 1770
+  },
+  "timing_pairs": [
+    {
+      "pair": 1,
+      "order": [
+        "eager",
+        "adaptive"
+      ],
+      "eager_seconds": 2.63047133301734,
+      "adaptive_seconds": 0.6468307089817245,
+      "speedup": 4.0667075580848175
+    },
+    {
+      "pair": 2,
+      "order": [
+        "adaptive",
+        "eager"
+      ],
+      "adaptive_seconds": 0.7487727499974426,
+      "eager_seconds": 2.6435785419889726,
+      "speedup": 3.530548543597509
+    },
+    {
+      "pair": 3,
+      "order": [
+        "eager",
+        "adaptive"
+      ],
+      "eager_seconds": 2.631117124983575,
+      "adaptive_seconds": 0.6282213749946095,
+      "speedup": 4.188200576597942
+    },
+    {
+      "pair": 4,
+      "order": [
+        "adaptive",
+        "eager"
+      ],
+      "adaptive_seconds": 0.6257507499831263,
+      "eager_seconds": 2.5962235830083955,
+      "speedup": 4.148973985374215
+    },
+    {
+      "pair": 5,
+      "order": [
+        "eager",
+        "adaptive"
+      ],
+      "eager_seconds": 2.7881802920019254,
+      "adaptive_seconds": 0.7968642080086283,
+      "speedup": 3.498940301220977
+    }
+  ],
+  "input_sha256": "64bb772834a1bacc0304826277546b9a2ec06972ead229ef5687b3fdc7cb6fe1",
+  "protocol": {
+    "created_utc": "2026-10-04T07:56:10.920790+00:00",
+    "protocol_sha256": "1ec241f61dba7a0dbd2362a83dc7d82097d990425a7891397123f02f39528246",
+    "parameters": {
+      "analysis_version": "0.1.0",
+      "normalization": "total library depth to geometric-mean depth, then non-targeting median centering per contrast",
+      "pseudocount_normalized_reads": 1.0,
+      "baseline_min_each_repeat": 20,
+      "min_eligible_guides": 3,
+      "effect_threshold_log2": 0.5,
+      "max_repeat_difference_log2": 1.0,
+      "min_positive_guide_fraction": 0.6,
+      "gene_summary": "median of guide mean log2 enrichments across two repeats",
+      "baseline_filter": "same guides pass baseline-count threshold in both D0 repeats"
+    },
+    "code_sha256": {
+      "benchmark/triage.py": "e8de9db88078d73e85f5538c811bc22c07b02a76ee593f092b5f80a94479a696",
+      "benchmark/run.py": "dcdff4dd16f79b409881681d41cca70c7ebf4b15114d9b32a6466713224a363a",
+      "science/screen.py": "0ceee379711885a24355acfa41dea3162cc9799fd2c889facbbeb31bbfefc119"
+    }
+  },
+  "stop_reasons": {
+    "coverage": 12734,
+    "repeat_one": 15875,
+    "repeat_two": 4409,
+    "guide_sensitivity": 1337,
+    "all_checks_passed": 1770,
+    "repeat_agreement": 691,
+    "positive_guides": 46
+  },
+  "limitations": [
+    "Same previously explored dataset, both repeats visible; not a held-out biological benchmark.",
+    "This is deterministic early-stop execution, not evidence that the language model makes better scientific choices.",
+    "Timing excludes shared loading, normalization, orchestration and model latency; no end-to-end agent speedup is claimed.",
+    "Rules and labels are development heuristics; agreement does not establish biological truth, significance or longevity benefit.",
+    "No API-dollar or wet-lab savings have been measured.",
+    "Agreement concerns binary checklist verdicts; early-stopped cases report the first decisive failure, not every diagnostic."
+  ]
+}

@@ -1,0 +1,35 @@
+spec_version: 1
+skills: none
+name: scientist
+description: Defines competing explanations and an observable scientific claim.
+executor:
+  type: omnigent
+  config:
+    harness: codex
+    model: gpt-5.5
+    disable_native_tools: true
+    enable_web_search: false
+prompt: 'You are the Scientist. Use only the measured evidence supplied by the planner. Return structured
+  JSON: bounded_claim, explanations (at least two with discriminating predictions), observable_now, missing_measurements.
+  Do not call tools, repeat an experiment, or delegate. Positive guide enrichment is relative persistence/expansion,
+  not proof of rejuvenation. No causal or therapeutic claims beyond the endpoint. Keep the response below
+  500 words.
+
+
+
+  Use supplied external_context as prior evidence with source URLs. Separate existing publication findings
+  from our measurements. Explain one agreement and one tension when present. Cancer-cell knockout fitness
+  and partial CRISPRi in MSCs are different contexts. Guide disagreement warrants alternatives, not an
+  automatic artifact verdict. Return evidence_links drawn only from supplied URLs.
+
+  '
+guardrails:
+  ask_timeout: 120
+  policies:
+    run_scope:
+      type: function
+      function:
+        path: integration.policy.workflow_policy
+        arguments:
+          run_id: null
+          role: scientist

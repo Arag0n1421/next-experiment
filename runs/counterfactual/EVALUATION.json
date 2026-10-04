@@ -1,0 +1,160 @@
+{
+  "created_utc": "2026-10-04T11:08:20.636869+00:00",
+  "status": "completed",
+  "scope": "Single UBA3 development case; three full Omnigent workflows, one per input variant. Descriptive smoke test, not a performance benchmark.",
+  "protocol_sha256": "f8b388dfc25b724a2a1db077221a43947b0c4dd522c728b4016cb03bfdb6fbec",
+  "prompt_sha256": "03bc60c125e491f613e63284560f63177b8bb40cd674689f1168a5cd36b0f41e",
+  "question": "Does the count assessment respond to decisive evidence while remaining stable under an excluded-guide change?",
+  "rows": [
+    {
+      "arm": "original",
+      "label": "Original public data",
+      "synthetic": false,
+      "run_id": "6a4a76ff30a04347a7dd955468e21b9c",
+      "run_status": "completed",
+      "roles": [
+        "critic",
+        "experimentalist",
+        "scientist"
+      ],
+      "source_sha256": "64bb772834a1bacc0304826277546b9a2ec06972ead229ef5687b3fdc7cb6fe1",
+      "decision_id": "6a5612abd8a2480ca67be216cd18a0da",
+      "expected_count_status": "fragile",
+      "count_assessment": {
+        "condition": "without_il6",
+        "reason": "Coverage is adequate at 3 eligible guides (minimum 3), both repeat medians exceed 0.5 (3.406 and 3.603), their absolute difference is 0.197 (maximum 1.0), and the positive-guide fraction is 2/3=0.667 (minimum 0.6). However, the fixed leave-one-out minimum is -0.055, below 0.5, with sign and threshold reversals; the eligible guide effects split +4.174, -4.285 and +4.307. Adequate coverage plus this conflicting, non-robust guide behavior warrants fragile rather than supported or insufficient.",
+        "status": "fragile"
+      },
+      "matches_expected_count_status": true,
+      "biological_action": "request_additional_evidence",
+      "next_test": "Run one arrayed, multi-arm CRISPRi experiment in the same MSC context with each of the three eligible original guides, at least two new non-overlapping UBA3 guides, and non-targeting controls under matched WITHOUT-IL6 and WITH-IL6 conditions. At prespecified time points, verify UBA3 suppression by mRNA and protein, measure a senescence composite (SA-beta-gal, p16/p21, EdU and SASP markers), confirm MSC identity with an established marker panel and morphology, and quantify fitness with absolute live-cell counts, proliferation, apoptosis and viability. Upgrade UBA3 for biological prioritization only if at least two sequence-independent guides with comparable confirmed suppression reproduce a stronger WITHOUT-IL6 phenotype, improve the senescence composite, preserve MSC identity and are not explained solely by general fitness selection; deprioritize if effects do not track suppression, occur only with the original decisive guides, coincide with identity loss, or are explained by viability, apoptosis or proliferation.",
+      "evidence": [
+        {
+          "operation": "candidate",
+          "record_id": "e355706a7eaa4aae92f807c56caf5700",
+          "input_sha256": "64bb772834a1bacc0304826277546b9a2ec06972ead229ef5687b3fdc7cb6fe1",
+          "input_kind": "observed_public_data"
+        },
+        {
+          "operation": "guide-check",
+          "record_id": "294cf2c1a659459fbea2aa4f8865394c",
+          "input_sha256": "64bb772834a1bacc0304826277546b9a2ec06972ead229ef5687b3fdc7cb6fe1",
+          "input_kind": "observed_public_data"
+        },
+        {
+          "operation": "dependence",
+          "record_id": "9bdc22b569bb4cbf9d4c7531ecee2103",
+          "input_sha256": "64bb772834a1bacc0304826277546b9a2ec06972ead229ef5687b3fdc7cb6fe1",
+          "input_kind": "observed_public_data"
+        }
+      ]
+    },
+    {
+      "arm": "decisive",
+      "label": "Conflicting measurement changed",
+      "synthetic": true,
+      "run_id": "338dc567951c4108acb1a5811fc9a625",
+      "run_status": "completed",
+      "roles": [
+        "critic",
+        "experimentalist",
+        "scientist"
+      ],
+      "source_sha256": "928d26af1b23298f5ac5dbbe3c64e8087c34d0ebc3bd84ff876aa092f96dd97e",
+      "decision_id": "40c128dfd3334cf2b9e018ef94805b29",
+      "expected_count_status": "supported",
+      "count_assessment": {
+        "condition": "without_il6",
+        "reason": "Coverage is adequate at the stated default rule (3 eligible guides, minimum 3), and the observed effect passes every fixed robustness check: score 4.3073 log2; repeat medians 4.4895 and 4.9415; repeat difference 0.4520 within the 1.0 limit; positive-guide fraction 1.0 above 0.6; leave-one-out minimum 4.2406 above 0.5; no sign or threshold reversal. At a stricter baseline threshold of 50 only two guides remain, which is insufficient coverage under that alternative filter, but it does not change the prespecified default-rule classification.",
+        "status": "supported"
+      },
+      "matches_expected_count_status": true,
+      "biological_action": "retain",
+      "next_test": "Run an arrayed, independently replicated, dose-graded CRISPRi experiment with at least three sequence-independent UBA3 guides and non-targeting controls under WITHOUT-IL6, with matched WITH-IL6 wells as a contextual comparator. Confirm graded UBA3 suppression for every guide by RT-qPCR and/or protein assay; measure senescence with orthogonal endpoints such as SA-beta-gal plus p16/p21 and/or SASP markers; verify MSC identity using established surface-marker and differentiation-competence assays; and measure fitness using viable-cell counts, apoptosis, proliferation, and clonogenic capacity. Continue prioritizing UBA3 only if multiple guides with verified suppression reproducibly improve senescence endpoints while preserving MSC identity and acceptable fitness, preferably with a larger effect WITHOUT-IL6. Change the recommendation to reject or restrict the context if the count advantage fails to reproduce, does not track target suppression, lacks senescence improvement, reflects proliferation/toxicity alone, or causes loss of MSC identity.",
+      "evidence": [
+        {
+          "operation": "candidate",
+          "record_id": "4cc8b0cae0f74b22bc766d111687eb51",
+          "input_sha256": "928d26af1b23298f5ac5dbbe3c64e8087c34d0ebc3bd84ff876aa092f96dd97e",
+          "input_kind": "counterfactual_evaluation"
+        },
+        {
+          "operation": "guide-check",
+          "record_id": "4151ff6338474b5793968ac90edf2975",
+          "input_sha256": "928d26af1b23298f5ac5dbbe3c64e8087c34d0ebc3bd84ff876aa092f96dd97e",
+          "input_kind": "counterfactual_evaluation"
+        },
+        {
+          "operation": "dependence",
+          "record_id": "6a9aa6fa59ca4fae8c263cc221e1cad8",
+          "input_sha256": "928d26af1b23298f5ac5dbbe3c64e8087c34d0ebc3bd84ff876aa092f96dd97e",
+          "input_kind": "counterfactual_evaluation"
+        }
+      ]
+    },
+    {
+      "arm": "irrelevant",
+      "label": "Excluded measurement changed",
+      "synthetic": true,
+      "run_id": "bee7b22c43ed4f4fb8e2c290d66019d4",
+      "run_status": "completed",
+      "roles": [
+        "critic",
+        "experimentalist",
+        "scientist"
+      ],
+      "source_sha256": "12954bffbb1ffe04019b9cf2164c9519ba9a9badcda4150f24d65efbcf75ef66",
+      "decision_id": "543627d602ca41a8a6d63deb2ac9f726",
+      "expected_count_status": "fragile",
+      "count_assessment": {
+        "condition": "without_il6",
+        "reason": "Coverage is adequate at the fixed minimum (3 eligible guides; coverage shortfall 0), and repeat summaries are both positive (+3.406 and +3.603), but the observed guide effects conflict (+4.174, -4.285, +4.307). The fixed guide robustness check fails because the leave-one-out minimum is -0.055, with both sign and 0.5-log2 threshold reversals; a baseline threshold of 50 reduces coverage to 2 and the score to +0.0113. Thus the observed count effect does not pass the stated fixed robustness checks.",
+        "status": "fragile"
+      },
+      "matches_expected_count_status": true,
+      "biological_action": "request_additional_evidence",
+      "next_test": "Run one arrayed no-IL6 perturbation-response experiment using all three eligible UBA3 guides plus non-targeting controls, jointly measuring per-guide UBA3 target suppression, a senescence phenotype panel, MSC identity markers, and longitudinal cell number, viability, and apoptosis. Change the recommendation to retain UBA3 for biological prioritization only if at least two independent guides achieve verified target suppression and yield a concordant senescence improvement while preserving MSC identity and without an explanation based on impaired fitness; otherwise reject UBA3 or restrict it to the published screen context.",
+      "evidence": [
+        {
+          "operation": "candidate",
+          "record_id": "85357dc729844f0688e554fe4dbdb3d2",
+          "input_sha256": "12954bffbb1ffe04019b9cf2164c9519ba9a9badcda4150f24d65efbcf75ef66",
+          "input_kind": "counterfactual_evaluation"
+        },
+        {
+          "operation": "guide-check",
+          "record_id": "9a56262409c849d8b612c4e7498962f9",
+          "input_sha256": "12954bffbb1ffe04019b9cf2164c9519ba9a9badcda4150f24d65efbcf75ef66",
+          "input_kind": "counterfactual_evaluation"
+        },
+        {
+          "operation": "dependence",
+          "record_id": "24ffb865a99b4aff90316b1afeabf5c8",
+          "input_sha256": "12954bffbb1ffe04019b9cf2164c9519ba9a9badcda4150f24d65efbcf75ef66",
+          "input_kind": "counterfactual_evaluation"
+        }
+      ]
+    }
+  ],
+  "failed_launches": [
+    {
+      "run_id": "b2bb7aebf7d84fbd909c0469ba357280",
+      "arm": "decisive",
+      "outcome": "Source-hash guard rejected the default-file/fixture mismatch before producing evidence; rerun after explicit per-run input binding."
+    },
+    {
+      "run_id": "68fc121ba2ea4364b7cc705d497af977",
+      "arm": "irrelevant",
+      "outcome": "Source-hash guard rejected the default-file/fixture mismatch before producing evidence; rerun after explicit per-run input binding."
+    }
+  ],
+  "limitations": [
+    "One case and one completed run per variant; no estimate of reliability or generalization.",
+    "Counterfactual data are synthetic fixtures and cannot establish a biological finding.",
+    "All runs still lack new phenotype, identity and fitness measurements; biological action need not change.",
+    "No before-versus-after model-performance comparison; this validates the integrated behavior only.",
+    "The calculation tool supplies rule verdicts; this checks faithful use of tool evidence, not independent scientific derivation.",
+    "A curator-label attribution error was found in the decisive arm and corrected in the current context pack after these runs; raw records are retained.",
+    "Two initial fixture launches failed safely and are included in this report."
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "retrieved_date": "2026-10-04",
+  "source_matrix_warning": "GEO counts and the published supplement differ. Supplementary beta/FDR are external context, not ground truth for this exploratory estimator.",
+  "source_hashes": {
+    "source-table-s1.xlsx": "90c084b6cff820d2b13a729839346b294aa452de03eff8169553fa913e3157f1",
+    "open-targets-essentiality.json": "d32f67d55f40b1de455341082ca6b7be6b1a400bb907c76a01c4dd51c02994a1"
+  },
+  "genes": {
+    "UBA3": {
+      "gene": "UBA3",
+      "label": "Published screen hit",
+      "published_context": "The supplement reports a positive no-IL6 screen effect. This is statistical evidence from the source screen, not independent biological validation.",
+      "decision_implication": "Check guide agreement in the current input and distinguish a count effect from a senescence phenotype before prioritizing this target.",
+      "source_url": "https://doi.org/10.1186/s13059-025-03683-7",
+      "source_location": "Results: genome-wide CRISPRi screen and Fig. 1; supplementary Table S1",
+      "published_screen_statistics": {
+        "IL6m|beta": 1.8594,
+        "IL6m|z": 0.82436,
+        "IL6m|p-value": 0.0051626,
+        "IL6m|FDR": 0.02,
+        "IL6p|beta": 2.0661,
+        "IL6p|z": 0.90887,
+        "IL6p|p-value": 0.058864,
+        "IL6p|FDR": 0.05
+      },
+      "statistics_source_url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2Fs13059-025-03683-7/MediaObjects/13059_2025_3683_MOESM2_ESM.xlsx",
+      "essentiality": {
+        "gene": "UBA3",
+        "id": "ENSG00000144744",
+        "isEssential": true,
+        "n_screens": 1258,
+        "unique_depmap_ids": 1208,
+        "median": -0.7305192351341248,
+        "fraction_below_neg0_5": 0.8378378378378378
+      },
+      "essentiality_source_url": "https://platform-docs.opentargets.org/target/core-gene-essentiality",
+      "essentiality_limit": "Cancer-cell knockout fitness; not an automatic veto for partial suppression in MSCs. Aggregates count screen rows, not unique cell lines.",
+      "cell_identity_concern": false,
+      "functional_followup_curated": false
+    },
+    "SAMM50": {
+      "gene": "SAMM50",
+      "label": "Published follow-up anchor",
+      "published_context": "The source paper reports reduced SA-beta-gal after CRISPRi and preserved MSC identity markers, with SAMM50-specific RNA sequencing. These are the authors\u2019 results.",
+      "decision_implication": "Use as a published comparison anchor; our starting-count filter leaves too few guides for a robust count-based call.",
+      "source_url": "https://doi.org/10.1186/s13059-025-03683-7",
+      "source_location": "Results: genome-wide CRISPRi screen and Fig. 1; supplementary Table S1",
+      "published_screen_statistics": {
+        "IL6m|beta": 1.946,
+        "IL6m|z": 0.60607,
+        "IL6m|p-value": 0.0037788,
+        "IL6m|FDR": 0.01,
+        "IL6p|beta": 2.4151,
+        "IL6p|z": 0.74996,
+        "IL6p|p-value": 0.015062,
+        "IL6p|FDR": 0.03
+      },
+      "statistics_source_url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2Fs13059-025-03683-7/MediaObjects/13059_2025_3683_MOESM2_ESM.xlsx",
+      "essentiality": {
+        "gene": "SAMM50",
+        "id": "ENSG00000100347",
+        "isEssential": true,
+        "n_screens": 1258,
+        "unique_depmap_ids": 1208,
+        "median": -0.5416673421859741,
+        "fraction_below_neg0_5": 0.575516693163752
+      },
+      "essentiality_source_url": "https://platform-docs.opentargets.org/target/core-gene-essentiality",
+      "essentiality_limit": "Cancer-cell knockout fitness; not an automatic veto for partial suppression in MSCs. Aggregates count screen rows, not unique cell lines.",
+      "cell_identity_concern": false,
+      "functional_followup_curated": true
+    },
+    "AK2": {
+      "gene": "AK2",
+      "label": "Published follow-up anchor",
+      "published_context": "The source paper reports reduced SA-beta-gal with two independent CRISPRi guides and measures MSC identity markers. These are the authors\u2019 results.",
+      "decision_implication": "Use as a published comparison anchor; check guide coverage before drawing a new conclusion.",
+      "source_url": "https://doi.org/10.1186/s13059-025-03683-7",
+      "source_location": "Results: genome-wide CRISPRi screen and Fig. 1; supplementary Table S1",
+      "published_screen_statistics": {
+        "IL6m|beta": 1.5616,
+        "IL6m|z": 0.95719,
+        "IL6m|p-value": 0.016393,
+        "IL6m|FDR": 0,
+        "IL6p|beta": 1.5497,
+        "IL6p|z": 0.93001,
+        "IL6p|p-value": 0.28996,
+        "IL6p|FDR": 0.28
+      },
+      "statistics_source_url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2Fs13059-025-03683-7/MediaObjects/13059_2025_3683_MOESM2_ESM.xlsx",
+      "essentiality": {
+        "gene": "AK2",
+        "id": "ENSG00000004455",
+        "isEssential": false,
+        "n_screens": 1258,
+        "unique_depmap_ids": 1208,
+        "median": -0.2460443302989006,
+        "fraction_below_neg0_5": 0.13513513513513514
+      },
+      "essentiality_source_url": "https://platform-docs.opentargets.org/target/core-gene-essentiality",
+      "essentiality_limit": "Cancer-cell knockout fitness; not an automatic veto for partial suppression in MSCs. Aggregates count screen rows, not unique cell lines.",
+      "cell_identity_concern": false,
+      "functional_followup_curated": true
+    },
+    "TP53": {
+      "gene": "TP53",
+      "label": "Strong signal; cell identity concern",
+      "published_context": "The paper reports enrichment and altered MSC identity-marker expression after TP53 perturbation, identifying it as unsuitable for their MSC rejuvenation objective.",
+      "decision_implication": "Do not equate a strong growth signal with a useful aging intervention; preserved cell identity is a distinct endpoint.",
+      "source_url": "https://doi.org/10.1186/s13059-025-03683-7",
+      "source_location": "Results: genome-wide CRISPRi screen and Fig. 1; supplementary Table S1",
+      "published_screen_statistics": {
+        "IL6m|beta": 6.9435,
+        "IL6m|z": 0.020641,
+        "IL6m|p-value": 0.00021289,
+        "IL6m|FDR": 0,
+        "IL6p|beta": 6.8734,
+        "IL6p|z": 0.020432,
+        "IL6p|p-value": 0.00026611,
+        "IL6p|FDR": 0
+      },
+      "statistics_source_url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2Fs13059-025-03683-7/MediaObjects/13059_2025_3683_MOESM2_ESM.xlsx",
+      "essentiality": null,
+      "essentiality_source_url": null,
+      "essentiality_limit": "Not retrieved for this gene; unknown does not mean non-essential.",
+      "cell_identity_concern": true,
+      "functional_followup_curated": false
+    },
+    "CDKN1A": {
+      "gene": "CDKN1A",
+      "label": "Known senescence-pathway reference",
+      "published_context": "The paper identifies CDKN1A as an enriched pro-senescence reference gene. This is contextual support, not proof that perturbing it safely reverses aging.",
+      "decision_implication": "Use as a known pathway reference; require phenotype, fitness and cell-identity evidence before advancing.",
+      "source_url": "https://doi.org/10.1186/s13059-025-03683-7",
+      "source_location": "Results: genome-wide CRISPRi screen and Fig. 1; supplementary Table S1",
+      "published_screen_statistics": {
+        "IL6m|beta": 4.1748,
+        "IL6m|z": 0.20506,
+        "IL6m|p-value": 0.00037256,
+        "IL6m|FDR": 0,
+        "IL6p|beta": 3.9784,
+        "IL6p|z": 0.1952,
+        "IL6p|p-value": 0.00042578,
+        "IL6p|FDR": 0
+      },
+      "statistics_source_url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2Fs13059-025-03683-7/MediaObjects/13059_2025_3683_MOESM2_ESM.xlsx",
+      "essentiality": null,
+      "essentiality_source_url": null,
+      "essentiality_limit": "Not retrieved for this gene; unknown does not mean non-essential.",
+      "cell_identity_concern": false,
+      "functional_followup_curated": false
+    },
+    "GABRR2": {
+      "gene": "GABRR2",
+      "label": "Exploratory comparison; limited curated context",
+      "published_context": "Included because it ranks among the largest positive no-IL6 effects passing our fixed checklist. No gene-specific functional follow-up has been curated in this build.",
+      "decision_implication": "Review independent biological evidence before treating the count signal as an aging mechanism.",
+      "source_url": "https://doi.org/10.1186/s13059-025-03683-7",
+      "source_location": "Results: genome-wide CRISPRi screen and Fig. 1; supplementary Table S1",
+      "published_screen_statistics": {
+        "IL6m|beta": 1.296,
+        "IL6m|z": 1.2808,
+        "IL6m|p-value": 0.046729,
+        "IL6m|FDR": 0.02,
+        "IL6p|beta": 0.5914,
+        "IL6p|z": 0.56962,
+        "IL6p|p-value": 0.7423,
+        "IL6p|FDR": 0.7
+      },
+      "statistics_source_url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2Fs13059-025-03683-7/MediaObjects/13059_2025_3683_MOESM2_ESM.xlsx",
+      "essentiality": null,
+      "essentiality_source_url": null,
+      "essentiality_limit": "Not retrieved for this gene; unknown does not mean non-essential.",
+      "cell_identity_concern": false,
+      "functional_followup_curated": false
+    }
+  },
+  "curation_note": "Labels and decision_implication are curator summaries. Published findings are in published_context and published_screen_statistics. Guide disagreement and count robustness must be established from the current executed analysis, not inferred from a label."
+}

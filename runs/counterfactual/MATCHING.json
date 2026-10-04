@@ -1,0 +1,25 @@
+{
+  "identical_role_prompts": true,
+  "role_prompt_hashes": {
+    "6a4a76ff30a04347a7dd955468e21b9c": {
+      "config.yaml": "dc6c16bf30b1cf4b4f2391be864cad5c98e87fb9273a3a41531bf26a4e199579",
+      "agents/scientist/config.yaml": "4933fb5d52dfbb98a6bd5ad0c76135b933578f998cbbdedcaedce04a51ba2ddc",
+      "agents/experimentalist/config.yaml": "ff1c86e03558360bf70aa9f10f35b3ac143e2c402eaf6e6428bf7cb20b9a8c66",
+      "agents/critic/config.yaml": "0957e252789f8db52d80719486da6e518d5e061dcd0da8884721dbd9adcc5d73"
+    },
+    "338dc567951c4108acb1a5811fc9a625": {
+      "config.yaml": "dc6c16bf30b1cf4b4f2391be864cad5c98e87fb9273a3a41531bf26a4e199579",
+      "agents/scientist/config.yaml": "4933fb5d52dfbb98a6bd5ad0c76135b933578f998cbbdedcaedce04a51ba2ddc",
+      "agents/experimentalist/config.yaml": "ff1c86e03558360bf70aa9f10f35b3ac143e2c402eaf6e6428bf7cb20b9a8c66",
+      "agents/critic/config.yaml": "0957e252789f8db52d80719486da6e518d5e061dcd0da8884721dbd9adcc5d73"
+    },
+    "bee7b22c43ed4f4fb8e2c290d66019d4": {
+      "config.yaml": "dc6c16bf30b1cf4b4f2391be864cad5c98e87fb9273a3a41531bf26a4e199579",
+      "agents/scientist/config.yaml": "4933fb5d52dfbb98a6bd5ad0c76135b933578f998cbbdedcaedce04a51ba2ddc",
+      "agents/experimentalist/config.yaml": "ff1c86e03558360bf70aa9f10f35b3ac143e2c402eaf6e6428bf7cb20b9a8c66",
+      "agents/critic/config.yaml": "0957e252789f8db52d80719486da6e518d5e061dcd0da8884721dbd9adcc5d73"
+    }
+  },
+  "prompt_sha256": "03bc60c125e491f613e63284560f63177b8bb40cd674689f1168a5cd36b0f41e",
+  "runtime_fix": "The first fixture launches failed the source-hash guard. An explicit source_path stored in the run ledger now routes computations to the bound input. Numeric analysis and role prompts unchanged."
+}

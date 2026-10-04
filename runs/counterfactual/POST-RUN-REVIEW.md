@@ -1,0 +1,3 @@
+# Review after the controlled runs
+
+The decisive arm's count assessment correctly changed to supported, but its narrative described a curator-written guide-disagreement label as published prior evidence. The raw record is retained. The current source pack removes that stale outcome-bearing label, replaces it with Published screen hit, makes the decision implication conditional on the current input, and explicitly identifies editorial fields. The evaluation predates this source-annotation correction; its results remain evidence about that recorded snapshot. This issue is included in the focused independent follow-up prompt. Count analysis and evaluation labels are unchanged.

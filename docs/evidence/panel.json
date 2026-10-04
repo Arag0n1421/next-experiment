@@ -1,0 +1,4794 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-04T11:08:31.336272+00:00",
+  "question": "Which gene should we test next—and what evidence would change our mind?",
+  "status": "computed",
+  "selection_method": "Explicit deterministic decision-support rules; no model ranking or held-out benefit claimed",
+  "panel_selection": "Five preselected illustrative genes (UBA3, SAMM50, AK2, TP53, CDKN1A) plus GABRR2, a high-scoring checklist-pass comparison. This is a development panel, not a benchmark.",
+  "ranking_rules": {
+    "count_support": "Checklist pass first, then descending count effect, then gene name. This ranks count support, not biological usefulness.",
+    "resolve_uncertainty": "At least three guides and a leave-one-out threshold reversal first, then descending effect, then gene name. This is a heuristic, not estimated information gain."
+  },
+  "input_hashes": {
+    "countmatrix.xlsx": "64bb772834a1bacc0304826277546b9a2ec06972ead229ef5687b3fdc7cb6fe1",
+    "biological-context.json": "9fa4d5db2c4091cef062dac1503c48912e06c9663d3c31a07d3903bd9e3bebcd"
+  },
+  "parameters": {
+    "analysis_version": "0.1.0",
+    "normalization": "total library depth to geometric-mean depth, then non-targeting median centering per contrast",
+    "pseudocount_normalized_reads": 1.0,
+    "baseline_min_each_repeat": 20,
+    "min_eligible_guides": 3,
+    "effect_threshold_log2": 0.5,
+    "max_repeat_difference_log2": 1.0,
+    "min_positive_guide_fraction": 0.6,
+    "gene_summary": "median of guide mean log2 enrichments across two repeats",
+    "baseline_filter": "same guides pass baseline-count threshold in both D0 repeats"
+  },
+  "rankings": {
+    "without_il6": {
+      "count_support": [
+        "TP53",
+        "CDKN1A",
+        "GABRR2",
+        "UBA3",
+        "AK2",
+        "SAMM50"
+      ],
+      "resolve_uncertainty": [
+        "UBA3",
+        "TP53",
+        "CDKN1A",
+        "GABRR2",
+        "AK2",
+        "SAMM50"
+      ]
+    },
+    "with_il6": {
+      "count_support": [
+        "TP53",
+        "CDKN1A",
+        "AK2",
+        "UBA3",
+        "SAMM50",
+        "GABRR2"
+      ],
+      "resolve_uncertainty": [
+        "TP53",
+        "CDKN1A",
+        "AK2",
+        "UBA3",
+        "SAMM50",
+        "GABRR2"
+      ]
+    }
+  },
+  "candidates": [
+    {
+      "gene": "UBA3",
+      "total_guides": 5,
+      "eligible_guides": 3,
+      "conditions": {
+        "without_il6": {
+          "status": "computed",
+          "eligible_guides": 3,
+          "score": 4.174004221202191,
+          "repeat_scores": [
+            3.4063777104288295,
+            3.6032144690806804
+          ],
+          "repeat_difference": 0.1968367586518509,
+          "repeat_sign_agreement": true,
+          "positive_guide_fraction": 0.6666666666666666,
+          "leave_one_out": {
+            "status": "computed",
+            "score_min": -0.05537750982703127,
+            "score_max": 4.240686089034867,
+            "sign_reversal": true,
+            "threshold_reversal": true,
+            "omissions": [
+              {
+                "omitted_guide": "UBA3_-_69129084",
+                "score": 0.011304358005644666
+              },
+              {
+                "omitted_guide": "UBA3_-_69129128",
+                "score": 4.240686089034867
+              },
+              {
+                "omitted_guide": "UBA3_+_69129500",
+                "score": -0.05537750982703127
+              }
+            ]
+          },
+          "fixed_checklist_pass": false
+        },
+        "with_il6": {
+          "status": "computed",
+          "eligible_guides": 3,
+          "score": 1.6276552136944729,
+          "repeat_scores": [
+            2.4216933162973096,
+            1.1505273218900107
+          ],
+          "repeat_difference": -1.2711659944072988,
+          "repeat_sign_agreement": true,
+          "positive_guide_fraction": 1.0,
+          "leave_one_out": {
+            "status": "computed",
+            "score_min": 1.3535775974063609,
+            "score_max": 3.0350683155503693,
+            "sign_reversal": false,
+            "threshold_reversal": false,
+            "omissions": [
+              {
+                "omitted_guide": "UBA3_-_69129084",
+                "score": 1.3535775974063609
+              },
+              {
+                "omitted_guide": "UBA3_-_69129128",
+                "score": 3.0350683155503693
+              },
+              {
+                "omitted_guide": "UBA3_+_69129500",
+                "score": 2.7609906992622575
+              }
+            ]
+          },
+          "fixed_checklist_pass": false
+        }
+      },
+      "missing_endpoints": [
+        "cell identity",
+        "senescence phenotype for this complete candidate set",
+        "safety",
+        "human longevity"
+      ],
+      "context": {
+        "status": "computed",
+        "score": 0.2684771962040753,
+        "repeat_scores": [
+          0.3282162759823568,
+          0.20873811642579376
+        ],
+        "repeat_sign_agreement": true,
+        "meaning": "Positive contrast indicates stronger guide enrichment with IL6 than without IL6",
+        "dependence": "Within-guide contrasts share D0 and subtract before aggregation; D0 cancels algebraically. Context contrasts are not independent samples.",
+        "leave_one_out": {
+          "status": "computed",
+          "score_min": -1.2056177734844975,
+          "score_max": 2.8163682090892883,
+          "sign_reversal": true,
+          "threshold_reversal": true,
+          "omissions": [
+            {
+              "omitted_guide": "UBA3_-_69129084",
+              "score": 1.3422732394007157
+            },
+            {
+              "omitted_guide": "UBA3_-_69129128",
+              "score": -1.2056177734844975
+            },
+            {
+              "omitted_guide": "UBA3_+_69129500",
+              "score": 2.8163682090892883
+            }
+          ]
+        }
+      },
+      "guides": [
+        {
+          "sgRNA": "UBA3_-_69129084",
+          "eligible": true,
+          "baseline_counts": [
+            53,
+            21
+          ],
+          "centered_log2_enrichment": [
+            3.4063777104288295,
+            4.941630731975551,
+            3.7345939864111863,
+            5.150368848401345
+          ]
+        },
+        {
+          "sgRNA": "UBA3_-_69129128",
+          "eligible": true,
+          "baseline_counts": [
+            305,
+            254
+          ],
+          "centered_log2_enrichment": [
+            -4.914745646772517,
+            -3.6547728349399886,
+            1.0084726403464863,
+            1.1505273218900107
+          ]
+        },
+        {
+          "sgRNA": "UBA3_+_69129471",
+          "eligible": false,
+          "baseline_counts": [
+            13,
+            3
+          ],
+          "centered_log2_enrichment": [
+            4.302599993876133,
+            6.381491130504734,
+            4.984517674996056,
+            6.655252619172676
+          ]
+        },
+        {
+          "sgRNA": "UBA3_-_69129485",
+          "eligible": false,
+          "baseline_counts": [
+            3,
+            127
+          ],
+          "centered_log2_enrichment": [
+            4.335960411345755,
+            -0.46118884659352444,
+            -0.871648531972038,
+            -4.780593581379585
+          ]
+        },
+        {
+          "sgRNA": "UBA3_+_69129500",
+          "eligible": true,
+          "baseline_counts": [
+            99,
+            322
+          ],
+          "centered_log2_enrichment": [
+            5.011521444654405,
+            3.6032144690806804,
+            2.4216933162973096,
+            0.8336171110916363
+          ]
+        }
+      ],
+      "baseline_count_sensitivity": [
+        {
+          "baseline_min_each_repeat": 10,
+          "eligible_guides": 3,
+          "conditions": {
+            "without_il6": {
+              "score": 4.174004221202191,
+              "repeat_scores": [
+                3.4063777104288295,
+                3.6032144690806804
+              ],
+              "loo_range": [
+                -0.05537750982703127,
+                4.240686089034867
+              ]
+            },
+            "with_il6": {
+              "score": 1.6276552136944729,
+              "repeat_scores": [
+                2.4216933162973096,
+                1.1505273218900107
+              ],
+              "loo_range": [
+                1.3535775974063609,
+                3.0350683155503693
+              ]
+            }
+          }
+        },
+        {
+          "baseline_min_each_repeat": 20,
+          "eligible_guides": 3,
+          "conditions": {
+            "without_il6": {
+              "score": 4.174004221202191,
+              "repeat_scores": [
+                3.4063777104288295,
+                3.6032144690806804
+              ],
+              "loo_range": [
+                -0.05537750982703127,
+                4.240686089034867
+              ]
+            },
+            "with_il6": {
+              "score": 1.6276552136944729,
+              "repeat_scores": [
+                2.4216933162973096,
+                1.1505273218900107
+              ],
+              "loo_range": [
+                1.3535775974063609,
+                3.0350683155503693
+              ]
+            }
+          }
+        },
+        {
+          "baseline_min_each_repeat": 50,
+          "eligible_guides": 2,
+          "conditions": {
+            "without_il6": {
+              "score": 0.011304358005644666,
+              "repeat_scores": [
+                0.04838789894094386,
+                -0.025779182929654088
+              ],
+              "loo_range": [
+                -4.284759240856253,
+                4.307367956867543
+              ]
+            },
+            "with_il6": {
+              "score": 1.3535775974063609,
+              "repeat_scores": [
+                1.715082978321898,
+                0.9920722164908236
+              ],
+              "loo_range": [
+                1.0794999811182486,
+                1.6276552136944729
+              ]
+            }
+          }
+        }
+      ],
+      "external_context": {
+        "evidence_type": "curated_external_context",
+        "snapshot_sha256": "9fa4d5db2c4091cef062dac1503c48912e06c9663d3c31a07d3903bd9e3bebcd",
+        "retrieved_date": "2026-10-04",
+        "source_hashes": {
+          "source-table-s1.xlsx": "90c084b6cff820d2b13a729839346b294aa452de03eff8169553fa913e3157f1",
+          "open-targets-essentiality.json": "d32f67d55f40b1de455341082ca6b7be6b1a400bb907c76a01c4dd51c02994a1"
+        },
+        "matrix_warning": "GEO counts and the published supplement differ. Supplementary beta/FDR are external context, not ground truth for this exploratory estimator.",
+        "curation_note": "Labels and decision_implication are curator summaries. Published findings are in published_context and published_screen_statistics. Guide disagreement and count robustness must be established from the current executed analysis, not inferred from a label.",
+        "evidence": {
+          "gene": "UBA3",
+          "label": "Published screen hit",
+          "published_context": "The supplement reports a positive no-IL6 screen effect. This is statistical evidence from the source screen, not independent biological validation.",
+          "decision_implication": "Check guide agreement in the current input and distinguish a count effect from a senescence phenotype before prioritizing this target.",
+          "source_url": "https://doi.org/10.1186/s13059-025-03683-7",
+          "source_location": "Results: genome-wide CRISPRi screen and Fig. 1; supplementary Table S1",
+          "published_screen_statistics": {
+            "IL6m|beta": 1.8594,
+            "IL6m|z": 0.82436,
+            "IL6m|p-value": 0.0051626,
+            "IL6m|FDR": 0.02,
+            "IL6p|beta": 2.0661,
+            "IL6p|z": 0.90887,
+            "IL6p|p-value": 0.058864,
+            "IL6p|FDR": 0.05
+          },
+          "statistics_source_url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2Fs13059-025-03683-7/MediaObjects/13059_2025_3683_MOESM2_ESM.xlsx",
+          "essentiality": {
+            "gene": "UBA3",
+            "id": "ENSG00000144744",
+            "isEssential": true,
+            "n_screens": 1258,
+            "unique_depmap_ids": 1208,
+            "median": -0.7305192351341248,
+            "fraction_below_neg0_5": 0.8378378378378378
+          },
+          "essentiality_source_url": "https://platform-docs.opentargets.org/target/core-gene-essentiality",
+          "essentiality_limit": "Cancer-cell knockout fitness; not an automatic veto for partial suppression in MSCs. Aggregates count screen rows, not unique cell lines.",
+          "cell_identity_concern": false,
+          "functional_followup_curated": false
+        }
+      },
+      "decision_dependence": {
+        "without_il6": {
+          "status": "Resolve conflicting evidence",
+          "score": 4.174004221202191,
+          "eligible_guides": 3,
+          "checklist": [
+            {
+              "criterion": "eligible_guides",
+              "observed": 3,
+              "rule": ">= 3",
+              "passes": true
+            },
+            {
+              "criterion": "repeat_1_median",
+              "observed": 3.4063777104288295,
+              "rule": ">= 0.5",
+              "passes": true
+            },
+            {
+              "criterion": "repeat_2_median",
+              "observed": 3.6032144690806804,
+              "rule": ">= 0.5",
+              "passes": true
+            },
+            {
+              "criterion": "leave_one_out_minimum",
+              "observed": -0.05537750982703127,
+              "rule": ">= 0.5",
+              "passes": false
+            },
+            {
+              "criterion": "repeat_difference",
+              "observed": 0.1968367586518509,
+              "rule": "|difference| <= 1.0",
+              "passes": true
+            },
+            {
+              "criterion": "positive_guide_fraction",
+              "observed": 0.6666666666666666,
+              "rule": ">= 0.6",
+              "passes": true
+            }
+          ],
+          "failing_criteria": [
+            "leave_one_out_minimum"
+          ],
+          "guide_effects": [
+            {
+              "sgRNA": "UBA3_-_69129084",
+              "eligible": true,
+              "baseline_counts": [
+                53,
+                21
+              ],
+              "mean_effect": 4.174004221202191,
+              "repeat_effects": [
+                3.4063777104288295,
+                4.941630731975551
+              ]
+            },
+            {
+              "sgRNA": "UBA3_-_69129128",
+              "eligible": true,
+              "baseline_counts": [
+                305,
+                254
+              ],
+              "mean_effect": -4.284759240856253,
+              "repeat_effects": [
+                -4.914745646772517,
+                -3.6547728349399886
+              ]
+            },
+            {
+              "sgRNA": "UBA3_+_69129471",
+              "eligible": false,
+              "baseline_counts": [
+                13,
+                3
+              ],
+              "mean_effect": 5.3420455621904335,
+              "repeat_effects": [
+                4.302599993876133,
+                6.381491130504734
+              ]
+            },
+            {
+              "sgRNA": "UBA3_-_69129485",
+              "eligible": false,
+              "baseline_counts": [
+                3,
+                127
+              ],
+              "mean_effect": 1.9373857823761151,
+              "repeat_effects": [
+                4.335960411345755,
+                -0.46118884659352444
+              ]
+            },
+            {
+              "sgRNA": "UBA3_+_69129500",
+              "eligible": true,
+              "baseline_counts": [
+                99,
+                322
+              ],
+              "mean_effect": 4.307367956867543,
+              "repeat_effects": [
+                5.011521444654405,
+                3.6032144690806804
+              ]
+            }
+          ],
+          "omit_one_guide": [
+            {
+              "omitted_guide": "UBA3_-_69129084",
+              "omitted_guide_effect": 4.174004221202191,
+              "score": 0.011304358005644666,
+              "crosses_threshold": true,
+              "status": "Insufficient guide coverage",
+              "status_changes": true,
+              "note": "Omitting one of three guides also drops coverage below the three-guide minimum."
+            },
+            {
+              "omitted_guide": "UBA3_-_69129128",
+              "omitted_guide_effect": -4.284759240856253,
+              "score": 4.240686089034867,
+              "crosses_threshold": false,
+              "status": "Insufficient guide coverage",
+              "status_changes": true,
+              "note": "Omitting one of three guides also drops coverage below the three-guide minimum."
+            },
+            {
+              "omitted_guide": "UBA3_+_69129500",
+              "omitted_guide_effect": 4.307367956867543,
+              "score": -0.05537750982703127,
+              "crosses_threshold": true,
+              "status": "Insufficient guide coverage",
+              "status_changes": true,
+              "note": "Omitting one of three guides also drops coverage below the three-guide minimum."
+            }
+          ],
+          "decisive_guides": [
+            "UBA3_-_69129084",
+            "UBA3_+_69129500"
+          ],
+          "discordant_guides": [
+            {
+              "sgRNA": "UBA3_-_69129128",
+              "effect": -4.284759240856253
+            }
+          ],
+          "coverage_shortfall": 0,
+          "hypothetical_probes": [
+            {
+              "probe": "add_one_concordant_guide",
+              "observed": false,
+              "evidence_type": "hypothetical_rule_probe",
+              "meaning": "If one additional independent guide reproduced the current per-repeat median effect, this is the fixed-rule verdict. Not an observation.",
+              "added_guide_repeat_effects": [
+                3.4063777104288295,
+                3.6032144690806804
+              ],
+              "eligible_guides_after": 4,
+              "score": 3.839400155478473,
+              "status": "Count signal survives checklist",
+              "status_changes": true
+            },
+            {
+              "probe": "add_one_null_guide",
+              "observed": false,
+              "evidence_type": "hypothetical_rule_probe",
+              "meaning": "If one additional independent guide showed no enrichment in either repeat, this is the fixed-rule verdict. Not an observation.",
+              "added_guide_repeat_effects": [
+                0.0,
+                0.0
+              ],
+              "eligible_guides_after": 4,
+              "score": 2.0870021106010954,
+              "status": "Resolve conflicting evidence",
+              "status_changes": false
+            }
+          ],
+          "summary": "The verdict rests on a 2-vs-1 guide split: UBA3_-_69129128 −4.28 disagrees with the other guides (+4.17, +4.31). Without UBA3_-_69129084 or UBA3_+_69129500, the aggregate crosses the 0.5 log₂ threshold. Rule probes (hypothetical, not observed): one more agreeing guide → “Count signal survives checklist”; one more null guide → “Resolve conflicting evidence”.",
+          "baseline_filter": [
+            {
+              "min_each_repeat": 10,
+              "eligible_guides": 3,
+              "score": 4.174004221202191,
+              "status": "Resolve conflicting evidence",
+              "is_default": false,
+              "status_changes": false
+            },
+            {
+              "min_each_repeat": 20,
+              "eligible_guides": 3,
+              "score": 4.174004221202191,
+              "status": "Resolve conflicting evidence",
+              "is_default": true,
+              "status_changes": false
+            },
+            {
+              "min_each_repeat": 50,
+              "eligible_guides": 2,
+              "score": 0.011304358005644666,
+              "status": "Insufficient guide coverage",
+              "is_default": false,
+              "status_changes": true
+            }
+          ]
+        },
+        "with_il6": {
+          "status": "Needs stronger support",
+          "score": 1.6276552136944729,
+          "eligible_guides": 3,
+          "checklist": [
+            {
+              "criterion": "eligible_guides",
+              "observed": 3,
+              "rule": ">= 3",
+              "passes": true
+            },
+            {
+              "criterion": "repeat_1_median",
+              "observed": 2.4216933162973096,
+              "rule": ">= 0.5",
+              "passes": true
+            },
+            {
+              "criterion": "repeat_2_median",
+              "observed": 1.1505273218900107,
+              "rule": ">= 0.5",
+              "passes": true
+            },
+            {
+              "criterion": "leave_one_out_minimum",
+              "observed": 1.3535775974063609,
+              "rule": ">= 0.5",
+              "passes": true
+            },
+            {
+              "criterion": "repeat_difference",
+              "observed": -1.2711659944072988,
+              "rule": "|difference| <= 1.0",
+              "passes": false
+            },
+            {
+              "criterion": "positive_guide_fraction",
+              "observed": 1.0,
+              "rule": ">= 0.6",
+              "passes": true
+            }
+          ],
+          "failing_criteria": [
+            "repeat_difference"
+          ],
+          "guide_effects": [
+            {
+              "sgRNA": "UBA3_-_69129084",
+              "eligible": true,
+              "baseline_counts": [
+                53,
+                21
+              ],
+              "mean_effect": 4.442481417406266,
+              "repeat_effects": [
+                3.7345939864111863,
+                5.150368848401345
+              ]
+            },
+            {
+              "sgRNA": "UBA3_-_69129128",
+              "eligible": true,
+              "baseline_counts": [
+                305,
+                254
+              ],
+              "mean_effect": 1.0794999811182486,
+              "repeat_effects": [
+                1.0084726403464863,
+                1.1505273218900107
+              ]
+            },
+            {
+              "sgRNA": "UBA3_+_69129471",
+              "eligible": false,
+              "baseline_counts": [
+                13,
+                3
+              ],
+              "mean_effect": 5.819885147084365,
+              "repeat_effects": [
+                4.984517674996056,
+                6.655252619172676
+              ]
+            },
+            {
+              "sgRNA": "UBA3_-_69129485",
+              "eligible": false,
+              "baseline_counts": [
+                3,
+                127
+              ],
+              "mean_effect": -2.8261210566758113,
+              "repeat_effects": [
+                -0.871648531972038,
+                -4.780593581379585
+              ]
+            },
+            {
+              "sgRNA": "UBA3_+_69129500",
+              "eligible": true,
+              "baseline_counts": [
+                99,
+                322
+              ],
+              "mean_effect": 1.6276552136944729,
+              "repeat_effects": [
+                2.4216933162973096,
+                0.8336171110916363
+              ]
+            }
+          ],
+          "omit_one_guide": [
+            {
+              "omitted_guide": "UBA3_-_69129084",
+              "omitted_guide_effect": 4.442481417406266,
+              "score": 1.3535775974063609,
+              "crosses_threshold": false,
+              "status": "Insufficient guide coverage",
+              "status_changes": true,
+              "note": "Omitting one of three guides also drops coverage below the three-guide minimum."
+            },
+            {
+              "omitted_guide": "UBA3_-_69129128",
+              "omitted_guide_effect": 1.0794999811182486,
+              "score": 3.0350683155503693,
+              "crosses_threshold": false,
+              "status": "Insufficient guide coverage",
+              "status_changes": true,
+              "note": "Omitting one of three guides also drops coverage below the three-guide minimum."
+            },
+            {
+              "omitted_guide": "UBA3_+_69129500",
+              "omitted_guide_effect": 1.6276552136944729,
+              "score": 2.7609906992622575,
+              "crosses_threshold": false,
+              "status": "Insufficient guide coverage",
+              "status_changes": true,
+              "note": "Omitting one of three guides also drops coverage below the three-guide minimum."
+            }
+          ],
+          "decisive_guides": [],
+          "discordant_guides": [],
+          "coverage_shortfall": 0,
+          "hypothetical_probes": [
+            {
+              "probe": "add_one_concordant_guide",
+              "observed": false,
+              "evidence_type": "hypothetical_rule_probe",
+              "meaning": "If one additional independent guide reproduced the current per-repeat median effect, this is the fixed-rule verdict. Not an observation.",
+              "added_guide_repeat_effects": [
+                2.4216933162973096,
+                1.1505273218900107
+              ],
+              "eligible_guides_after": 4,
+              "score": 1.7068827663940667,
+              "status": "Needs stronger support",
+              "status_changes": false
+            },
+            {
+              "probe": "add_one_null_guide",
+              "observed": false,
+              "evidence_type": "hypothetical_rule_probe",
+              "meaning": "If one additional independent guide showed no enrichment in either repeat, this is the fixed-rule verdict. Not an observation.",
+              "added_guide_repeat_effects": [
+                0.0,
+                0.0
+              ],
+              "eligible_guides_after": 4,
+              "score": 1.3535775974063609,
+              "status": "Count signal survives checklist",
+              "status_changes": true
+            }
+          ],
+          "summary": "All 3 eligible guides fall on the same side of the 0.5 log₂ threshold. No single omitted guide moves the aggregate across the threshold. Fails because the two repeats differ by more than the allowed 1.0 log₂. Rule probes (hypothetical, not observed): one more agreeing guide → “Needs stronger support”; one more null guide → “Count signal survives checklist”.",
+          "baseline_filter": [
+            {
+              "min_each_repeat": 10,
+              "eligible_guides": 3,
+              "score": 1.6276552136944729,
+              "status": "Needs stronger support",
+              "is_default": false,
+              "status_changes": false
+            },
+            {
+              "min_each_repeat": 20,
+              "eligible_guides": 3,
+              "score": 1.6276552136944729,
+              "status": "Needs stronger support",
+              "is_default": true,
+              "status_changes": false
+            },
+            {
+              "min_each_repeat": 50,
+              "eligible_guides": 2,
+              "score": 1.3535775974063609,
+              "status": "Insufficient guide coverage",
+              "is_default": false,
+              "status_changes": true
+            }
+          ]
+        }
+      },
+      "next_experiments": {
+        "without_il6": {
+          "status": "Resolve conflicting evidence",
+          "title": "Find out why the guides disagree.",
+          "question": "Do independent guides reproduce a senescence phenotype after target suppression is confirmed?",
+          "design": "Compare independent CRISPRi guides with non-targeting controls in the relevant IL6 contexts; confirm target suppression and use independent biological repeats.",
+          "readouts": [
+            "Target suppression",
+            "Senescence phenotype",
+            "MSC identity",
+            "Cell fitness / proliferation"
+          ],
+          "decision_change": "Concordant phenotype and preserved cell identity would support advancing; an effect isolated to one guide would motivate guide-specific investigation.",
+          "decision_rule": {
+            "retain": "At least two independent guides with confirmed target suppression reproduce reduced senescence while preserving MSC identity and acceptable cell fitness. Assess proliferation separately to distinguish senescence effects from growth alone.",
+            "reject": "Adequately suppressing guides consistently fail to reproduce the proposed senescence benefit, or the benefit accompanies loss of MSC identity or impaired viability.",
+            "more_evidence": "Target suppression, guide agreement, biological replication, cell identity or fitness remains unresolved. The three-guide count-screen checklist does not define the required size of this follow-up experiment."
+          },
+          "source_methods": "The source study validated selected hits with two independent sgRNAs per gene, SA-β-gal staining and flow cytometry of MSC identity markers (CD29, CD44, CD73, CD90). Wu et al., Genome Biology 26:233 (2025), Results and Methods.",
+          "count_status": "Resolve conflicting evidence",
+          "source_context": "Published screen hit",
+          "execution_status": "Proposed research design; not executed or a validated protocol"
+        },
+        "with_il6": {
+          "status": "Needs stronger support",
+          "title": "Resolve repeat and context sensitivity.",
+          "question": "Does the effect reproduce across independent biological repeats and the relevant inflammatory context?",
+          "design": "Compare independent CRISPRi guides with non-targeting controls in the relevant IL6 contexts; confirm target suppression and use independent biological repeats.",
+          "readouts": [
+            "Target suppression",
+            "Senescence phenotype",
+            "MSC identity",
+            "Cell fitness / proliferation"
+          ],
+          "decision_change": "Reproducibility within a defined context supports a narrower claim; disagreement supports collecting more evidence.",
+          "decision_rule": {
+            "retain": "At least two independent guides with confirmed target suppression reproduce reduced senescence while preserving MSC identity and acceptable cell fitness. Assess proliferation separately to distinguish senescence effects from growth alone.",
+            "reject": "Adequately suppressing guides consistently fail to reproduce the proposed senescence benefit, or the benefit accompanies loss of MSC identity or impaired viability.",
+            "more_evidence": "Target suppression, guide agreement, biological replication, cell identity or fitness remains unresolved. The three-guide count-screen checklist does not define the required size of this follow-up experiment."
+          },
+          "source_methods": "The source study validated selected hits with two independent sgRNAs per gene, SA-β-gal staining and flow cytometry of MSC identity markers (CD29, CD44, CD73, CD90). Wu et al., Genome Biology 26:233 (2025), Results and Methods.",
+          "count_status": "Needs stronger support",
+          "source_context": "Published screen hit",
+          "execution_status": "Proposed research design; not executed or a validated protocol"
+        }
+      }
+    },
+    {
+      "gene": "SAMM50",
+      "total_guides": 5,
+      "eligible_guides": 1,
+      "conditions": {
+        "without_il6": {
+          "status": "computed",
+          "eligible_guides": 1,
+          "score": 0.20097713166773784,
+          "repeat_scores": [
+            0.452780871068419,
+            -0.05082660773294334
+          ],
+          "repeat_difference": -0.5036074788013624,
+          "repeat_sign_agreement": false,
+          "positive_guide_fraction": 1.0,
+          "leave_one_out": {
+            "status": "insufficient_guides",
+            "score_min": null,
+            "score_max": null,
+            "sign_reversal": false,
+            "threshold_reversal": false,
+            "omissions": []
+          },
+          "fixed_checklist_pass": false
+        },
+        "with_il6": {
+          "status": "computed",
+          "eligible_guides": 1,
+          "score": 0.06257000165550514,
+          "repeat_scores": [
+            0.2582386495010254,
+            -0.1330986461900151
+          ],
+          "repeat_difference": -0.3913372956910405,
+          "repeat_sign_agreement": false,
+          "positive_guide_fraction": 1.0,
+          "leave_one_out": {
+            "status": "insufficient_guides",
+            "score_min": null,
+            "score_max": null,
+            "sign_reversal": false,
+            "threshold_reversal": false,
+            "omissions": []
+          },
+          "fixed_checklist_pass": false
+        }
+      },
+      "missing_endpoints": [
+        "cell identity",
+        "senescence phenotype for this complete candidate set",
+        "safety",
+        "human longevity"
+      ],
+      "context": {
+        "status": "computed",
+        "score": -0.1384071300122327,
+        "repeat_scores": [
+          -0.19454222156739365,
+          -0.08227203845707176
+        ],
+        "repeat_sign_agreement": true,
+        "meaning": "Positive contrast indicates stronger guide enrichment with IL6 than without IL6",
+        "dependence": "Within-guide contrasts share D0 and subtract before aggregation; D0 cancels algebraically. Context contrasts are not independent samples.",
+        "leave_one_out": {
+          "status": "insufficient_guides",
+          "score_min": null,
+          "score_max": null,
+          "sign_reversal": false,
+          "threshold_reversal": false,
+          "omissions": []
+        }
+      },
+      "guides": [
+        {
+          "sgRNA": "SAMM50_+_44351374",
+          "eligible": false,
+          "baseline_counts": [
+            16,
+            1
+          ],
+          "centered_log2_enrichment": [
+            3.481885212936275,
+            6.85792188933735,
+            5.49408220300287,
+            8.595476034176158
+          ]
+        },
+        {
+          "sgRNA": "SAMM50_+_44351392",
+          "eligible": false,
+          "baseline_counts": [
+            14,
+            6
+          ],
+          "centered_log2_enrichment": [
+            4.25285253768505,
+            5.496249387334309,
+            -0.7515690963707553,
+            -0.05959050799431853
+          ]
+        },
+        {
+          "sgRNA": "SAMM50_+_44351418",
+          "eligible": true,
+          "baseline_counts": [
+            203,
+            303
+          ],
+          "centered_log2_enrichment": [
+            0.452780871068419,
+            -0.05082660773294334,
+            0.2582386495010254,
+            -0.1330986461900151
+          ]
+        },
+        {
+          "sgRNA": "SAMM50_-_44351462",
+          "eligible": false,
+          "baseline_counts": [
+            9,
+            7
+          ],
+          "centered_log2_enrichment": [
+            2.9637548915862784,
+            3.081823156725198,
+            -1.1844684385599247,
+            -0.2444118546284484
+          ]
+        },
+        {
+          "sgRNA": "SAMM50_-_44351596",
+          "eligible": false,
+          "baseline_counts": [
+            8,
+            1
+          ],
+          "centered_log2_enrichment": [
+            4.852581898317667,
+            7.1947176001578885,
+            5.597503682839582,
+            7.568664159288268
+          ]
+        }
+      ],
+      "baseline_count_sensitivity": [
+        {
+          "baseline_min_each_repeat": 10,
+          "eligible_guides": 1,
+          "conditions": {
+            "without_il6": {
+              "score": 0.20097713166773784,
+              "repeat_scores": [
+                0.452780871068419,
+                -0.05082660773294334
+              ],
+              "loo_range": [
+                null,
+                null
+              ]
+            },
+            "with_il6": {
+              "score": 0.06257000165550514,
+              "repeat_scores": [
+                0.2582386495010254,
+                -0.1330986461900151
+              ],
+              "loo_range": [
+                null,
+                null
+              ]
+            }
+          }
+        },
+        {
+          "baseline_min_each_repeat": 20,
+          "eligible_guides": 1,
+          "conditions": {
+            "without_il6": {
+              "score": 0.20097713166773784,
+              "repeat_scores": [
+                0.452780871068419,
+                -0.05082660773294334
+              ],
+              "loo_range": [
+                null,
+                null
+              ]
+            },
+            "with_il6": {
+              "score": 0.06257000165550514,
+              "repeat_scores": [
+                0.2582386495010254,
+                -0.1330986461900151
+              ],
+              "loo_range": [
+                null,
+                null
+              ]
+            }
+          }
+        },
+        {
+          "baseline_min_each_repeat": 50,
+          "eligible_guides": 1,
+          "conditions": {
+            "without_il6": {
+              "score": 0.20097713166773784,
+              "repeat_scores": [
+                0.452780871068419,
+                -0.05082660773294334
+              ],
+              "loo_range": [
+                null,
+                null
+              ]
+            },
+            "with_il6": {
+              "score": 0.06257000165550514,
+              "repeat_scores": [
+                0.2582386495010254,
+                -0.1330986461900151
+              ],
+              "loo_range": [
+                null,
+                null
+              ]
+            }
+          }
+        }
+      ],
+      "external_context": {
+        "evidence_type": "curated_external_context",
+        "snapshot_sha256": "9fa4d5db2c4091cef062dac1503c48912e06c9663d3c31a07d3903bd9e3bebcd",
+        "retrieved_date": "2026-10-04",
+        "source_hashes": {
+          "source-table-s1.xlsx": "90c084b6cff820d2b13a729839346b294aa452de03eff8169553fa913e3157f1",
+          "open-targets-essentiality.json": "d32f67d55f40b1de455341082ca6b7be6b1a400bb907c76a01c4dd51c02994a1"
+        },
+        "matrix_warning": "GEO counts and the published supplement differ. Supplementary beta/FDR are external context, not ground truth for this exploratory estimator.",
+        "curation_note": "Labels and decision_implication are curator summaries. Published findings are in published_context and published_screen_statistics. Guide disagreement and count robustness must be established from the current executed analysis, not inferred from a label.",
+        "evidence": {
+          "gene": "SAMM50",
+          "label": "Published follow-up anchor",
+          "published_context": "The source paper reports reduced SA-beta-gal after CRISPRi and preserved MSC identity markers, with SAMM50-specific RNA sequencing. These are the authors’ results.",
+          "decision_implication": "Use as a published comparison anchor; our starting-count filter leaves too few guides for a robust count-based call.",
+          "source_url": "https://doi.org/10.1186/s13059-025-03683-7",
+          "source_location": "Results: genome-wide CRISPRi screen and Fig. 1; supplementary Table S1",
+          "published_screen_statistics": {
+            "IL6m|beta": 1.946,
+            "IL6m|z": 0.60607,
+            "IL6m|p-value": 0.0037788,
+            "IL6m|FDR": 0.01,
+            "IL6p|beta": 2.4151,
+            "IL6p|z": 0.74996,
+            "IL6p|p-value": 0.015062,
+            "IL6p|FDR": 0.03
+          },
+          "statistics_source_url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2Fs13059-025-03683-7/MediaObjects/13059_2025_3683_MOESM2_ESM.xlsx",
+          "essentiality": {
+            "gene": "SAMM50",
+            "id": "ENSG00000100347",
+            "isEssential": true,
+            "n_screens": 1258,
+            "unique_depmap_ids": 1208,
+            "median": -0.5416673421859741,
+            "fraction_below_neg0_5": 0.575516693163752
+          },
+          "essentiality_source_url": "https://platform-docs.opentargets.org/target/core-gene-essentiality",
+          "essentiality_limit": "Cancer-cell knockout fitness; not an automatic veto for partial suppression in MSCs. Aggregates count screen rows, not unique cell lines.",
+          "cell_identity_concern": false,
+          "functional_followup_curated": true
+        }
+      },
+      "decision_dependence": {
+        "without_il6": {
+          "status": "Insufficient guide coverage",
+          "score": 0.20097713166773784,
+          "eligible_guides": 1,
+          "checklist": [
+            {
+              "criterion": "eligible_guides",
+              "observed": 1,
+              "rule": ">= 3",
+              "passes": false
+            },
+            {
+              "criterion": "repeat_1_median",
+              "observed": 0.452780871068419,
+              "rule": ">= 0.5",
+              "passes": false
+            },
+            {
+              "criterion": "repeat_2_median",
+              "observed": -0.05082660773294334,
+              "rule": ">= 0.5",
+              "passes": false
+            },
+            {
+              "criterion": "leave_one_out_minimum",
+              "observed": null,
+              "rule": ">= 0.5",
+              "passes": false
+            },
+            {
+              "criterion": "repeat_difference",
+              "observed": -0.5036074788013624,
+              "rule": "|difference| <= 1.0",
+              "passes": true
+            },
+            {
+              "criterion": "positive_guide_fraction",
+              "observed": 1.0,
+              "rule": ">= 0.6",
+              "passes": true
+            }
+          ],
+          "failing_criteria": [
+            "eligible_guides",
+            "repeat_1_median",
+            "repeat_2_median",
+            "leave_one_out_minimum"
+          ],
+          "guide_effects": [
+            {
+              "sgRNA": "SAMM50_+_44351374",
+              "eligible": false,
+              "baseline_counts": [
+                16,
+                1
+              ],
+              "mean_effect": 5.169903551136812,
+              "repeat_effects": [
+                3.481885212936275,
+                6.85792188933735
+              ]
+            },
+            {
+              "sgRNA": "SAMM50_+_44351392",
+              "eligible": false,
+              "baseline_counts": [
+                14,
+                6
+              ],
+              "mean_effect": 4.87455096250968,
+              "repeat_effects": [
+                4.25285253768505,
+                5.496249387334309
+              ]
+            },
+            {
+              "sgRNA": "SAMM50_+_44351418",
+              "eligible": true,
+              "baseline_counts": [
+                203,
+                303
+              ],
+              "mean_effect": 0.20097713166773784,
+              "repeat_effects": [
+                0.452780871068419,
+                -0.05082660773294334
+              ]
+            },
+            {
+              "sgRNA": "SAMM50_-_44351462",
+              "eligible": false,
+              "baseline_counts": [
+                9,
+                7
+              ],
+              "mean_effect": 3.0227890241557382,
+              "repeat_effects": [
+                2.9637548915862784,
+                3.081823156725198
+              ]
+            },
+            {
+              "sgRNA": "SAMM50_-_44351596",
+              "eligible": false,
+              "baseline_counts": [
+                8,
+                1
+              ],
+              "mean_effect": 6.023649749237778,
+              "repeat_effects": [
+                4.852581898317667,
+                7.1947176001578885
+              ]
+            }
+          ],
+          "omit_one_guide": [],
+          "decisive_guides": [],
+          "discordant_guides": [],
+          "coverage_shortfall": 2,
+          "hypothetical_probes": [
+            {
+              "probe": "add_one_concordant_guide",
+              "observed": false,
+              "evidence_type": "hypothetical_rule_probe",
+              "meaning": "If one additional independent guide reproduced the current per-repeat median effect, this is the fixed-rule verdict. Not an observation.",
+              "added_guide_repeat_effects": [
+                0.452780871068419,
+                -0.05082660773294334
+              ],
+              "eligible_guides_after": 2,
+              "score": 0.20097713166773784,
+              "status": "Insufficient guide coverage",
+              "status_changes": false
+            },
+            {
+              "probe": "add_one_null_guide",
+              "observed": false,
+              "evidence_type": "hypothetical_rule_probe",
+              "meaning": "If one additional independent guide showed no enrichment in either repeat, this is the fixed-rule verdict. Not an observation.",
+              "added_guide_repeat_effects": [
+                0.0,
+                0.0
+              ],
+              "eligible_guides_after": 2,
+              "score": 0.10048856583386892,
+              "status": "Insufficient guide coverage",
+              "status_changes": false
+            }
+          ],
+          "summary": "Only 1 of the gene's guides pass the fixed starting-count filter; 2 more eligible guides would be needed before the count rule can give a verdict. Missing evidence is not a negative result.",
+          "baseline_filter": [
+            {
+              "min_each_repeat": 10,
+              "eligible_guides": 1,
+              "score": 0.20097713166773784,
+              "status": "Insufficient guide coverage",
+              "is_default": false,
+              "status_changes": false
+            },
+            {
+              "min_each_repeat": 20,
+              "eligible_guides": 1,
+              "score": 0.20097713166773784,
+              "status": "Insufficient guide coverage",
+              "is_default": true,
+              "status_changes": false
+            },
+            {
+              "min_each_repeat": 50,
+              "eligible_guides": 1,
+              "score": 0.20097713166773784,
+              "status": "Insufficient guide coverage",
+              "is_default": false,
+              "status_changes": false
+            }
+          ]
+        },
+        "with_il6": {
+          "status": "Insufficient guide coverage",
+          "score": 0.06257000165550514,
+          "eligible_guides": 1,
+          "checklist": [
+            {
+              "criterion": "eligible_guides",
+              "observed": 1,
+              "rule": ">= 3",
+              "passes": false
+            },
+            {
+              "criterion": "repeat_1_median",
+              "observed": 0.2582386495010254,
+              "rule": ">= 0.5",
+              "passes": false
+            },
+            {
+              "criterion": "repeat_2_median",
+              "observed": -0.1330986461900151,
+              "rule": ">= 0.5",
+              "passes": false
+            },
+            {
+              "criterion": "leave_one_out_minimum",
+              "observed": null,
+              "rule": ">= 0.5",
+              "passes": false
+            },
+            {
+              "criterion": "repeat_difference",
+              "observed": -0.3913372956910405,
+              "rule": "|difference| <= 1.0",
+              "passes": true
+            },
+            {
+              "criterion": "positive_guide_fraction",
+              "observed": 1.0,
+              "rule": ">= 0.6",
+              "passes": true
+            }
+          ],
+          "failing_criteria": [
+            "eligible_guides",
+            "repeat_1_median",
+            "repeat_2_median",
+            "leave_one_out_minimum"
+          ],
+          "guide_effects": [
+            {
+              "sgRNA": "SAMM50_+_44351374",
+              "eligible": false,
+              "baseline_counts": [
+                16,
+                1
+              ],
+              "mean_effect": 7.044779118589514,
+              "repeat_effects": [
+                5.49408220300287,
+                8.595476034176158
+              ]
+            },
+            {
+              "sgRNA": "SAMM50_+_44351392",
+              "eligible": false,
+              "baseline_counts": [
+                14,
+                6
+              ],
+              "mean_effect": -0.4055798021825369,
+              "repeat_effects": [
+                -0.7515690963707553,
+                -0.05959050799431853
+              ]
+            },
+            {
+              "sgRNA": "SAMM50_+_44351418",
+              "eligible": true,
+              "baseline_counts": [
+                203,
+                303
+              ],
+              "mean_effect": 0.06257000165550514,
+              "repeat_effects": [
+                0.2582386495010254,
+                -0.1330986461900151
+              ]
+            },
+            {
+              "sgRNA": "SAMM50_-_44351462",
+              "eligible": false,
+              "baseline_counts": [
+                9,
+                7
+              ],
+              "mean_effect": -0.7144401465941865,
+              "repeat_effects": [
+                -1.1844684385599247,
+                -0.2444118546284484
+              ]
+            },
+            {
+              "sgRNA": "SAMM50_-_44351596",
+              "eligible": false,
+              "baseline_counts": [
+                8,
+                1
+              ],
+              "mean_effect": 6.583083921063925,
+              "repeat_effects": [
+                5.597503682839582,
+                7.568664159288268
+              ]
+            }
+          ],
+          "omit_one_guide": [],
+          "decisive_guides": [],
+          "discordant_guides": [],
+          "coverage_shortfall": 2,
+          "hypothetical_probes": [
+            {
+              "probe": "add_one_concordant_guide",
+              "observed": false,
+              "evidence_type": "hypothetical_rule_probe",
+              "meaning": "If one additional independent guide reproduced the current per-repeat median effect, this is the fixed-rule verdict. Not an observation.",
+              "added_guide_repeat_effects": [
+                0.2582386495010254,
+                -0.1330986461900151
+              ],
+              "eligible_guides_after": 2,
+              "score": 0.06257000165550514,
+              "status": "Insufficient guide coverage",
+              "status_changes": false
+            },
+            {
+              "probe": "add_one_null_guide",
+              "observed": false,
+              "evidence_type": "hypothetical_rule_probe",
+              "meaning": "If one additional independent guide showed no enrichment in either repeat, this is the fixed-rule verdict. Not an observation.",
+              "added_guide_repeat_effects": [
+                0.0,
+                0.0
+              ],
+              "eligible_guides_after": 2,
+              "score": 0.03128500082775257,
+              "status": "Insufficient guide coverage",
+              "status_changes": false
+            }
+          ],
+          "summary": "Only 1 of the gene's guides pass the fixed starting-count filter; 2 more eligible guides would be needed before the count rule can give a verdict. Missing evidence is not a negative result.",
+          "baseline_filter": [
+            {
+              "min_each_repeat": 10,
+              "eligible_guides": 1,
+              "score": 0.06257000165550514,
+              "status": "Insufficient guide coverage",
+              "is_default": false,
+              "status_changes": false
+            },
+            {
+              "min_each_repeat": 20,
+              "eligible_guides": 1,
+              "score": 0.06257000165550514,
+              "status": "Insufficient guide coverage",
+              "is_default": true,
+              "status_changes": false
+            },
+            {
+              "min_each_repeat": 50,
+              "eligible_guides": 1,
+              "score": 0.06257000165550514,
+              "status": "Insufficient guide coverage",
+              "is_default": false,
+              "status_changes": false
+            }
+          ]
+        }
+      },
+      "next_experiments": {
+        "without_il6": {
+          "status": "Insufficient guide coverage",
+          "title": "Resolve guide coverage before making a new screen call.",
+          "question": "Does the result persist with adequate starting representation and confirmed target suppression?",
+          "design": "Compare independent CRISPRi guides with non-targeting controls in the relevant IL6 contexts; confirm target suppression and use independent biological repeats.",
+          "readouts": [
+            "Target suppression",
+            "Senescence phenotype",
+            "MSC identity",
+            "Cell fitness / proliferation"
+          ],
+          "decision_change": "Reassess once sufficient independent guides have usable coverage; the present missing evidence is not a negative result.",
+          "decision_rule": {
+            "retain": "At least two independent guides with confirmed target suppression reproduce reduced senescence while preserving MSC identity and acceptable cell fitness. Assess proliferation separately to distinguish senescence effects from growth alone.",
+            "reject": "Adequately suppressing guides consistently fail to reproduce the proposed senescence benefit, or the benefit accompanies loss of MSC identity or impaired viability.",
+            "more_evidence": "Target suppression, guide agreement, biological replication, cell identity or fitness remains unresolved. The three-guide count-screen checklist does not define the required size of this follow-up experiment."
+          },
+          "source_methods": "The source study validated selected hits with two independent sgRNAs per gene, SA-β-gal staining and flow cytometry of MSC identity markers (CD29, CD44, CD73, CD90). Wu et al., Genome Biology 26:233 (2025), Results and Methods.",
+          "count_status": "Insufficient guide coverage",
+          "source_context": "Published follow-up anchor",
+          "execution_status": "Proposed research design; not executed or a validated protocol"
+        },
+        "with_il6": {
+          "status": "Insufficient guide coverage",
+          "title": "Resolve guide coverage before making a new screen call.",
+          "question": "Does the result persist with adequate starting representation and confirmed target suppression?",
+          "design": "Compare independent CRISPRi guides with non-targeting controls in the relevant IL6 contexts; confirm target suppression and use independent biological repeats.",
+          "readouts": [
+            "Target suppression",
+            "Senescence phenotype",
+            "MSC identity",
+            "Cell fitness / proliferation"
+          ],
+          "decision_change": "Reassess once sufficient independent guides have usable coverage; the present missing evidence is not a negative result.",
+          "decision_rule": {
+            "retain": "At least two independent guides with confirmed target suppression reproduce reduced senescence while preserving MSC identity and acceptable cell fitness. Assess proliferation separately to distinguish senescence effects from growth alone.",
+            "reject": "Adequately suppressing guides consistently fail to reproduce the proposed senescence benefit, or the benefit accompanies loss of MSC identity or impaired viability.",
+            "more_evidence": "Target suppression, guide agreement, biological replication, cell identity or fitness remains unresolved. The three-guide count-screen checklist does not define the required size of this follow-up experiment."
+          },
+          "source_methods": "The source study validated selected hits with two independent sgRNAs per gene, SA-β-gal staining and flow cytometry of MSC identity markers (CD29, CD44, CD73, CD90). Wu et al., Genome Biology 26:233 (2025), Results and Methods.",
+          "count_status": "Insufficient guide coverage",
+          "source_context": "Published follow-up anchor",
+          "execution_status": "Proposed research design; not executed or a validated protocol"
+        }
+      }
+    },
+    {
+      "gene": "AK2",
+      "total_guides": 5,
+      "eligible_guides": 2,
+      "conditions": {
+        "without_il6": {
+          "status": "computed",
+          "eligible_guides": 2,
+          "score": 0.6585348967284186,
+          "repeat_scores": [
+            0.5419275881139894,
+            0.7751422053428476
+          ],
+          "repeat_difference": 0.23321461722885817,
+          "repeat_sign_agreement": true,
+          "positive_guide_fraction": 0.5,
+          "leave_one_out": {
+            "status": "computed",
+            "score_min": -0.7117739114321217,
+            "score_max": 2.028843704888959,
+            "sign_reversal": true,
+            "threshold_reversal": true,
+            "omissions": [
+              {
+                "omitted_guide": "AK2_+_33502194",
+                "score": -0.7117739114321217
+              },
+              {
+                "omitted_guide": "AK2_+_33502475",
+                "score": 2.028843704888959
+              }
+            ]
+          },
+          "fixed_checklist_pass": false
+        },
+        "with_il6": {
+          "status": "computed",
+          "eligible_guides": 2,
+          "score": 1.781898015442171,
+          "repeat_scores": [
+            1.536335880053926,
+            2.027460150830416
+          ],
+          "repeat_difference": 0.49112427077649023,
+          "repeat_sign_agreement": true,
+          "positive_guide_fraction": 1.0,
+          "leave_one_out": {
+            "status": "computed",
+            "score_min": 1.5871557881088378,
+            "score_max": 1.9766402427755043,
+            "sign_reversal": false,
+            "threshold_reversal": false,
+            "omissions": [
+              {
+                "omitted_guide": "AK2_+_33502194",
+                "score": 1.5871557881088378
+              },
+              {
+                "omitted_guide": "AK2_+_33502475",
+                "score": 1.9766402427755043
+              }
+            ]
+          },
+          "fixed_checklist_pass": false
+        }
+      },
+      "missing_endpoints": [
+        "cell identity",
+        "senescence phenotype for this complete candidate set",
+        "safety",
+        "human longevity"
+      ],
+      "context": {
+        "status": "computed",
+        "score": 1.1233631187137525,
+        "repeat_scores": [
+          0.9944082919399365,
+          1.2523179454875686
+        ],
+        "repeat_sign_agreement": true,
+        "meaning": "Positive contrast indicates stronger guide enrichment with IL6 than without IL6",
+        "dependence": "Within-guide contrasts share D0 and subtract before aggregation; D0 cancels algebraically. Context contrasts are not independent samples.",
+        "leave_one_out": {
+          "status": "computed",
+          "score_min": -0.0522034621134545,
+          "score_max": 2.2989296995409596,
+          "sign_reversal": true,
+          "threshold_reversal": true,
+          "omissions": [
+            {
+              "omitted_guide": "AK2_+_33502194",
+              "score": 2.2989296995409596
+            },
+            {
+              "omitted_guide": "AK2_+_33502475",
+              "score": -0.0522034621134545
+            }
+          ]
+        }
+      },
+      "guides": [
+        {
+          "sgRNA": "AK2_+_33502042",
+          "eligible": false,
+          "baseline_counts": [
+            6,
+            131
+          ],
+          "centered_log2_enrichment": [
+            5.693370414539932,
+            1.6476659324521172,
+            0.9675287360584386,
+            -3.8194188317983597
+          ]
+        },
+        {
+          "sgRNA": "AK2_+_33502056",
+          "eligible": false,
+          "baseline_counts": [
+            0,
+            0
+          ],
+          "centered_log2_enrichment": [
+            1.1251064877143622,
+            0.6298871886417884,
+            1.4099483723524986,
+            0.8152096178101293
+          ]
+        },
+        {
+          "sgRNA": "AK2_+_33502088",
+          "eligible": false,
+          "baseline_counts": [
+            5,
+            2
+          ],
+          "centered_log2_enrichment": [
+            4.288124549470784,
+            5.544083090186334,
+            0.17885328583899596,
+            -0.5177031160357142
+          ]
+        },
+        {
+          "sgRNA": "AK2_+_33502194",
+          "eligible": true,
+          "baseline_counts": [
+            279,
+            135
+          ],
+          "centered_log2_enrichment": [
+            1.4096032731873427,
+            2.6480841365905747,
+            1.3508561902720937,
+            2.6024242952789147
+          ]
+        },
+        {
+          "sgRNA": "AK2_+_33502475",
+          "eligible": true,
+          "baseline_counts": [
+            86,
+            125
+          ],
+          "centered_log2_enrichment": [
+            -0.3257480969593638,
+            -1.0977997259048795,
+            1.7218155698357582,
+            1.4524960063819177
+          ]
+        }
+      ],
+      "baseline_count_sensitivity": [
+        {
+          "baseline_min_each_repeat": 10,
+          "eligible_guides": 2,
+          "conditions": {
+            "without_il6": {
+              "score": 0.6585348967284186,
+              "repeat_scores": [
+                0.5419275881139894,
+                0.7751422053428476
+              ],
+              "loo_range": [
+                -0.7117739114321217,
+                2.028843704888959
+              ]
+            },
+            "with_il6": {
+              "score": 1.781898015442171,
+              "repeat_scores": [
+                1.536335880053926,
+                2.027460150830416
+              ],
+              "loo_range": [
+                1.5871557881088378,
+                1.9766402427755043
+              ]
+            }
+          }
+        },
+        {
+          "baseline_min_each_repeat": 20,
+          "eligible_guides": 2,
+          "conditions": {
+            "without_il6": {
+              "score": 0.6585348967284186,
+              "repeat_scores": [
+                0.5419275881139894,
+                0.7751422053428476
+              ],
+              "loo_range": [
+                -0.7117739114321217,
+                2.028843704888959
+              ]
+            },
+            "with_il6": {
+              "score": 1.781898015442171,
+              "repeat_scores": [
+                1.536335880053926,
+                2.027460150830416
+              ],
+              "loo_range": [
+                1.5871557881088378,
+                1.9766402427755043
+              ]
+            }
+          }
+        },
+        {
+          "baseline_min_each_repeat": 50,
+          "eligible_guides": 2,
+          "conditions": {
+            "without_il6": {
+              "score": 0.6585348967284186,
+              "repeat_scores": [
+                0.5419275881139894,
+                0.7751422053428476
+              ],
+              "loo_range": [
+                -0.7117739114321217,
+                2.028843704888959
+              ]
+            },
+            "with_il6": {
+              "score": 1.781898015442171,
+              "repeat_scores": [
+                1.536335880053926,
+                2.027460150830416
+              ],
+              "loo_range": [
+                1.5871557881088378,
+                1.9766402427755043
+              ]
+            }
+          }
+        }
+      ],
+      "external_context": {
+        "evidence_type": "curated_external_context",
+        "snapshot_sha256": "9fa4d5db2c4091cef062dac1503c48912e06c9663d3c31a07d3903bd9e3bebcd",
+        "retrieved_date": "2026-10-04",
+        "source_hashes": {
+          "source-table-s1.xlsx": "90c084b6cff820d2b13a729839346b294aa452de03eff8169553fa913e3157f1",
+          "open-targets-essentiality.json": "d32f67d55f40b1de455341082ca6b7be6b1a400bb907c76a01c4dd51c02994a1"
+        },
+        "matrix_warning": "GEO counts and the published supplement differ. Supplementary beta/FDR are external context, not ground truth for this exploratory estimator.",
+        "curation_note": "Labels and decision_implication are curator summaries. Published findings are in published_context and published_screen_statistics. Guide disagreement and count robustness must be established from the current executed analysis, not inferred from a label.",
+        "evidence": {
+          "gene": "AK2",
+          "label": "Published follow-up anchor",
+          "published_context": "The source paper reports reduced SA-beta-gal with two independent CRISPRi guides and measures MSC identity markers. These are the authors’ results.",
+          "decision_implication": "Use as a published comparison anchor; check guide coverage before drawing a new conclusion.",
+          "source_url": "https://doi.org/10.1186/s13059-025-03683-7",
+          "source_location": "Results: genome-wide CRISPRi screen and Fig. 1; supplementary Table S1",
+          "published_screen_statistics": {
+            "IL6m|beta": 1.5616,
+            "IL6m|z": 0.95719,
+            "IL6m|p-value": 0.016393,
+            "IL6m|FDR": 0,
+            "IL6p|beta": 1.5497,
+            "IL6p|z": 0.93001,
+            "IL6p|p-value": 0.28996,
+            "IL6p|FDR": 0.28
+          },
+          "statistics_source_url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2Fs13059-025-03683-7/MediaObjects/13059_2025_3683_MOESM2_ESM.xlsx",
+          "essentiality": {
+            "gene": "AK2",
+            "id": "ENSG00000004455",
+            "isEssential": false,
+            "n_screens": 1258,
+            "unique_depmap_ids": 1208,
+            "median": -0.2460443302989006,
+            "fraction_below_neg0_5": 0.13513513513513514
+          },
+          "essentiality_source_url": "https://platform-docs.opentargets.org/target/core-gene-essentiality",
+          "essentiality_limit": "Cancer-cell knockout fitness; not an automatic veto for partial suppression in MSCs. Aggregates count screen rows, not unique cell lines.",
+          "cell_identity_concern": false,
+          "functional_followup_curated": true
+        }
+      },
+      "decision_dependence": {
+        "without_il6": {
+          "status": "Insufficient guide coverage",
+          "score": 0.6585348967284186,
+          "eligible_guides": 2,
+          "checklist": [
+            {
+              "criterion": "eligible_guides",
+              "observed": 2,
+              "rule": ">= 3",
+              "passes": false
+            },
+            {
+              "criterion": "repeat_1_median",
+              "observed": 0.5419275881139894,
+              "rule": ">= 0.5",
+              "passes": true
+            },
+            {
+              "criterion": "repeat_2_median",
+              "observed": 0.7751422053428476,
+              "rule": ">= 0.5",
+              "passes": true
+            },
+            {
+              "criterion": "leave_one_out_minimum",
+              "observed": -0.7117739114321217,
+              "rule": ">= 0.5",
+              "passes": false
+            },
+            {
+              "criterion": "repeat_difference",
+              "observed": 0.23321461722885817,
+              "rule": "|difference| <= 1.0",
+              "passes": true
+            },
+            {
+              "criterion": "positive_guide_fraction",
+              "observed": 0.5,
+              "rule": ">= 0.6",
+              "passes": false
+            }
+          ],
+          "failing_criteria": [
+            "eligible_guides",
+            "leave_one_out_minimum",
+            "positive_guide_fraction"
+          ],
+          "guide_effects": [
+            {
+              "sgRNA": "AK2_+_33502042",
+              "eligible": false,
+              "baseline_counts": [
+                6,
+                131
+              ],
+              "mean_effect": 3.6705181734960246,
+              "repeat_effects": [
+                5.693370414539932,
+                1.6476659324521172
+              ]
+            },
+            {
+              "sgRNA": "AK2_+_33502056",
+              "eligible": false,
+              "baseline_counts": [
+                0,
+                0
+              ],
+              "mean_effect": 0.8774968381780752,
+              "repeat_effects": [
+                1.1251064877143622,
+                0.6298871886417884
+              ]
+            },
+            {
+              "sgRNA": "AK2_+_33502088",
+              "eligible": false,
+              "baseline_counts": [
+                5,
+                2
+              ],
+              "mean_effect": 4.9161038198285585,
+              "repeat_effects": [
+                4.288124549470784,
+                5.544083090186334
+              ]
+            },
+            {
+              "sgRNA": "AK2_+_33502194",
+              "eligible": true,
+              "baseline_counts": [
+                279,
+                135
+              ],
+              "mean_effect": 2.028843704888959,
+              "repeat_effects": [
+                1.4096032731873427,
+                2.6480841365905747
+              ]
+            },
+            {
+              "sgRNA": "AK2_+_33502475",
+              "eligible": true,
+              "baseline_counts": [
+                86,
+                125
+              ],
+              "mean_effect": -0.7117739114321217,
+              "repeat_effects": [
+                -0.3257480969593638,
+                -1.0977997259048795
+              ]
+            }
+          ],
+          "omit_one_guide": [
+            {
+              "omitted_guide": "AK2_+_33502194",
+              "omitted_guide_effect": 2.028843704888959,
+              "score": -0.7117739114321217,
+              "crosses_threshold": true,
+              "status": "Insufficient guide coverage",
+              "status_changes": false,
+              "note": null
+            },
+            {
+              "omitted_guide": "AK2_+_33502475",
+              "omitted_guide_effect": -0.7117739114321217,
+              "score": 2.028843704888959,
+              "crosses_threshold": false,
+              "status": "Insufficient guide coverage",
+              "status_changes": false,
+              "note": null
+            }
+          ],
+          "decisive_guides": [
+            "AK2_+_33502194"
+          ],
+          "discordant_guides": [
+            {
+              "sgRNA": "AK2_+_33502475",
+              "effect": -0.7117739114321217
+            }
+          ],
+          "coverage_shortfall": 1,
+          "hypothetical_probes": [
+            {
+              "probe": "add_one_concordant_guide",
+              "observed": false,
+              "evidence_type": "hypothetical_rule_probe",
+              "meaning": "If one additional independent guide reproduced the current per-repeat median effect, this is the fixed-rule verdict. Not an observation.",
+              "added_guide_repeat_effects": [
+                0.5419275881139894,
+                0.7751422053428476
+              ],
+              "eligible_guides_after": 3,
+              "score": 0.6585348967284186,
+              "status": "Resolve conflicting evidence",
+              "status_changes": true
+            },
+            {
+              "probe": "add_one_null_guide",
+              "observed": false,
+              "evidence_type": "hypothetical_rule_probe",
+              "meaning": "If one additional independent guide showed no enrichment in either repeat, this is the fixed-rule verdict. Not an observation.",
+              "added_guide_repeat_effects": [
+                0.0,
+                0.0
+              ],
+              "eligible_guides_after": 3,
+              "score": 0.0,
+              "status": "Resolve conflicting evidence",
+              "status_changes": true
+            }
+          ],
+          "summary": "Only 2 of the gene's guides pass the fixed starting-count filter; 1 more eligible guide would be needed before the count rule can give a verdict. Missing evidence is not a negative result.",
+          "baseline_filter": [
+            {
+              "min_each_repeat": 10,
+              "eligible_guides": 2,
+              "score": 0.6585348967284186,
+              "status": "Insufficient guide coverage",
+              "is_default": false,
+              "status_changes": false
+            },
+            {
+              "min_each_repeat": 20,
+              "eligible_guides": 2,
+              "score": 0.6585348967284186,
+              "status": "Insufficient guide coverage",
+              "is_default": true,
+              "status_changes": false
+            },
+            {
+              "min_each_repeat": 50,
+              "eligible_guides": 2,
+              "score": 0.6585348967284186,
+              "status": "Insufficient guide coverage",
+              "is_default": false,
+              "status_changes": false
+            }
+          ]
+        },
+        "with_il6": {
+          "status": "Insufficient guide coverage",
+          "score": 1.781898015442171,
+          "eligible_guides": 2,
+          "checklist": [
+            {
+              "criterion": "eligible_guides",
+              "observed": 2,
+              "rule": ">= 3",
+              "passes": false
+            },
+            {
+              "criterion": "repeat_1_median",
+              "observed": 1.536335880053926,
+              "rule": ">= 0.5",
+              "passes": true
+            },
+            {
+              "criterion": "repeat_2_median",
+              "observed": 2.027460150830416,
+              "rule": ">= 0.5",
+              "passes": true
+            },
+            {
+              "criterion": "leave_one_out_minimum",
+              "observed": 1.5871557881088378,
+              "rule": ">= 0.5",
+              "passes": true
+            },
+            {
+              "criterion": "repeat_difference",
+              "observed": 0.49112427077649023,
+              "rule": "|difference| <= 1.0",
+              "passes": true
+            },
+            {
+              "criterion": "positive_guide_fraction",
+              "observed": 1.0,
+              "rule": ">= 0.6",
+              "passes": true
+            }
+          ],
+          "failing_criteria": [
+            "eligible_guides"
+          ],
+          "guide_effects": [
+            {
+              "sgRNA": "AK2_+_33502042",
+              "eligible": false,
+              "baseline_counts": [
+                6,
+                131
+              ],
+              "mean_effect": -1.4259450478699605,
+              "repeat_effects": [
+                0.9675287360584386,
+                -3.8194188317983597
+              ]
+            },
+            {
+              "sgRNA": "AK2_+_33502056",
+              "eligible": false,
+              "baseline_counts": [
+                0,
+                0
+              ],
+              "mean_effect": 1.1125789950813139,
+              "repeat_effects": [
+                1.4099483723524986,
+                0.8152096178101293
+              ]
+            },
+            {
+              "sgRNA": "AK2_+_33502088",
+              "eligible": false,
+              "baseline_counts": [
+                5,
+                2
+              ],
+              "mean_effect": -0.1694249150983591,
+              "repeat_effects": [
+                0.17885328583899596,
+                -0.5177031160357142
+              ]
+            },
+            {
+              "sgRNA": "AK2_+_33502194",
+              "eligible": true,
+              "baseline_counts": [
+                279,
+                135
+              ],
+              "mean_effect": 1.9766402427755043,
+              "repeat_effects": [
+                1.3508561902720937,
+                2.6024242952789147
+              ]
+            },
+            {
+              "sgRNA": "AK2_+_33502475",
+              "eligible": true,
+              "baseline_counts": [
+                86,
+                125
+              ],
+              "mean_effect": 1.5871557881088378,
+              "repeat_effects": [
+                1.7218155698357582,
+                1.4524960063819177
+              ]
+            }
+          ],
+          "omit_one_guide": [
+            {
+              "omitted_guide": "AK2_+_33502194",
+              "omitted_guide_effect": 1.9766402427755043,
+              "score": 1.5871557881088378,
+              "crosses_threshold": false,
+              "status": "Insufficient guide coverage",
+              "status_changes": false,
+              "note": null
+            },
+            {
+              "omitted_guide": "AK2_+_33502475",
+              "omitted_guide_effect": 1.5871557881088378,
+              "score": 1.9766402427755043,
+              "crosses_threshold": false,
+              "status": "Insufficient guide coverage",
+              "status_changes": false,
+              "note": null
+            }
+          ],
+          "decisive_guides": [],
+          "discordant_guides": [],
+          "coverage_shortfall": 1,
+          "hypothetical_probes": [
+            {
+              "probe": "add_one_concordant_guide",
+              "observed": false,
+              "evidence_type": "hypothetical_rule_probe",
+              "meaning": "If one additional independent guide reproduced the current per-repeat median effect, this is the fixed-rule verdict. Not an observation.",
+              "added_guide_repeat_effects": [
+                1.536335880053926,
+                2.027460150830416
+              ],
+              "eligible_guides_after": 3,
+              "score": 1.781898015442171,
+              "status": "Count signal survives checklist",
+              "status_changes": true
+            },
+            {
+              "probe": "add_one_null_guide",
+              "observed": false,
+              "evidence_type": "hypothetical_rule_probe",
+              "meaning": "If one additional independent guide showed no enrichment in either repeat, this is the fixed-rule verdict. Not an observation.",
+              "added_guide_repeat_effects": [
+                0.0,
+                0.0
+              ],
+              "eligible_guides_after": 3,
+              "score": 1.5871557881088378,
+              "status": "Count signal survives checklist",
+              "status_changes": true
+            }
+          ],
+          "summary": "Only 2 of the gene's guides pass the fixed starting-count filter; 1 more eligible guide would be needed before the count rule can give a verdict. Missing evidence is not a negative result.",
+          "baseline_filter": [
+            {
+              "min_each_repeat": 10,
+              "eligible_guides": 2,
+              "score": 1.781898015442171,
+              "status": "Insufficient guide coverage",
+              "is_default": false,
+              "status_changes": false
+            },
+            {
+              "min_each_repeat": 20,
+              "eligible_guides": 2,
+              "score": 1.781898015442171,
+              "status": "Insufficient guide coverage",
+              "is_default": true,
+              "status_changes": false
+            },
+            {
+              "min_each_repeat": 50,
+              "eligible_guides": 2,
+              "score": 1.781898015442171,
+              "status": "Insufficient guide coverage",
+              "is_default": false,
+              "status_changes": false
+            }
+          ]
+        }
+      },
+      "next_experiments": {
+        "without_il6": {
+          "status": "Insufficient guide coverage",
+          "title": "Resolve guide coverage before making a new screen call.",
+          "question": "Does the result persist with adequate starting representation and confirmed target suppression?",
+          "design": "Compare independent CRISPRi guides with non-targeting controls in the relevant IL6 contexts; confirm target suppression and use independent biological repeats.",
+          "readouts": [
+            "Target suppression",
+            "Senescence phenotype",
+            "MSC identity",
+            "Cell fitness / proliferation"
+          ],
+          "decision_change": "Reassess once sufficient independent guides have usable coverage; the present missing evidence is not a negative result.",
+          "decision_rule": {
+            "retain": "At least two independent guides with confirmed target suppression reproduce reduced senescence while preserving MSC identity and acceptable cell fitness. Assess proliferation separately to distinguish senescence effects from growth alone.",
+            "reject": "Adequately suppressing guides consistently fail to reproduce the proposed senescence benefit, or the benefit accompanies loss of MSC identity or impaired viability.",
+            "more_evidence": "Target suppression, guide agreement, biological replication, cell identity or fitness remains unresolved. The three-guide count-screen checklist does not define the required size of this follow-up experiment."
+          },
+          "source_methods": "The source study validated selected hits with two independent sgRNAs per gene, SA-β-gal staining and flow cytometry of MSC identity markers (CD29, CD44, CD73, CD90). Wu et al., Genome Biology 26:233 (2025), Results and Methods.",
+          "count_status": "Insufficient guide coverage",
+          "source_context": "Published follow-up anchor",
+          "execution_status": "Proposed research design; not executed or a validated protocol"
+        },
+        "with_il6": {
+          "status": "Insufficient guide coverage",
+          "title": "Resolve guide coverage before making a new screen call.",
+          "question": "Does the result persist with adequate starting representation and confirmed target suppression?",
+          "design": "Compare independent CRISPRi guides with non-targeting controls in the relevant IL6 contexts; confirm target suppression and use independent biological repeats.",
+          "readouts": [
+            "Target suppression",
+            "Senescence phenotype",
+            "MSC identity",
+            "Cell fitness / proliferation"
+          ],
+          "decision_change": "Reassess once sufficient independent guides have usable coverage; the present missing evidence is not a negative result.",
+          "decision_rule": {
+            "retain": "At least two independent guides with confirmed target suppression reproduce reduced senescence while preserving MSC identity and acceptable cell fitness. Assess proliferation separately to distinguish senescence effects from growth alone.",
+            "reject": "Adequately suppressing guides consistently fail to reproduce the proposed senescence benefit, or the benefit accompanies loss of MSC identity or impaired viability.",
+            "more_evidence": "Target suppression, guide agreement, biological replication, cell identity or fitness remains unresolved. The three-guide count-screen checklist does not define the required size of this follow-up experiment."
+          },
+          "source_methods": "The source study validated selected hits with two independent sgRNAs per gene, SA-β-gal staining and flow cytometry of MSC identity markers (CD29, CD44, CD73, CD90). Wu et al., Genome Biology 26:233 (2025), Results and Methods.",
+          "count_status": "Insufficient guide coverage",
+          "source_context": "Published follow-up anchor",
+          "execution_status": "Proposed research design; not executed or a validated protocol"
+        }
+      }
+    },
+    {
+      "gene": "TP53",
+      "total_guides": 5,
+      "eligible_guides": 5,
+      "conditions": {
+        "without_il6": {
+          "status": "computed",
+          "eligible_guides": 5,
+          "score": 10.346514929131018,
+          "repeat_scores": [
+            10.112655799984877,
+            10.201792756067412
+          ],
+          "repeat_difference": 0.08913695608253569,
+          "repeat_sign_agreement": true,
+          "positive_guide_fraction": 1.0,
+          "leave_one_out": {
+            "status": "computed",
+            "score_min": 9.561968511102755,
+            "score_max": 10.472897620647291,
+            "sign_reversal": false,
+            "threshold_reversal": false,
+            "omissions": [
+              {
+                "omitted_guide": "TP53_-_7590396",
+                "score": 10.472897620647291
+              },
+              {
+                "omitted_guide": "TP53_+_7590531",
+                "score": 9.561968511102755
+              },
+              {
+                "omitted_guide": "TP53_+_7590763",
+                "score": 10.472897620647291
+              },
+              {
+                "omitted_guide": "TP53_+_7590774",
+                "score": 9.561968511102755
+              },
+              {
+                "omitted_guide": "TP53_+_7590780",
+                "score": 9.688351202619028
+              }
+            ]
+          },
+          "fixed_checklist_pass": true
+        },
+        "with_il6": {
+          "status": "computed",
+          "eligible_guides": 5,
+          "score": 8.98191155478631,
+          "repeat_scores": [
+            9.460757354942736,
+            8.54090232243356
+          ],
+          "repeat_difference": -0.9198550325091759,
+          "repeat_sign_agreement": true,
+          "positive_guide_fraction": 1.0,
+          "leave_one_out": {
+            "status": "computed",
+            "score_min": 8.887233881825981,
+            "score_max": 9.323391033185821,
+            "sign_reversal": false,
+            "threshold_reversal": false,
+            "omissions": [
+              {
+                "omitted_guide": "TP53_-_7590396",
+                "score": 9.323391033185821
+              },
+              {
+                "omitted_guide": "TP53_+_7590531",
+                "score": 9.323391033185821
+              },
+              {
+                "omitted_guide": "TP53_+_7590763",
+                "score": 8.887233881825981
+              },
+              {
+                "omitted_guide": "TP53_+_7590774",
+                "score": 9.228713360225495
+              },
+              {
+                "omitted_guide": "TP53_+_7590780",
+                "score": 8.887233881825981
+              }
+            ]
+          },
+          "fixed_checklist_pass": true
+        }
+      },
+      "missing_endpoints": [
+        "cell identity",
+        "senescence phenotype for this complete candidate set",
+        "safety",
+        "human longevity"
+      ],
+      "context": {
+        "status": "computed",
+        "score": -0.6816444175456846,
+        "repeat_scores": [
+          -0.651898445042141,
+          -0.7113903900492282
+        ],
+        "repeat_sign_agreement": true,
+        "meaning": "Positive contrast indicates stronger guide enrichment with IL6 than without IL6",
+        "dependence": "Within-guide contrasts share D0 and subtract before aggregation; D0 cancels algebraically. Context contrasts are not independent samples.",
+        "leave_one_out": {
+          "status": "computed",
+          "score_min": -1.1495065874614698,
+          "score_max": 0.17575577228268435,
+          "sign_reversal": true,
+          "threshold_reversal": false,
+          "omissions": [
+            {
+              "omitted_guide": "TP53_-_7590396",
+              "score": -1.1495065874614698
+            },
+            {
+              "omitted_guide": "TP53_+_7590531",
+              "score": 0.17575577228268435
+            },
+            {
+              "omitted_guide": "TP53_+_7590763",
+              "score": -1.1495065874614698
+            },
+            {
+              "omitted_guide": "TP53_+_7590774",
+              "score": 0.17575577228268435
+            },
+            {
+              "omitted_guide": "TP53_+_7590780",
+              "score": -0.29210639763310087
+            }
+          ]
+        }
+      },
+      "guides": [
+        {
+          "sgRNA": "TP53_-_7590396",
+          "eligible": true,
+          "baseline_counts": [
+            117,
+            503
+          ],
+          "centered_log2_enrichment": [
+            5.459226797874458,
+            3.5684204171807306,
+            9.749905032370968,
+            7.835207385360337
+          ]
+        },
+        {
+          "sgRNA": "TP53_+_7590531",
+          "eligible": true,
+          "baseline_counts": [
+            1715,
+            3328
+          ],
+          "centered_log2_enrichment": [
+            11.456289046845704,
+            10.753519959589362,
+            7.685748645316011,
+            6.885102721806835
+          ]
+        },
+        {
+          "sgRNA": "TP53_+_7590763",
+          "eligible": true,
+          "baseline_counts": [
+            27,
+            181
+          ],
+          "centered_log2_enrichment": [
+            10.01115010597622,
+            7.5436940801727586,
+            11.080253787937526,
+            8.54090232243356
+          ]
+        },
+        {
+          "sgRNA": "TP53_+_7590774",
+          "eligible": true,
+          "baseline_counts": [
+            1152,
+            2367
+          ],
+          "centered_log2_enrichment": [
+            10.996767868259717,
+            10.201792756067412,
+            9.411548341250604,
+            8.552274768322015
+          ]
+        },
+        {
+          "sgRNA": "TP53_+_7590780",
+          "eligible": true,
+          "baseline_counts": [
+            142,
+            121
+          ],
+          "centered_log2_enrichment": [
+            10.112655799984877,
+            10.58037405827716,
+            9.460757354942736,
+            9.868983668227932
+          ]
+        }
+      ],
+      "baseline_count_sensitivity": [
+        {
+          "baseline_min_each_repeat": 10,
+          "eligible_guides": 5,
+          "conditions": {
+            "without_il6": {
+              "score": 10.346514929131018,
+              "repeat_scores": [
+                10.112655799984877,
+                10.201792756067412
+              ],
+              "loo_range": [
+                9.561968511102755,
+                10.472897620647291
+              ]
+            },
+            "with_il6": {
+              "score": 8.98191155478631,
+              "repeat_scores": [
+                9.460757354942736,
+                8.54090232243356
+              ],
+              "loo_range": [
+                8.887233881825981,
+                9.323391033185821
+              ]
+            }
+          }
+        },
+        {
+          "baseline_min_each_repeat": 20,
+          "eligible_guides": 5,
+          "conditions": {
+            "without_il6": {
+              "score": 10.346514929131018,
+              "repeat_scores": [
+                10.112655799984877,
+                10.201792756067412
+              ],
+              "loo_range": [
+                9.561968511102755,
+                10.472897620647291
+              ]
+            },
+            "with_il6": {
+              "score": 8.98191155478631,
+              "repeat_scores": [
+                9.460757354942736,
+                8.54090232243356
+              ],
+              "loo_range": [
+                8.887233881825981,
+                9.323391033185821
+              ]
+            }
+          }
+        },
+        {
+          "baseline_min_each_repeat": 50,
+          "eligible_guides": 4,
+          "conditions": {
+            "without_il6": {
+              "score": 10.472897620647291,
+              "repeat_scores": [
+                10.554711834122298,
+                10.391083407172285
+              ],
+              "loo_range": [
+                10.346514929131018,
+                10.599280312163565
+              ]
+            },
+            "with_il6": {
+              "score": 8.887233881825981,
+              "repeat_scores": [
+                9.43615284809667,
+                8.193741076841176
+              ],
+              "loo_range": [
+                8.792556208865653,
+                8.98191155478631
+              ]
+            }
+          }
+        }
+      ],
+      "external_context": {
+        "evidence_type": "curated_external_context",
+        "snapshot_sha256": "9fa4d5db2c4091cef062dac1503c48912e06c9663d3c31a07d3903bd9e3bebcd",
+        "retrieved_date": "2026-10-04",
+        "source_hashes": {
+          "source-table-s1.xlsx": "90c084b6cff820d2b13a729839346b294aa452de03eff8169553fa913e3157f1",
+          "open-targets-essentiality.json": "d32f67d55f40b1de455341082ca6b7be6b1a400bb907c76a01c4dd51c02994a1"
+        },
+        "matrix_warning": "GEO counts and the published supplement differ. Supplementary beta/FDR are external context, not ground truth for this exploratory estimator.",
+        "curation_note": "Labels and decision_implication are curator summaries. Published findings are in published_context and published_screen_statistics. Guide disagreement and count robustness must be established from the current executed analysis, not inferred from a label.",
+        "evidence": {
+          "gene": "TP53",
+          "label": "Strong signal; cell identity concern",
+          "published_context": "The paper reports enrichment and altered MSC identity-marker expression after TP53 perturbation, identifying it as unsuitable for their MSC rejuvenation objective.",
+          "decision_implication": "Do not equate a strong growth signal with a useful aging intervention; preserved cell identity is a distinct endpoint.",
+          "source_url": "https://doi.org/10.1186/s13059-025-03683-7",
+          "source_location": "Results: genome-wide CRISPRi screen and Fig. 1; supplementary Table S1",
+          "published_screen_statistics": {
+            "IL6m|beta": 6.9435,
+            "IL6m|z": 0.020641,
+            "IL6m|p-value": 0.00021289,
+            "IL6m|FDR": 0,
+            "IL6p|beta": 6.8734,
+            "IL6p|z": 0.020432,
+            "IL6p|p-value": 0.00026611,
+            "IL6p|FDR": 0
+          },
+          "statistics_source_url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2Fs13059-025-03683-7/MediaObjects/13059_2025_3683_MOESM2_ESM.xlsx",
+          "essentiality": null,
+          "essentiality_source_url": null,
+          "essentiality_limit": "Not retrieved for this gene; unknown does not mean non-essential.",
+          "cell_identity_concern": true,
+          "functional_followup_curated": false
+        }
+      },
+      "decision_dependence": {
+        "without_il6": {
+          "status": "Count signal survives checklist",
+          "score": 10.346514929131018,
+          "eligible_guides": 5,
+          "checklist": [
+            {
+              "criterion": "eligible_guides",
+              "observed": 5,
+              "rule": ">= 3",
+              "passes": true
+            },
+            {
+              "criterion": "repeat_1_median",
+              "observed": 10.112655799984877,
+              "rule": ">= 0.5",
+              "passes": true
+            },
+            {
+              "criterion": "repeat_2_median",
+              "observed": 10.201792756067412,
+              "rule": ">= 0.5",
+              "passes": true
+            },
+            {
+              "criterion": "leave_one_out_minimum",
+              "observed": 9.561968511102755,
+              "rule": ">= 0.5",
+              "passes": true
+            },
+            {
+              "criterion": "repeat_difference",
+              "observed": 0.08913695608253569,
+              "rule": "|difference| <= 1.0",
+              "passes": true
+            },
+            {
+              "criterion": "positive_guide_fraction",
+              "observed": 1.0,
+              "rule": ">= 0.6",
+              "passes": true
+            }
+          ],
+          "failing_criteria": [],
+          "guide_effects": [
+            {
+              "sgRNA": "TP53_-_7590396",
+              "eligible": true,
+              "baseline_counts": [
+                117,
+                503
+              ],
+              "mean_effect": 4.513823607527595,
+              "repeat_effects": [
+                5.459226797874458,
+                3.5684204171807306
+              ]
+            },
+            {
+              "sgRNA": "TP53_+_7590531",
+              "eligible": true,
+              "baseline_counts": [
+                1715,
+                3328
+              ],
+              "mean_effect": 11.104904503217533,
+              "repeat_effects": [
+                11.456289046845704,
+                10.753519959589362
+              ]
+            },
+            {
+              "sgRNA": "TP53_+_7590763",
+              "eligible": true,
+              "baseline_counts": [
+                27,
+                181
+              ],
+              "mean_effect": 8.77742209307449,
+              "repeat_effects": [
+                10.01115010597622,
+                7.5436940801727586
+              ]
+            },
+            {
+              "sgRNA": "TP53_+_7590774",
+              "eligible": true,
+              "baseline_counts": [
+                1152,
+                2367
+              ],
+              "mean_effect": 10.599280312163565,
+              "repeat_effects": [
+                10.996767868259717,
+                10.201792756067412
+              ]
+            },
+            {
+              "sgRNA": "TP53_+_7590780",
+              "eligible": true,
+              "baseline_counts": [
+                142,
+                121
+              ],
+              "mean_effect": 10.346514929131018,
+              "repeat_effects": [
+                10.112655799984877,
+                10.58037405827716
+              ]
+            }
+          ],
+          "omit_one_guide": [
+            {
+              "omitted_guide": "TP53_-_7590396",
+              "omitted_guide_effect": 4.513823607527595,
+              "score": 10.472897620647291,
+              "crosses_threshold": false,
+              "status": "Count signal survives checklist",
+              "status_changes": false,
+              "note": null
+            },
+            {
+              "omitted_guide": "TP53_+_7590531",
+              "omitted_guide_effect": 11.104904503217533,
+              "score": 9.561968511102755,
+              "crosses_threshold": false,
+              "status": "Needs stronger support",
+              "status_changes": true,
+              "note": null
+            },
+            {
+              "omitted_guide": "TP53_+_7590763",
+              "omitted_guide_effect": 8.77742209307449,
+              "score": 10.472897620647291,
+              "crosses_threshold": false,
+              "status": "Count signal survives checklist",
+              "status_changes": false,
+              "note": null
+            },
+            {
+              "omitted_guide": "TP53_+_7590774",
+              "omitted_guide_effect": 10.599280312163565,
+              "score": 9.561968511102755,
+              "crosses_threshold": false,
+              "status": "Count signal survives checklist",
+              "status_changes": false,
+              "note": null
+            },
+            {
+              "omitted_guide": "TP53_+_7590780",
+              "omitted_guide_effect": 10.346514929131018,
+              "score": 9.688351202619028,
+              "crosses_threshold": false,
+              "status": "Needs stronger support",
+              "status_changes": true,
+              "note": null
+            }
+          ],
+          "decisive_guides": [],
+          "discordant_guides": [],
+          "coverage_shortfall": 0,
+          "hypothetical_probes": [
+            {
+              "probe": "add_one_concordant_guide",
+              "observed": false,
+              "evidence_type": "hypothetical_rule_probe",
+              "meaning": "If one additional independent guide reproduced the current per-repeat median effect, this is the fixed-rule verdict. Not an observation.",
+              "added_guide_repeat_effects": [
+                10.112655799984877,
+                10.201792756067412
+              ],
+              "eligible_guides_after": 6,
+              "score": 10.251869603578582,
+              "status": "Count signal survives checklist",
+              "status_changes": false
+            },
+            {
+              "probe": "add_one_null_guide",
+              "observed": false,
+              "evidence_type": "hypothetical_rule_probe",
+              "meaning": "If one additional independent guide showed no enrichment in either repeat, this is the fixed-rule verdict. Not an observation.",
+              "added_guide_repeat_effects": [
+                0.0,
+                0.0
+              ],
+              "eligible_guides_after": 6,
+              "score": 9.561968511102755,
+              "status": "Needs stronger support",
+              "status_changes": true
+            }
+          ],
+          "summary": "All 5 eligible guides fall on the same side of the 0.5 log₂ threshold. No single omitted guide moves the aggregate across the threshold. Rule probes (hypothetical, not observed): one more agreeing guide → “Count signal survives checklist”; one more null guide → “Needs stronger support”.",
+          "baseline_filter": [
+            {
+              "min_each_repeat": 10,
+              "eligible_guides": 5,
+              "score": 10.346514929131018,
+              "status": "Count signal survives checklist",
+              "is_default": false,
+              "status_changes": false
+            },
+            {
+              "min_each_repeat": 20,
+              "eligible_guides": 5,
+              "score": 10.346514929131018,
+              "status": "Count signal survives checklist",
+              "is_default": true,
+              "status_changes": false
+            },
+            {
+              "min_each_repeat": 50,
+              "eligible_guides": 4,
+              "score": 10.472897620647291,
+              "status": "Count signal survives checklist",
+              "is_default": false,
+              "status_changes": false
+            }
+          ]
+        },
+        "with_il6": {
+          "status": "Count signal survives checklist",
+          "score": 8.98191155478631,
+          "eligible_guides": 5,
+          "checklist": [
+            {
+              "criterion": "eligible_guides",
+              "observed": 5,
+              "rule": ">= 3",
+              "passes": true
+            },
+            {
+              "criterion": "repeat_1_median",
+              "observed": 9.460757354942736,
+              "rule": ">= 0.5",
+              "passes": true
+            },
+            {
+              "criterion": "repeat_2_median",
+              "observed": 8.54090232243356,
+              "rule": ">= 0.5",
+              "passes": true
+            },
+            {
+              "criterion": "leave_one_out_minimum",
+              "observed": 8.887233881825981,
+              "rule": ">= 0.5",
+              "passes": true
+            },
+            {
+              "criterion": "repeat_difference",
+              "observed": -0.9198550325091759,
+              "rule": "|difference| <= 1.0",
+              "passes": true
+            },
+            {
+              "criterion": "positive_guide_fraction",
+              "observed": 1.0,
+              "rule": ">= 0.6",
+              "passes": true
+            }
+          ],
+          "failing_criteria": [],
+          "guide_effects": [
+            {
+              "sgRNA": "TP53_-_7590396",
+              "eligible": true,
+              "baseline_counts": [
+                117,
+                503
+              ],
+              "mean_effect": 8.792556208865653,
+              "repeat_effects": [
+                9.749905032370968,
+                7.835207385360337
+              ]
+            },
+            {
+              "sgRNA": "TP53_+_7590531",
+              "eligible": true,
+              "baseline_counts": [
+                1715,
+                3328
+              ],
+              "mean_effect": 7.285425683561423,
+              "repeat_effects": [
+                7.685748645316011,
+                6.885102721806835
+              ]
+            },
+            {
+              "sgRNA": "TP53_+_7590763",
+              "eligible": true,
+              "baseline_counts": [
+                27,
+                181
+              ],
+              "mean_effect": 9.810578055185543,
+              "repeat_effects": [
+                11.080253787937526,
+                8.54090232243356
+              ]
+            },
+            {
+              "sgRNA": "TP53_+_7590774",
+              "eligible": true,
+              "baseline_counts": [
+                1152,
+                2367
+              ],
+              "mean_effect": 8.98191155478631,
+              "repeat_effects": [
+                9.411548341250604,
+                8.552274768322015
+              ]
+            },
+            {
+              "sgRNA": "TP53_+_7590780",
+              "eligible": true,
+              "baseline_counts": [
+                142,
+                121
+              ],
+              "mean_effect": 9.664870511585335,
+              "repeat_effects": [
+                9.460757354942736,
+                9.868983668227932
+              ]
+            }
+          ],
+          "omit_one_guide": [
+            {
+              "omitted_guide": "TP53_-_7590396",
+              "omitted_guide_effect": 8.792556208865653,
+              "score": 9.323391033185821,
+              "crosses_threshold": false,
+              "status": "Count signal survives checklist",
+              "status_changes": false,
+              "note": null
+            },
+            {
+              "omitted_guide": "TP53_+_7590531",
+              "omitted_guide_effect": 7.285425683561423,
+              "score": 9.323391033185821,
+              "crosses_threshold": false,
+              "status": "Needs stronger support",
+              "status_changes": true,
+              "note": null
+            },
+            {
+              "omitted_guide": "TP53_+_7590763",
+              "omitted_guide_effect": 9.810578055185543,
+              "score": 8.887233881825981,
+              "crosses_threshold": false,
+              "status": "Needs stronger support",
+              "status_changes": true,
+              "note": null
+            },
+            {
+              "omitted_guide": "TP53_+_7590774",
+              "omitted_guide_effect": 8.98191155478631,
+              "score": 9.228713360225495,
+              "crosses_threshold": false,
+              "status": "Needs stronger support",
+              "status_changes": true,
+              "note": null
+            },
+            {
+              "omitted_guide": "TP53_+_7590780",
+              "omitted_guide_effect": 9.664870511585335,
+              "score": 8.887233881825981,
+              "crosses_threshold": false,
+              "status": "Needs stronger support",
+              "status_changes": true,
+              "note": null
+            }
+          ],
+          "decisive_guides": [],
+          "discordant_guides": [],
+          "coverage_shortfall": 0,
+          "hypothetical_probes": [
+            {
+              "probe": "add_one_concordant_guide",
+              "observed": false,
+              "evidence_type": "hypothetical_rule_probe",
+              "meaning": "If one additional independent guide reproduced the current per-repeat median effect, this is the fixed-rule verdict. Not an observation.",
+              "added_guide_repeat_effects": [
+                9.460757354942736,
+                8.54090232243356
+              ],
+              "eligible_guides_after": 6,
+              "score": 8.991370696737228,
+              "status": "Count signal survives checklist",
+              "status_changes": false
+            },
+            {
+              "probe": "add_one_null_guide",
+              "observed": false,
+              "evidence_type": "hypothetical_rule_probe",
+              "meaning": "If one additional independent guide showed no enrichment in either repeat, this is the fixed-rule verdict. Not an observation.",
+              "added_guide_repeat_effects": [
+                0.0,
+                0.0
+              ],
+              "eligible_guides_after": 6,
+              "score": 8.887233881825981,
+              "status": "Needs stronger support",
+              "status_changes": true
+            }
+          ],
+          "summary": "All 5 eligible guides fall on the same side of the 0.5 log₂ threshold. No single omitted guide moves the aggregate across the threshold. Rule probes (hypothetical, not observed): one more agreeing guide → “Count signal survives checklist”; one more null guide → “Needs stronger support”.",
+          "baseline_filter": [
+            {
+              "min_each_repeat": 10,
+              "eligible_guides": 5,
+              "score": 8.98191155478631,
+              "status": "Count signal survives checklist",
+              "is_default": false,
+              "status_changes": false
+            },
+            {
+              "min_each_repeat": 20,
+              "eligible_guides": 5,
+              "score": 8.98191155478631,
+              "status": "Count signal survives checklist",
+              "is_default": true,
+              "status_changes": false
+            },
+            {
+              "min_each_repeat": 50,
+              "eligible_guides": 4,
+              "score": 8.887233881825981,
+              "status": "Needs stronger support",
+              "is_default": false,
+              "status_changes": true
+            }
+          ]
+        }
+      },
+      "next_experiments": {
+        "without_il6": {
+          "status": "Published cell-identity concern",
+          "title": "Keep the strong signal as a reference, not the rejuvenation lead.",
+          "question": "Can an alternative reproduce the senescence effect while preserving MSC identity?",
+          "design": "Compare independent CRISPRi guides with non-targeting controls in the relevant IL6 contexts; confirm target suppression and use independent biological repeats.",
+          "readouts": [
+            "Target suppression",
+            "Senescence phenotype",
+            "MSC identity",
+            "Cell fitness / proliferation"
+          ],
+          "decision_change": "A strong count effect alone is insufficient: prioritize evidence that the intended phenotype improves without the published cell-identity problem.",
+          "decision_rule": {
+            "retain": "At least two independent guides with confirmed target suppression reproduce reduced senescence while preserving MSC identity and acceptable cell fitness. Assess proliferation separately to distinguish senescence effects from growth alone.",
+            "reject": "Adequately suppressing guides consistently fail to reproduce the proposed senescence benefit, or the benefit accompanies loss of MSC identity or impaired viability.",
+            "more_evidence": "Target suppression, guide agreement, biological replication, cell identity or fitness remains unresolved. The three-guide count-screen checklist does not define the required size of this follow-up experiment."
+          },
+          "source_methods": "The source study validated selected hits with two independent sgRNAs per gene, SA-β-gal staining and flow cytometry of MSC identity markers (CD29, CD44, CD73, CD90). Wu et al., Genome Biology 26:233 (2025), Results and Methods.",
+          "count_status": "Count signal survives checklist",
+          "source_context": "Strong signal; cell identity concern",
+          "execution_status": "Proposed research design; not executed or a validated protocol"
+        },
+        "with_il6": {
+          "status": "Published cell-identity concern",
+          "title": "Keep the strong signal as a reference, not the rejuvenation lead.",
+          "question": "Can an alternative reproduce the senescence effect while preserving MSC identity?",
+          "design": "Compare independent CRISPRi guides with non-targeting controls in the relevant IL6 contexts; confirm target suppression and use independent biological repeats.",
+          "readouts": [
+            "Target suppression",
+            "Senescence phenotype",
+            "MSC identity",
+            "Cell fitness / proliferation"
+          ],
+          "decision_change": "A strong count effect alone is insufficient: prioritize evidence that the intended phenotype improves without the published cell-identity problem.",
+          "decision_rule": {
+            "retain": "At least two independent guides with confirmed target suppression reproduce reduced senescence while preserving MSC identity and acceptable cell fitness. Assess proliferation separately to distinguish senescence effects from growth alone.",
+            "reject": "Adequately suppressing guides consistently fail to reproduce the proposed senescence benefit, or the benefit accompanies loss of MSC identity or impaired viability.",
+            "more_evidence": "Target suppression, guide agreement, biological replication, cell identity or fitness remains unresolved. The three-guide count-screen checklist does not define the required size of this follow-up experiment."
+          },
+          "source_methods": "The source study validated selected hits with two independent sgRNAs per gene, SA-β-gal staining and flow cytometry of MSC identity markers (CD29, CD44, CD73, CD90). Wu et al., Genome Biology 26:233 (2025), Results and Methods.",
+          "count_status": "Count signal survives checklist",
+          "source_context": "Strong signal; cell identity concern",
+          "execution_status": "Proposed research design; not executed or a validated protocol"
+        }
+      }
+    },
+    {
+      "gene": "CDKN1A",
+      "total_guides": 5,
+      "eligible_guides": 4,
+      "conditions": {
+        "without_il6": {
+          "status": "computed",
+          "eligible_guides": 4,
+          "score": 4.491717538058059,
+          "repeat_scores": [
+            4.485135480005626,
+            4.498299596110492
+          ],
+          "repeat_difference": 0.013164116104865897,
+          "repeat_sign_agreement": true,
+          "positive_guide_fraction": 1.0,
+          "leave_one_out": {
+            "status": "computed",
+            "score_min": 4.047949600394064,
+            "score_max": 4.935485475722054,
+            "sign_reversal": false,
+            "threshold_reversal": false,
+            "omissions": [
+              {
+                "omitted_guide": "CDKN1A_+_36646518",
+                "score": 4.047949600394064
+              },
+              {
+                "omitted_guide": "CDKN1A_+_36646528",
+                "score": 4.935485475722054
+              },
+              {
+                "omitted_guide": "CDKN1A_-_36646538",
+                "score": 4.047949600394064
+              },
+              {
+                "omitted_guide": "CDKN1A_-_36646575",
+                "score": 4.935485475722054
+              }
+            ]
+          },
+          "fixed_checklist_pass": true
+        },
+        "with_il6": {
+          "status": "computed",
+          "eligible_guides": 4,
+          "score": 4.839760752584061,
+          "repeat_scores": [
+            4.502722289282067,
+            4.643763298104782
+          ],
+          "repeat_difference": 0.14104100882271453,
+          "repeat_sign_agreement": true,
+          "positive_guide_fraction": 1.0,
+          "leave_one_out": {
+            "status": "computed",
+            "score_min": 4.528971551503002,
+            "score_max": 5.15054995366512,
+            "sign_reversal": false,
+            "threshold_reversal": false,
+            "omissions": [
+              {
+                "omitted_guide": "CDKN1A_+_36646518",
+                "score": 4.528971551503002
+              },
+              {
+                "omitted_guide": "CDKN1A_+_36646528",
+                "score": 4.528971551503002
+              },
+              {
+                "omitted_guide": "CDKN1A_-_36646538",
+                "score": 5.15054995366512
+              },
+              {
+                "omitted_guide": "CDKN1A_-_36646575",
+                "score": 5.15054995366512
+              }
+            ]
+          },
+          "fixed_checklist_pass": true
+        }
+      },
+      "missing_endpoints": [
+        "cell identity",
+        "senescence phenotype for this complete candidate set",
+        "safety",
+        "human longevity"
+      ],
+      "context": {
+        "status": "computed",
+        "score": -0.06706029620143328,
+        "repeat_scores": [
+          -0.03137166210668729,
+          -0.10274893029617926
+        ],
+        "repeat_sign_agreement": true,
+        "meaning": "Positive contrast indicates stronger guide enrichment with IL6 than without IL6",
+        "dependence": "Within-guide contrasts share D0 and subtract before aggregation; D0 cancels algebraically. Context contrasts are not independent samples.",
+        "leave_one_out": {
+          "status": "computed",
+          "score_min": -0.615142543511805,
+          "score_max": 0.4810219511089384,
+          "sign_reversal": true,
+          "threshold_reversal": false,
+          "omissions": [
+            {
+              "omitted_guide": "CDKN1A_+_36646518",
+              "score": 0.4810219511089384
+            },
+            {
+              "omitted_guide": "CDKN1A_+_36646528",
+              "score": -0.615142543511805
+            },
+            {
+              "omitted_guide": "CDKN1A_-_36646538",
+              "score": 0.4810219511089384
+            },
+            {
+              "omitted_guide": "CDKN1A_-_36646575",
+              "score": -0.615142543511805
+            }
+          ]
+        }
+      },
+      "guides": [
+        {
+          "sgRNA": "CDKN1A_+_36646518",
+          "eligible": true,
+          "baseline_counts": [
+            101,
+            34
+          ],
+          "centered_log2_enrichment": [
+            8.75703530580406,
+            10.526000244949804,
+            4.252421302950658,
+            6.048678604379582
+          ]
+        },
+        {
+          "sgRNA": "CDKN1A_+_36646528",
+          "eligible": true,
+          "baseline_counts": [
+            375,
+            772
+          ],
+          "centered_log2_enrichment": [
+            3.9841987581443314,
+            3.258047650087808,
+            5.652746181341284,
+            4.801345091973465
+          ]
+        },
+        {
+          "sgRNA": "CDKN1A_-_36646538",
+          "eligible": true,
+          "baseline_counts": [
+            323,
+            292
+          ],
+          "centered_log2_enrichment": [
+            4.755282354273843,
+            5.115688597170265,
+            4.154504360184401,
+            4.4861815042360975
+          ]
+        },
+        {
+          "sgRNA": "CDKN1A_-_36646575",
+          "eligible": true,
+          "baseline_counts": [
+            187,
+            292
+          ],
+          "centered_log2_enrichment": [
+            4.214988605737409,
+            3.880910595050719,
+            4.753023275613477,
+            4.304919827392528
+          ]
+        },
+        {
+          "sgRNA": "CDKN1A_-_36646586",
+          "eligible": false,
+          "baseline_counts": [
+            58,
+            1
+          ],
+          "centered_log2_enrichment": [
+            5.166553012072099,
+            10.10701121214333,
+            4.323458815466784,
+            9.199267880849114
+          ]
+        }
+      ],
+      "baseline_count_sensitivity": [
+        {
+          "baseline_min_each_repeat": 10,
+          "eligible_guides": 4,
+          "conditions": {
+            "without_il6": {
+              "score": 4.491717538058059,
+              "repeat_scores": [
+                4.485135480005626,
+                4.498299596110492
+              ],
+              "loo_range": [
+                4.047949600394064,
+                4.935485475722054
+              ]
+            },
+            "with_il6": {
+              "score": 4.839760752584061,
+              "repeat_scores": [
+                4.502722289282067,
+                4.643763298104782
+              ],
+              "loo_range": [
+                4.528971551503002,
+                5.15054995366512
+              ]
+            }
+          }
+        },
+        {
+          "baseline_min_each_repeat": 20,
+          "eligible_guides": 4,
+          "conditions": {
+            "without_il6": {
+              "score": 4.491717538058059,
+              "repeat_scores": [
+                4.485135480005626,
+                4.498299596110492
+              ],
+              "loo_range": [
+                4.047949600394064,
+                4.935485475722054
+              ]
+            },
+            "with_il6": {
+              "score": 4.839760752584061,
+              "repeat_scores": [
+                4.502722289282067,
+                4.643763298104782
+              ],
+              "loo_range": [
+                4.528971551503002,
+                5.15054995366512
+              ]
+            }
+          }
+        },
+        {
+          "baseline_min_each_repeat": 50,
+          "eligible_guides": 3,
+          "conditions": {
+            "without_il6": {
+              "score": 4.047949600394064,
+              "repeat_scores": [
+                4.214988605737409,
+                3.880910595050719
+              ],
+              "loo_range": [
+                3.834536402255067,
+                4.491717538058059
+              ]
+            },
+            "with_il6": {
+              "score": 4.528971551503002,
+              "repeat_scores": [
+                4.753023275613477,
+                4.4861815042360975
+              ],
+              "loo_range": [
+                4.424657241856625,
+                4.878008594080188
+              ]
+            }
+          }
+        }
+      ],
+      "external_context": {
+        "evidence_type": "curated_external_context",
+        "snapshot_sha256": "9fa4d5db2c4091cef062dac1503c48912e06c9663d3c31a07d3903bd9e3bebcd",
+        "retrieved_date": "2026-10-04",
+        "source_hashes": {
+          "source-table-s1.xlsx": "90c084b6cff820d2b13a729839346b294aa452de03eff8169553fa913e3157f1",
+          "open-targets-essentiality.json": "d32f67d55f40b1de455341082ca6b7be6b1a400bb907c76a01c4dd51c02994a1"
+        },
+        "matrix_warning": "GEO counts and the published supplement differ. Supplementary beta/FDR are external context, not ground truth for this exploratory estimator.",
+        "curation_note": "Labels and decision_implication are curator summaries. Published findings are in published_context and published_screen_statistics. Guide disagreement and count robustness must be established from the current executed analysis, not inferred from a label.",
+        "evidence": {
+          "gene": "CDKN1A",
+          "label": "Known senescence-pathway reference",
+          "published_context": "The paper identifies CDKN1A as an enriched pro-senescence reference gene. This is contextual support, not proof that perturbing it safely reverses aging.",
+          "decision_implication": "Use as a known pathway reference; require phenotype, fitness and cell-identity evidence before advancing.",
+          "source_url": "https://doi.org/10.1186/s13059-025-03683-7",
+          "source_location": "Results: genome-wide CRISPRi screen and Fig. 1; supplementary Table S1",
+          "published_screen_statistics": {
+            "IL6m|beta": 4.1748,
+            "IL6m|z": 0.20506,
+            "IL6m|p-value": 0.00037256,
+            "IL6m|FDR": 0,
+            "IL6p|beta": 3.9784,
+            "IL6p|z": 0.1952,
+            "IL6p|p-value": 0.00042578,
+            "IL6p|FDR": 0
+          },
+          "statistics_source_url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2Fs13059-025-03683-7/MediaObjects/13059_2025_3683_MOESM2_ESM.xlsx",
+          "essentiality": null,
+          "essentiality_source_url": null,
+          "essentiality_limit": "Not retrieved for this gene; unknown does not mean non-essential.",
+          "cell_identity_concern": false,
+          "functional_followup_curated": false
+        }
+      },
+      "decision_dependence": {
+        "without_il6": {
+          "status": "Count signal survives checklist",
+          "score": 4.491717538058059,
+          "eligible_guides": 4,
+          "checklist": [
+            {
+              "criterion": "eligible_guides",
+              "observed": 4,
+              "rule": ">= 3",
+              "passes": true
+            },
+            {
+              "criterion": "repeat_1_median",
+              "observed": 4.485135480005626,
+              "rule": ">= 0.5",
+              "passes": true
+            },
+            {
+              "criterion": "repeat_2_median",
+              "observed": 4.498299596110492,
+              "rule": ">= 0.5",
+              "passes": true
+            },
+            {
+              "criterion": "leave_one_out_minimum",
+              "observed": 4.047949600394064,
+              "rule": ">= 0.5",
+              "passes": true
+            },
+            {
+              "criterion": "repeat_difference",
+              "observed": 0.013164116104865897,
+              "rule": "|difference| <= 1.0",
+              "passes": true
+            },
+            {
+              "criterion": "positive_guide_fraction",
+              "observed": 1.0,
+              "rule": ">= 0.6",
+              "passes": true
+            }
+          ],
+          "failing_criteria": [],
+          "guide_effects": [
+            {
+              "sgRNA": "CDKN1A_+_36646518",
+              "eligible": true,
+              "baseline_counts": [
+                101,
+                34
+              ],
+              "mean_effect": 9.641517775376933,
+              "repeat_effects": [
+                8.75703530580406,
+                10.526000244949804
+              ]
+            },
+            {
+              "sgRNA": "CDKN1A_+_36646528",
+              "eligible": true,
+              "baseline_counts": [
+                375,
+                772
+              ],
+              "mean_effect": 3.6211232041160697,
+              "repeat_effects": [
+                3.9841987581443314,
+                3.258047650087808
+              ]
+            },
+            {
+              "sgRNA": "CDKN1A_-_36646538",
+              "eligible": true,
+              "baseline_counts": [
+                323,
+                292
+              ],
+              "mean_effect": 4.935485475722054,
+              "repeat_effects": [
+                4.755282354273843,
+                5.115688597170265
+              ]
+            },
+            {
+              "sgRNA": "CDKN1A_-_36646575",
+              "eligible": true,
+              "baseline_counts": [
+                187,
+                292
+              ],
+              "mean_effect": 4.047949600394064,
+              "repeat_effects": [
+                4.214988605737409,
+                3.880910595050719
+              ]
+            },
+            {
+              "sgRNA": "CDKN1A_-_36646586",
+              "eligible": false,
+              "baseline_counts": [
+                58,
+                1
+              ],
+              "mean_effect": 7.636782112107715,
+              "repeat_effects": [
+                5.166553012072099,
+                10.10701121214333
+              ]
+            }
+          ],
+          "omit_one_guide": [
+            {
+              "omitted_guide": "CDKN1A_+_36646518",
+              "omitted_guide_effect": 9.641517775376933,
+              "score": 4.047949600394064,
+              "crosses_threshold": false,
+              "status": "Count signal survives checklist",
+              "status_changes": false,
+              "note": null
+            },
+            {
+              "omitted_guide": "CDKN1A_+_36646528",
+              "omitted_guide_effect": 3.6211232041160697,
+              "score": 4.935485475722054,
+              "crosses_threshold": false,
+              "status": "Count signal survives checklist",
+              "status_changes": false,
+              "note": null
+            },
+            {
+              "omitted_guide": "CDKN1A_-_36646538",
+              "omitted_guide_effect": 4.935485475722054,
+              "score": 4.047949600394064,
+              "crosses_threshold": false,
+              "status": "Count signal survives checklist",
+              "status_changes": false,
+              "note": null
+            },
+            {
+              "omitted_guide": "CDKN1A_-_36646575",
+              "omitted_guide_effect": 4.047949600394064,
+              "score": 4.935485475722054,
+              "crosses_threshold": false,
+              "status": "Count signal survives checklist",
+              "status_changes": false,
+              "note": null
+            }
+          ],
+          "decisive_guides": [],
+          "discordant_guides": [],
+          "coverage_shortfall": 0,
+          "hypothetical_probes": [
+            {
+              "probe": "add_one_concordant_guide",
+              "observed": false,
+              "evidence_type": "hypothetical_rule_probe",
+              "meaning": "If one additional independent guide reproduced the current per-repeat median effect, this is the fixed-rule verdict. Not an observation.",
+              "added_guide_repeat_effects": [
+                4.485135480005626,
+                4.498299596110492
+              ],
+              "eligible_guides_after": 5,
+              "score": 4.491717538058059,
+              "status": "Count signal survives checklist",
+              "status_changes": false
+            },
+            {
+              "probe": "add_one_null_guide",
+              "observed": false,
+              "evidence_type": "hypothetical_rule_probe",
+              "meaning": "If one additional independent guide showed no enrichment in either repeat, this is the fixed-rule verdict. Not an observation.",
+              "added_guide_repeat_effects": [
+                0.0,
+                0.0
+              ],
+              "eligible_guides_after": 5,
+              "score": 4.047949600394064,
+              "status": "Count signal survives checklist",
+              "status_changes": false
+            }
+          ],
+          "summary": "All 4 eligible guides fall on the same side of the 0.5 log₂ threshold. No single omitted guide moves the aggregate across the threshold. Rule probes (hypothetical, not observed): one more agreeing guide → “Count signal survives checklist”; one more null guide → “Count signal survives checklist”.",
+          "baseline_filter": [
+            {
+              "min_each_repeat": 10,
+              "eligible_guides": 4,
+              "score": 4.491717538058059,
+              "status": "Count signal survives checklist",
+              "is_default": false,
+              "status_changes": false
+            },
+            {
+              "min_each_repeat": 20,
+              "eligible_guides": 4,
+              "score": 4.491717538058059,
+              "status": "Count signal survives checklist",
+              "is_default": true,
+              "status_changes": false
+            },
+            {
+              "min_each_repeat": 50,
+              "eligible_guides": 3,
+              "score": 4.047949600394064,
+              "status": "Count signal survives checklist",
+              "is_default": false,
+              "status_changes": false
+            }
+          ]
+        },
+        "with_il6": {
+          "status": "Count signal survives checklist",
+          "score": 4.839760752584061,
+          "eligible_guides": 4,
+          "checklist": [
+            {
+              "criterion": "eligible_guides",
+              "observed": 4,
+              "rule": ">= 3",
+              "passes": true
+            },
+            {
+              "criterion": "repeat_1_median",
+              "observed": 4.502722289282067,
+              "rule": ">= 0.5",
+              "passes": true
+            },
+            {
+              "criterion": "repeat_2_median",
+              "observed": 4.643763298104782,
+              "rule": ">= 0.5",
+              "passes": true
+            },
+            {
+              "criterion": "leave_one_out_minimum",
+              "observed": 4.528971551503002,
+              "rule": ">= 0.5",
+              "passes": true
+            },
+            {
+              "criterion": "repeat_difference",
+              "observed": 0.14104100882271453,
+              "rule": "|difference| <= 1.0",
+              "passes": true
+            },
+            {
+              "criterion": "positive_guide_fraction",
+              "observed": 1.0,
+              "rule": ">= 0.6",
+              "passes": true
+            }
+          ],
+          "failing_criteria": [],
+          "guide_effects": [
+            {
+              "sgRNA": "CDKN1A_+_36646518",
+              "eligible": true,
+              "baseline_counts": [
+                101,
+                34
+              ],
+              "mean_effect": 5.15054995366512,
+              "repeat_effects": [
+                4.252421302950658,
+                6.048678604379582
+              ]
+            },
+            {
+              "sgRNA": "CDKN1A_+_36646528",
+              "eligible": true,
+              "baseline_counts": [
+                375,
+                772
+              ],
+              "mean_effect": 5.227045636657374,
+              "repeat_effects": [
+                5.652746181341284,
+                4.801345091973465
+              ]
+            },
+            {
+              "sgRNA": "CDKN1A_-_36646538",
+              "eligible": true,
+              "baseline_counts": [
+                323,
+                292
+              ],
+              "mean_effect": 4.320342932210249,
+              "repeat_effects": [
+                4.154504360184401,
+                4.4861815042360975
+              ]
+            },
+            {
+              "sgRNA": "CDKN1A_-_36646575",
+              "eligible": true,
+              "baseline_counts": [
+                187,
+                292
+              ],
+              "mean_effect": 4.528971551503002,
+              "repeat_effects": [
+                4.753023275613477,
+                4.304919827392528
+              ]
+            },
+            {
+              "sgRNA": "CDKN1A_-_36646586",
+              "eligible": false,
+              "baseline_counts": [
+                58,
+                1
+              ],
+              "mean_effect": 6.761363348157949,
+              "repeat_effects": [
+                4.323458815466784,
+                9.199267880849114
+              ]
+            }
+          ],
+          "omit_one_guide": [
+            {
+              "omitted_guide": "CDKN1A_+_36646518",
+              "omitted_guide_effect": 5.15054995366512,
+              "score": 4.528971551503002,
+              "crosses_threshold": false,
+              "status": "Count signal survives checklist",
+              "status_changes": false,
+              "note": null
+            },
+            {
+              "omitted_guide": "CDKN1A_+_36646528",
+              "omitted_guide_effect": 5.227045636657374,
+              "score": 4.528971551503002,
+              "crosses_threshold": false,
+              "status": "Count signal survives checklist",
+              "status_changes": false,
+              "note": null
+            },
+            {
+              "omitted_guide": "CDKN1A_-_36646538",
+              "omitted_guide_effect": 4.320342932210249,
+              "score": 5.15054995366512,
+              "crosses_threshold": false,
+              "status": "Count signal survives checklist",
+              "status_changes": false,
+              "note": null
+            },
+            {
+              "omitted_guide": "CDKN1A_-_36646575",
+              "omitted_guide_effect": 4.528971551503002,
+              "score": 5.15054995366512,
+              "crosses_threshold": false,
+              "status": "Count signal survives checklist",
+              "status_changes": false,
+              "note": null
+            }
+          ],
+          "decisive_guides": [],
+          "discordant_guides": [],
+          "coverage_shortfall": 0,
+          "hypothetical_probes": [
+            {
+              "probe": "add_one_concordant_guide",
+              "observed": false,
+              "evidence_type": "hypothetical_rule_probe",
+              "meaning": "If one additional independent guide reproduced the current per-repeat median effect, this is the fixed-rule verdict. Not an observation.",
+              "added_guide_repeat_effects": [
+                4.502722289282067,
+                4.643763298104782
+              ],
+              "eligible_guides_after": 5,
+              "score": 4.573242793693424,
+              "status": "Count signal survives checklist",
+              "status_changes": false
+            },
+            {
+              "probe": "add_one_null_guide",
+              "observed": false,
+              "evidence_type": "hypothetical_rule_probe",
+              "meaning": "If one additional independent guide showed no enrichment in either repeat, this is the fixed-rule verdict. Not an observation.",
+              "added_guide_repeat_effects": [
+                0.0,
+                0.0
+              ],
+              "eligible_guides_after": 5,
+              "score": 4.528971551503002,
+              "status": "Count signal survives checklist",
+              "status_changes": false
+            }
+          ],
+          "summary": "All 4 eligible guides fall on the same side of the 0.5 log₂ threshold. No single omitted guide moves the aggregate across the threshold. Rule probes (hypothetical, not observed): one more agreeing guide → “Count signal survives checklist”; one more null guide → “Count signal survives checklist”.",
+          "baseline_filter": [
+            {
+              "min_each_repeat": 10,
+              "eligible_guides": 4,
+              "score": 4.839760752584061,
+              "status": "Count signal survives checklist",
+              "is_default": false,
+              "status_changes": false
+            },
+            {
+              "min_each_repeat": 20,
+              "eligible_guides": 4,
+              "score": 4.839760752584061,
+              "status": "Count signal survives checklist",
+              "is_default": true,
+              "status_changes": false
+            },
+            {
+              "min_each_repeat": 50,
+              "eligible_guides": 3,
+              "score": 4.528971551503002,
+              "status": "Count signal survives checklist",
+              "is_default": false,
+              "status_changes": false
+            }
+          ]
+        }
+      },
+      "next_experiments": {
+        "without_il6": {
+          "status": "Count signal survives checklist",
+          "title": "Separate a senescence effect from growth alone.",
+          "question": "Does the count signal accompany reduced senescence while preserving cell identity and fitness?",
+          "design": "Compare independent CRISPRi guides with non-targeting controls in the relevant IL6 contexts; confirm target suppression and use independent biological repeats.",
+          "readouts": [
+            "Target suppression",
+            "Senescence phenotype",
+            "MSC identity",
+            "Cell fitness / proliferation"
+          ],
+          "decision_change": "Advance only if the relevant phenotype, cell identity and fitness evidence support the intended research objective.",
+          "decision_rule": {
+            "retain": "At least two independent guides with confirmed target suppression reproduce reduced senescence while preserving MSC identity and acceptable cell fitness. Assess proliferation separately to distinguish senescence effects from growth alone.",
+            "reject": "Adequately suppressing guides consistently fail to reproduce the proposed senescence benefit, or the benefit accompanies loss of MSC identity or impaired viability.",
+            "more_evidence": "Target suppression, guide agreement, biological replication, cell identity or fitness remains unresolved. The three-guide count-screen checklist does not define the required size of this follow-up experiment."
+          },
+          "source_methods": "The source study validated selected hits with two independent sgRNAs per gene, SA-β-gal staining and flow cytometry of MSC identity markers (CD29, CD44, CD73, CD90). Wu et al., Genome Biology 26:233 (2025), Results and Methods.",
+          "count_status": "Count signal survives checklist",
+          "source_context": "Known senescence-pathway reference",
+          "execution_status": "Proposed research design; not executed or a validated protocol"
+        },
+        "with_il6": {
+          "status": "Count signal survives checklist",
+          "title": "Separate a senescence effect from growth alone.",
+          "question": "Does the count signal accompany reduced senescence while preserving cell identity and fitness?",
+          "design": "Compare independent CRISPRi guides with non-targeting controls in the relevant IL6 contexts; confirm target suppression and use independent biological repeats.",
+          "readouts": [
+            "Target suppression",
+            "Senescence phenotype",
+            "MSC identity",
+            "Cell fitness / proliferation"
+          ],
+          "decision_change": "Advance only if the relevant phenotype, cell identity and fitness evidence support the intended research objective.",
+          "decision_rule": {
+            "retain": "At least two independent guides with confirmed target suppression reproduce reduced senescence while preserving MSC identity and acceptable cell fitness. Assess proliferation separately to distinguish senescence effects from growth alone.",
+            "reject": "Adequately suppressing guides consistently fail to reproduce the proposed senescence benefit, or the benefit accompanies loss of MSC identity or impaired viability.",
+            "more_evidence": "Target suppression, guide agreement, biological replication, cell identity or fitness remains unresolved. The three-guide count-screen checklist does not define the required size of this follow-up experiment."
+          },
+          "source_methods": "The source study validated selected hits with two independent sgRNAs per gene, SA-β-gal staining and flow cytometry of MSC identity markers (CD29, CD44, CD73, CD90). Wu et al., Genome Biology 26:233 (2025), Results and Methods.",
+          "count_status": "Count signal survives checklist",
+          "source_context": "Known senescence-pathway reference",
+          "execution_status": "Proposed research design; not executed or a validated protocol"
+        }
+      }
+    },
+    {
+      "gene": "GABRR2",
+      "total_guides": 5,
+      "eligible_guides": 3,
+      "conditions": {
+        "without_il6": {
+          "status": "computed",
+          "eligible_guides": 3,
+          "score": 2.839303270164394,
+          "repeat_scores": [
+            2.1185639512686802,
+            1.3390301153230073
+          ],
+          "repeat_difference": -0.7795338359456729,
+          "repeat_sign_agreement": true,
+          "positive_guide_fraction": 0.6666666666666666,
+          "leave_one_out": {
+            "status": "computed",
+            "score_min": 1.0533168033451976,
+            "score_max": 2.8892775367079704,
+            "sign_reversal": false,
+            "threshold_reversal": false,
+            "omissions": [
+              {
+                "omitted_guide": "GABRR2_-_90024557",
+                "score": 2.8892775367079704
+              },
+              {
+                "omitted_guide": "GABRR2_-_90024949",
+                "score": 1.103291069888774
+              },
+              {
+                "omitted_guide": "GABRR2_-_90024984",
+                "score": 1.0533168033451976
+              }
+            ]
+          },
+          "fixed_checklist_pass": true
+        },
+        "with_il6": {
+          "status": "computed",
+          "eligible_guides": 3,
+          "score": -2.891757574287415,
+          "repeat_scores": [
+            -3.7277015644969755,
+            -4.782160114210908
+          ],
+          "repeat_difference": -1.054458549713932,
+          "repeat_sign_agreement": true,
+          "positive_guide_fraction": 0.0,
+          "leave_one_out": {
+            "status": "computed",
+            "score_min": -4.0163643299603855,
+            "score_max": -2.8310661432628565,
+            "sign_reversal": false,
+            "threshold_reversal": false,
+            "omissions": [
+              {
+                "omitted_guide": "GABRR2_-_90024557",
+                "score": -2.8310661432628565
+              },
+              {
+                "omitted_guide": "GABRR2_-_90024949",
+                "score": -3.955672898935828
+              },
+              {
+                "omitted_guide": "GABRR2_-_90024984",
+                "score": -4.0163643299603855
+              }
+            ]
+          },
+          "fixed_checklist_pass": false
+        }
+      },
+      "missing_endpoints": [
+        "cell identity",
+        "senescence phenotype for this complete candidate set",
+        "safety",
+        "human longevity"
+      ],
+      "context": {
+        "status": "computed",
+        "score": -5.709626515489845,
+        "repeat_scores": [
+          -5.298062801445775,
+          -5.615856173137962
+        ],
+        "repeat_sign_agreement": true,
+        "meaning": "Positive contrast indicates stronger guide enrichment with IL6 than without IL6",
+        "dependence": "Within-guide contrasts share D0 and subtract before aggregation; D0 cancels algebraically. Context contrasts are not independent samples.",
+        "leave_one_out": {
+          "status": "computed",
+          "score_min": -5.720343679970827,
+          "score_max": -5.058963968824601,
+          "sign_reversal": false,
+          "threshold_reversal": false,
+          "omissions": [
+            {
+              "omitted_guide": "GABRR2_-_90024557",
+              "score": -5.720343679970827
+            },
+            {
+              "omitted_guide": "GABRR2_-_90024949",
+              "score": -5.058963968824601
+            },
+            {
+              "omitted_guide": "GABRR2_-_90024984",
+              "score": -5.069681133305584
+            }
+          ]
+        }
+      },
+      "guides": [
+        {
+          "sgRNA": "GABRR2_-_90024557",
+          "eligible": true,
+          "baseline_counts": [
+            121,
+            204
+          ],
+          "centered_log2_enrichment": [
+            -0.5235227156062721,
+            -0.9418166113417258,
+            -4.823205976813682,
+            -5.458736194453031
+          ]
+        },
+        {
+          "sgRNA": "GABRR2_-_90024949",
+          "eligible": true,
+          "baseline_counts": [
+            323,
+            155
+          ],
+          "centered_log2_enrichment": [
+            2.1185639512686802,
+            3.5600425890601075,
+            -3.7277015644969755,
+            -2.055813584077854
+          ]
+        },
+        {
+          "sgRNA": "GABRR2_+_90024955",
+          "eligible": false,
+          "baseline_counts": [
+            3,
+            92
+          ],
+          "centered_log2_enrichment": [
+            0.955262770467237,
+            -5.517398110217725,
+            5.635759812510425,
+            1.362022554770534
+          ]
+        },
+        {
+          "sgRNA": "GABRR2_+_90024973",
+          "eligible": false,
+          "baseline_counts": [
+            5,
+            275
+          ],
+          "centered_log2_enrichment": [
+            6.0721122187313235,
+            0.6089380252025193,
+            6.208507226323601,
+            0.7602086717471143
+          ]
+        },
+        {
+          "sgRNA": "GABRR2_-_90024984",
+          "eligible": true,
+          "baseline_counts": [
+            33,
+            386
+          ],
+          "centered_log2_enrichment": [
+            4.539473491180086,
+            1.3390301153230073,
+            -0.7585893102656893,
+            -4.782160114210908
+          ]
+        }
+      ],
+      "baseline_count_sensitivity": [
+        {
+          "baseline_min_each_repeat": 10,
+          "eligible_guides": 3,
+          "conditions": {
+            "without_il6": {
+              "score": 2.839303270164394,
+              "repeat_scores": [
+                2.1185639512686802,
+                1.3390301153230073
+              ],
+              "loo_range": [
+                1.0533168033451976,
+                2.8892775367079704
+              ]
+            },
+            "with_il6": {
+              "score": -2.891757574287415,
+              "repeat_scores": [
+                -3.7277015644969755,
+                -4.782160114210908
+              ],
+              "loo_range": [
+                -4.0163643299603855,
+                -2.8310661432628565
+              ]
+            }
+          }
+        },
+        {
+          "baseline_min_each_repeat": 20,
+          "eligible_guides": 3,
+          "conditions": {
+            "without_il6": {
+              "score": 2.839303270164394,
+              "repeat_scores": [
+                2.1185639512686802,
+                1.3390301153230073
+              ],
+              "loo_range": [
+                1.0533168033451976,
+                2.8892775367079704
+              ]
+            },
+            "with_il6": {
+              "score": -2.891757574287415,
+              "repeat_scores": [
+                -3.7277015644969755,
+                -4.782160114210908
+              ],
+              "loo_range": [
+                -4.0163643299603855,
+                -2.8310661432628565
+              ]
+            }
+          }
+        },
+        {
+          "baseline_min_each_repeat": 50,
+          "eligible_guides": 2,
+          "conditions": {
+            "without_il6": {
+              "score": 1.0533168033451976,
+              "repeat_scores": [
+                0.7975206178312041,
+                1.3091129888591908
+              ],
+              "loo_range": [
+                -0.7326696634739989,
+                2.839303270164394
+              ]
+            },
+            "with_il6": {
+              "score": -4.0163643299603855,
+              "repeat_scores": [
+                -4.275453770655329,
+                -3.7572748892654424
+              ],
+              "loo_range": [
+                -5.140971085633357,
+                -2.891757574287415
+              ]
+            }
+          }
+        }
+      ],
+      "external_context": {
+        "evidence_type": "curated_external_context",
+        "snapshot_sha256": "9fa4d5db2c4091cef062dac1503c48912e06c9663d3c31a07d3903bd9e3bebcd",
+        "retrieved_date": "2026-10-04",
+        "source_hashes": {
+          "source-table-s1.xlsx": "90c084b6cff820d2b13a729839346b294aa452de03eff8169553fa913e3157f1",
+          "open-targets-essentiality.json": "d32f67d55f40b1de455341082ca6b7be6b1a400bb907c76a01c4dd51c02994a1"
+        },
+        "matrix_warning": "GEO counts and the published supplement differ. Supplementary beta/FDR are external context, not ground truth for this exploratory estimator.",
+        "curation_note": "Labels and decision_implication are curator summaries. Published findings are in published_context and published_screen_statistics. Guide disagreement and count robustness must be established from the current executed analysis, not inferred from a label.",
+        "evidence": {
+          "gene": "GABRR2",
+          "label": "Exploratory comparison; limited curated context",
+          "published_context": "Included because it ranks among the largest positive no-IL6 effects passing our fixed checklist. No gene-specific functional follow-up has been curated in this build.",
+          "decision_implication": "Review independent biological evidence before treating the count signal as an aging mechanism.",
+          "source_url": "https://doi.org/10.1186/s13059-025-03683-7",
+          "source_location": "Results: genome-wide CRISPRi screen and Fig. 1; supplementary Table S1",
+          "published_screen_statistics": {
+            "IL6m|beta": 1.296,
+            "IL6m|z": 1.2808,
+            "IL6m|p-value": 0.046729,
+            "IL6m|FDR": 0.02,
+            "IL6p|beta": 0.5914,
+            "IL6p|z": 0.56962,
+            "IL6p|p-value": 0.7423,
+            "IL6p|FDR": 0.7
+          },
+          "statistics_source_url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2Fs13059-025-03683-7/MediaObjects/13059_2025_3683_MOESM2_ESM.xlsx",
+          "essentiality": null,
+          "essentiality_source_url": null,
+          "essentiality_limit": "Not retrieved for this gene; unknown does not mean non-essential.",
+          "cell_identity_concern": false,
+          "functional_followup_curated": false
+        }
+      },
+      "decision_dependence": {
+        "without_il6": {
+          "status": "Count signal survives checklist",
+          "score": 2.839303270164394,
+          "eligible_guides": 3,
+          "checklist": [
+            {
+              "criterion": "eligible_guides",
+              "observed": 3,
+              "rule": ">= 3",
+              "passes": true
+            },
+            {
+              "criterion": "repeat_1_median",
+              "observed": 2.1185639512686802,
+              "rule": ">= 0.5",
+              "passes": true
+            },
+            {
+              "criterion": "repeat_2_median",
+              "observed": 1.3390301153230073,
+              "rule": ">= 0.5",
+              "passes": true
+            },
+            {
+              "criterion": "leave_one_out_minimum",
+              "observed": 1.0533168033451976,
+              "rule": ">= 0.5",
+              "passes": true
+            },
+            {
+              "criterion": "repeat_difference",
+              "observed": -0.7795338359456729,
+              "rule": "|difference| <= 1.0",
+              "passes": true
+            },
+            {
+              "criterion": "positive_guide_fraction",
+              "observed": 0.6666666666666666,
+              "rule": ">= 0.6",
+              "passes": true
+            }
+          ],
+          "failing_criteria": [],
+          "guide_effects": [
+            {
+              "sgRNA": "GABRR2_-_90024557",
+              "eligible": true,
+              "baseline_counts": [
+                121,
+                204
+              ],
+              "mean_effect": -0.7326696634739989,
+              "repeat_effects": [
+                -0.5235227156062721,
+                -0.9418166113417258
+              ]
+            },
+            {
+              "sgRNA": "GABRR2_-_90024949",
+              "eligible": true,
+              "baseline_counts": [
+                323,
+                155
+              ],
+              "mean_effect": 2.839303270164394,
+              "repeat_effects": [
+                2.1185639512686802,
+                3.5600425890601075
+              ]
+            },
+            {
+              "sgRNA": "GABRR2_+_90024955",
+              "eligible": false,
+              "baseline_counts": [
+                3,
+                92
+              ],
+              "mean_effect": -2.281067669875244,
+              "repeat_effects": [
+                0.955262770467237,
+                -5.517398110217725
+              ]
+            },
+            {
+              "sgRNA": "GABRR2_+_90024973",
+              "eligible": false,
+              "baseline_counts": [
+                5,
+                275
+              ],
+              "mean_effect": 3.3405251219669214,
+              "repeat_effects": [
+                6.0721122187313235,
+                0.6089380252025193
+              ]
+            },
+            {
+              "sgRNA": "GABRR2_-_90024984",
+              "eligible": true,
+              "baseline_counts": [
+                33,
+                386
+              ],
+              "mean_effect": 2.9392518032515467,
+              "repeat_effects": [
+                4.539473491180086,
+                1.3390301153230073
+              ]
+            }
+          ],
+          "omit_one_guide": [
+            {
+              "omitted_guide": "GABRR2_-_90024557",
+              "omitted_guide_effect": -0.7326696634739989,
+              "score": 2.8892775367079704,
+              "crosses_threshold": false,
+              "status": "Insufficient guide coverage",
+              "status_changes": true,
+              "note": "Omitting one of three guides also drops coverage below the three-guide minimum."
+            },
+            {
+              "omitted_guide": "GABRR2_-_90024949",
+              "omitted_guide_effect": 2.839303270164394,
+              "score": 1.103291069888774,
+              "crosses_threshold": false,
+              "status": "Insufficient guide coverage",
+              "status_changes": true,
+              "note": "Omitting one of three guides also drops coverage below the three-guide minimum."
+            },
+            {
+              "omitted_guide": "GABRR2_-_90024984",
+              "omitted_guide_effect": 2.9392518032515467,
+              "score": 1.0533168033451976,
+              "crosses_threshold": false,
+              "status": "Insufficient guide coverage",
+              "status_changes": true,
+              "note": "Omitting one of three guides also drops coverage below the three-guide minimum."
+            }
+          ],
+          "decisive_guides": [],
+          "discordant_guides": [
+            {
+              "sgRNA": "GABRR2_-_90024557",
+              "effect": -0.7326696634739989
+            }
+          ],
+          "coverage_shortfall": 0,
+          "hypothetical_probes": [
+            {
+              "probe": "add_one_concordant_guide",
+              "observed": false,
+              "evidence_type": "hypothetical_rule_probe",
+              "meaning": "If one additional independent guide reproduced the current per-repeat median effect, this is the fixed-rule verdict. Not an observation.",
+              "added_guide_repeat_effects": [
+                2.1185639512686802,
+                1.3390301153230073
+              ],
+              "eligible_guides_after": 4,
+              "score": 2.284050151730119,
+              "status": "Count signal survives checklist",
+              "status_changes": false
+            },
+            {
+              "probe": "add_one_null_guide",
+              "observed": false,
+              "evidence_type": "hypothetical_rule_probe",
+              "meaning": "If one additional independent guide showed no enrichment in either repeat, this is the fixed-rule verdict. Not an observation.",
+              "added_guide_repeat_effects": [
+                0.0,
+                0.0
+              ],
+              "eligible_guides_after": 4,
+              "score": 1.419651635082197,
+              "status": "Resolve conflicting evidence",
+              "status_changes": true
+            }
+          ],
+          "summary": "The verdict rests on a 2-vs-1 guide split: GABRR2_-_90024557 −0.73 disagrees with the other guides (+2.84, +2.94). No single omitted guide moves the aggregate across the threshold. Rule probes (hypothetical, not observed): one more agreeing guide → “Count signal survives checklist”; one more null guide → “Resolve conflicting evidence”.",
+          "baseline_filter": [
+            {
+              "min_each_repeat": 10,
+              "eligible_guides": 3,
+              "score": 2.839303270164394,
+              "status": "Count signal survives checklist",
+              "is_default": false,
+              "status_changes": false
+            },
+            {
+              "min_each_repeat": 20,
+              "eligible_guides": 3,
+              "score": 2.839303270164394,
+              "status": "Count signal survives checklist",
+              "is_default": true,
+              "status_changes": false
+            },
+            {
+              "min_each_repeat": 50,
+              "eligible_guides": 2,
+              "score": 1.0533168033451976,
+              "status": "Insufficient guide coverage",
+              "is_default": false,
+              "status_changes": true
+            }
+          ]
+        },
+        "with_il6": {
+          "status": "Needs stronger support",
+          "score": -2.891757574287415,
+          "eligible_guides": 3,
+          "checklist": [
+            {
+              "criterion": "eligible_guides",
+              "observed": 3,
+              "rule": ">= 3",
+              "passes": true
+            },
+            {
+              "criterion": "repeat_1_median",
+              "observed": -3.7277015644969755,
+              "rule": ">= 0.5",
+              "passes": false
+            },
+            {
+              "criterion": "repeat_2_median",
+              "observed": -4.782160114210908,
+              "rule": ">= 0.5",
+              "passes": false
+            },
+            {
+              "criterion": "leave_one_out_minimum",
+              "observed": -4.0163643299603855,
+              "rule": ">= 0.5",
+              "passes": false
+            },
+            {
+              "criterion": "repeat_difference",
+              "observed": -1.054458549713932,
+              "rule": "|difference| <= 1.0",
+              "passes": false
+            },
+            {
+              "criterion": "positive_guide_fraction",
+              "observed": 0.0,
+              "rule": ">= 0.6",
+              "passes": false
+            }
+          ],
+          "failing_criteria": [
+            "repeat_1_median",
+            "repeat_2_median",
+            "leave_one_out_minimum",
+            "repeat_difference",
+            "positive_guide_fraction"
+          ],
+          "guide_effects": [
+            {
+              "sgRNA": "GABRR2_-_90024557",
+              "eligible": true,
+              "baseline_counts": [
+                121,
+                204
+              ],
+              "mean_effect": -5.140971085633357,
+              "repeat_effects": [
+                -4.823205976813682,
+                -5.458736194453031
+              ]
+            },
+            {
+              "sgRNA": "GABRR2_-_90024949",
+              "eligible": true,
+              "baseline_counts": [
+                323,
+                155
+              ],
+              "mean_effect": -2.891757574287415,
+              "repeat_effects": [
+                -3.7277015644969755,
+                -2.055813584077854
+              ]
+            },
+            {
+              "sgRNA": "GABRR2_+_90024955",
+              "eligible": false,
+              "baseline_counts": [
+                3,
+                92
+              ],
+              "mean_effect": 3.4988911836404797,
+              "repeat_effects": [
+                5.635759812510425,
+                1.362022554770534
+              ]
+            },
+            {
+              "sgRNA": "GABRR2_+_90024973",
+              "eligible": false,
+              "baseline_counts": [
+                5,
+                275
+              ],
+              "mean_effect": 3.4843579490353576,
+              "repeat_effects": [
+                6.208507226323601,
+                0.7602086717471143
+              ]
+            },
+            {
+              "sgRNA": "GABRR2_-_90024984",
+              "eligible": true,
+              "baseline_counts": [
+                33,
+                386
+              ],
+              "mean_effect": -2.7703747122382985,
+              "repeat_effects": [
+                -0.7585893102656893,
+                -4.782160114210908
+              ]
+            }
+          ],
+          "omit_one_guide": [
+            {
+              "omitted_guide": "GABRR2_-_90024557",
+              "omitted_guide_effect": -5.140971085633357,
+              "score": -2.8310661432628565,
+              "crosses_threshold": false,
+              "status": "Insufficient guide coverage",
+              "status_changes": true,
+              "note": "Omitting one of three guides also drops coverage below the three-guide minimum."
+            },
+            {
+              "omitted_guide": "GABRR2_-_90024949",
+              "omitted_guide_effect": -2.891757574287415,
+              "score": -3.955672898935828,
+              "crosses_threshold": false,
+              "status": "Insufficient guide coverage",
+              "status_changes": true,
+              "note": "Omitting one of three guides also drops coverage below the three-guide minimum."
+            },
+            {
+              "omitted_guide": "GABRR2_-_90024984",
+              "omitted_guide_effect": -2.7703747122382985,
+              "score": -4.0163643299603855,
+              "crosses_threshold": false,
+              "status": "Insufficient guide coverage",
+              "status_changes": true,
+              "note": "Omitting one of three guides also drops coverage below the three-guide minimum."
+            }
+          ],
+          "decisive_guides": [],
+          "discordant_guides": [],
+          "coverage_shortfall": 0,
+          "hypothetical_probes": [
+            {
+              "probe": "add_one_concordant_guide",
+              "observed": false,
+              "evidence_type": "hypothetical_rule_probe",
+              "meaning": "If one additional independent guide reproduced the current per-repeat median effect, this is the fixed-rule verdict. Not an observation.",
+              "added_guide_repeat_effects": [
+                -3.7277015644969755,
+                -4.782160114210908
+              ],
+              "eligible_guides_after": 4,
+              "score": -3.5733442068206784,
+              "status": "Needs stronger support",
+              "status_changes": false
+            },
+            {
+              "probe": "add_one_null_guide",
+              "observed": false,
+              "evidence_type": "hypothetical_rule_probe",
+              "meaning": "If one additional independent guide showed no enrichment in either repeat, this is the fixed-rule verdict. Not an observation.",
+              "added_guide_repeat_effects": [
+                0.0,
+                0.0
+              ],
+              "eligible_guides_after": 4,
+              "score": -2.8310661432628565,
+              "status": "Needs stronger support",
+              "status_changes": false
+            }
+          ],
+          "summary": "All 3 eligible guides fall on the same side of the 0.5 log₂ threshold. No single omitted guide moves the aggregate across the threshold. Fails because repeat 1 is below threshold; repeat 2 is below threshold; a leave-one-out estimate is below threshold; the two repeats differ by more than the allowed 1.0 log₂; too few guides are positive. Rule probes (hypothetical, not observed): one more agreeing guide → “Needs stronger support”; one more null guide → “Needs stronger support”.",
+          "baseline_filter": [
+            {
+              "min_each_repeat": 10,
+              "eligible_guides": 3,
+              "score": -2.891757574287415,
+              "status": "Needs stronger support",
+              "is_default": false,
+              "status_changes": false
+            },
+            {
+              "min_each_repeat": 20,
+              "eligible_guides": 3,
+              "score": -2.891757574287415,
+              "status": "Needs stronger support",
+              "is_default": true,
+              "status_changes": false
+            },
+            {
+              "min_each_repeat": 50,
+              "eligible_guides": 2,
+              "score": -4.0163643299603855,
+              "status": "Insufficient guide coverage",
+              "is_default": false,
+              "status_changes": true
+            }
+          ]
+        }
+      },
+      "next_experiments": {
+        "without_il6": {
+          "status": "Count signal survives checklist",
+          "title": "Separate a senescence effect from growth alone.",
+          "question": "Does the count signal accompany reduced senescence while preserving cell identity and fitness?",
+          "design": "Compare independent CRISPRi guides with non-targeting controls in the relevant IL6 contexts; confirm target suppression and use independent biological repeats.",
+          "readouts": [
+            "Target suppression",
+            "Senescence phenotype",
+            "MSC identity",
+            "Cell fitness / proliferation"
+          ],
+          "decision_change": "Advance only if the relevant phenotype, cell identity and fitness evidence support the intended research objective.",
+          "decision_rule": {
+            "retain": "At least two independent guides with confirmed target suppression reproduce reduced senescence while preserving MSC identity and acceptable cell fitness. Assess proliferation separately to distinguish senescence effects from growth alone.",
+            "reject": "Adequately suppressing guides consistently fail to reproduce the proposed senescence benefit, or the benefit accompanies loss of MSC identity or impaired viability.",
+            "more_evidence": "Target suppression, guide agreement, biological replication, cell identity or fitness remains unresolved. The three-guide count-screen checklist does not define the required size of this follow-up experiment."
+          },
+          "source_methods": "The source study validated selected hits with two independent sgRNAs per gene, SA-β-gal staining and flow cytometry of MSC identity markers (CD29, CD44, CD73, CD90). Wu et al., Genome Biology 26:233 (2025), Results and Methods.",
+          "count_status": "Count signal survives checklist",
+          "source_context": "Exploratory comparison; limited curated context",
+          "execution_status": "Proposed research design; not executed or a validated protocol"
+        },
+        "with_il6": {
+          "status": "Needs stronger support",
+          "title": "Resolve repeat and context sensitivity.",
+          "question": "Does the effect reproduce across independent biological repeats and the relevant inflammatory context?",
+          "design": "Compare independent CRISPRi guides with non-targeting controls in the relevant IL6 contexts; confirm target suppression and use independent biological repeats.",
+          "readouts": [
+            "Target suppression",
+            "Senescence phenotype",
+            "MSC identity",
+            "Cell fitness / proliferation"
+          ],
+          "decision_change": "Reproducibility within a defined context supports a narrower claim; disagreement supports collecting more evidence.",
+          "decision_rule": {
+            "retain": "At least two independent guides with confirmed target suppression reproduce reduced senescence while preserving MSC identity and acceptable cell fitness. Assess proliferation separately to distinguish senescence effects from growth alone.",
+            "reject": "Adequately suppressing guides consistently fail to reproduce the proposed senescence benefit, or the benefit accompanies loss of MSC identity or impaired viability.",
+            "more_evidence": "Target suppression, guide agreement, biological replication, cell identity or fitness remains unresolved. The three-guide count-screen checklist does not define the required size of this follow-up experiment."
+          },
+          "source_methods": "The source study validated selected hits with two independent sgRNAs per gene, SA-β-gal staining and flow cytometry of MSC identity markers (CD29, CD44, CD73, CD90). Wu et al., Genome Biology 26:233 (2025), Results and Methods.",
+          "count_status": "Needs stronger support",
+          "source_context": "Exploratory comparison; limited curated context",
+          "execution_status": "Proposed research design; not executed or a validated protocol"
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Screen counts measure relative persistence/expansion, not rejuvenation or longevity.",
+    "Published results and curated context are external evidence, not discoveries by this build.",
+    "Context coverage is incomplete. Essentiality flags do not reject candidates.",
+    "Added-guide probes are hypothetical changes to the fixed rule, not observations or predictions of experiment outcomes.",
+    "No new biological experiments or measured agent selection advantage."
+  ],
+  "agent_evaluation": {
+    "created_utc": "2026-10-04T11:08:20.636869+00:00",
+    "status": "completed",
+    "scope": "Single UBA3 development case; three full Omnigent workflows, one per input variant. Descriptive smoke test, not a performance benchmark.",
+    "protocol_sha256": "f8b388dfc25b724a2a1db077221a43947b0c4dd522c728b4016cb03bfdb6fbec",
+    "prompt_sha256": "03bc60c125e491f613e63284560f63177b8bb40cd674689f1168a5cd36b0f41e",
+    "question": "Does the count assessment respond to decisive evidence while remaining stable under an excluded-guide change?",
+    "rows": [
+      {
+        "arm": "original",
+        "label": "Original public data",
+        "synthetic": false,
+        "run_id": "6a4a76ff30a04347a7dd955468e21b9c",
+        "run_status": "completed",
+        "roles": [
+          "critic",
+          "experimentalist",
+          "scientist"
+        ],
+        "source_sha256": "64bb772834a1bacc0304826277546b9a2ec06972ead229ef5687b3fdc7cb6fe1",
+        "decision_id": "6a5612abd8a2480ca67be216cd18a0da",
+        "expected_count_status": "fragile",
+        "count_assessment": {
+          "condition": "without_il6",
+          "reason": "Coverage is adequate at 3 eligible guides (minimum 3), both repeat medians exceed 0.5 (3.406 and 3.603), their absolute difference is 0.197 (maximum 1.0), and the positive-guide fraction is 2/3=0.667 (minimum 0.6). However, the fixed leave-one-out minimum is -0.055, below 0.5, with sign and threshold reversals; the eligible guide effects split +4.174, -4.285 and +4.307. Adequate coverage plus this conflicting, non-robust guide behavior warrants fragile rather than supported or insufficient.",
+          "status": "fragile"
+        },
+        "matches_expected_count_status": true,
+        "biological_action": "request_additional_evidence",
+        "next_test": "Run one arrayed, multi-arm CRISPRi experiment in the same MSC context with each of the three eligible original guides, at least two new non-overlapping UBA3 guides, and non-targeting controls under matched WITHOUT-IL6 and WITH-IL6 conditions. At prespecified time points, verify UBA3 suppression by mRNA and protein, measure a senescence composite (SA-beta-gal, p16/p21, EdU and SASP markers), confirm MSC identity with an established marker panel and morphology, and quantify fitness with absolute live-cell counts, proliferation, apoptosis and viability. Upgrade UBA3 for biological prioritization only if at least two sequence-independent guides with comparable confirmed suppression reproduce a stronger WITHOUT-IL6 phenotype, improve the senescence composite, preserve MSC identity and are not explained solely by general fitness selection; deprioritize if effects do not track suppression, occur only with the original decisive guides, coincide with identity loss, or are explained by viability, apoptosis or proliferation.",
+        "evidence": [
+          {
+            "operation": "candidate",
+            "record_id": "e355706a7eaa4aae92f807c56caf5700",
+            "input_sha256": "64bb772834a1bacc0304826277546b9a2ec06972ead229ef5687b3fdc7cb6fe1",
+            "input_kind": "observed_public_data"
+          },
+          {
+            "operation": "guide-check",
+            "record_id": "294cf2c1a659459fbea2aa4f8865394c",
+            "input_sha256": "64bb772834a1bacc0304826277546b9a2ec06972ead229ef5687b3fdc7cb6fe1",
+            "input_kind": "observed_public_data"
+          },
+          {
+            "operation": "dependence",
+            "record_id": "9bdc22b569bb4cbf9d4c7531ecee2103",
+            "input_sha256": "64bb772834a1bacc0304826277546b9a2ec06972ead229ef5687b3fdc7cb6fe1",
+            "input_kind": "observed_public_data"
+          }
+        ]
+      },
+      {
+        "arm": "decisive",
+        "label": "Conflicting measurement changed",
+        "synthetic": true,
+        "run_id": "338dc567951c4108acb1a5811fc9a625",
+        "run_status": "completed",
+        "roles": [
+          "critic",
+          "experimentalist",
+          "scientist"
+        ],
+        "source_sha256": "928d26af1b23298f5ac5dbbe3c64e8087c34d0ebc3bd84ff876aa092f96dd97e",
+        "decision_id": "40c128dfd3334cf2b9e018ef94805b29",
+        "expected_count_status": "supported",
+        "count_assessment": {
+          "condition": "without_il6",
+          "reason": "Coverage is adequate at the stated default rule (3 eligible guides, minimum 3), and the observed effect passes every fixed robustness check: score 4.3073 log2; repeat medians 4.4895 and 4.9415; repeat difference 0.4520 within the 1.0 limit; positive-guide fraction 1.0 above 0.6; leave-one-out minimum 4.2406 above 0.5; no sign or threshold reversal. At a stricter baseline threshold of 50 only two guides remain, which is insufficient coverage under that alternative filter, but it does not change the prespecified default-rule classification.",
+          "status": "supported"
+        },
+        "matches_expected_count_status": true,
+        "biological_action": "retain",
+        "next_test": "Run an arrayed, independently replicated, dose-graded CRISPRi experiment with at least three sequence-independent UBA3 guides and non-targeting controls under WITHOUT-IL6, with matched WITH-IL6 wells as a contextual comparator. Confirm graded UBA3 suppression for every guide by RT-qPCR and/or protein assay; measure senescence with orthogonal endpoints such as SA-beta-gal plus p16/p21 and/or SASP markers; verify MSC identity using established surface-marker and differentiation-competence assays; and measure fitness using viable-cell counts, apoptosis, proliferation, and clonogenic capacity. Continue prioritizing UBA3 only if multiple guides with verified suppression reproducibly improve senescence endpoints while preserving MSC identity and acceptable fitness, preferably with a larger effect WITHOUT-IL6. Change the recommendation to reject or restrict the context if the count advantage fails to reproduce, does not track target suppression, lacks senescence improvement, reflects proliferation/toxicity alone, or causes loss of MSC identity.",
+        "evidence": [
+          {
+            "operation": "candidate",
+            "record_id": "4cc8b0cae0f74b22bc766d111687eb51",
+            "input_sha256": "928d26af1b23298f5ac5dbbe3c64e8087c34d0ebc3bd84ff876aa092f96dd97e",
+            "input_kind": "counterfactual_evaluation"
+          },
+          {
+            "operation": "guide-check",
+            "record_id": "4151ff6338474b5793968ac90edf2975",
+            "input_sha256": "928d26af1b23298f5ac5dbbe3c64e8087c34d0ebc3bd84ff876aa092f96dd97e",
+            "input_kind": "counterfactual_evaluation"
+          },
+          {
+            "operation": "dependence",
+            "record_id": "6a9aa6fa59ca4fae8c263cc221e1cad8",
+            "input_sha256": "928d26af1b23298f5ac5dbbe3c64e8087c34d0ebc3bd84ff876aa092f96dd97e",
+            "input_kind": "counterfactual_evaluation"
+          }
+        ]
+      },
+      {
+        "arm": "irrelevant",
+        "label": "Excluded measurement changed",
+        "synthetic": true,
+        "run_id": "bee7b22c43ed4f4fb8e2c290d66019d4",
+        "run_status": "completed",
+        "roles": [
+          "critic",
+          "experimentalist",
+          "scientist"
+        ],
+        "source_sha256": "12954bffbb1ffe04019b9cf2164c9519ba9a9badcda4150f24d65efbcf75ef66",
+        "decision_id": "543627d602ca41a8a6d63deb2ac9f726",
+        "expected_count_status": "fragile",
+        "count_assessment": {
+          "condition": "without_il6",
+          "reason": "Coverage is adequate at the fixed minimum (3 eligible guides; coverage shortfall 0), and repeat summaries are both positive (+3.406 and +3.603), but the observed guide effects conflict (+4.174, -4.285, +4.307). The fixed guide robustness check fails because the leave-one-out minimum is -0.055, with both sign and 0.5-log2 threshold reversals; a baseline threshold of 50 reduces coverage to 2 and the score to +0.0113. Thus the observed count effect does not pass the stated fixed robustness checks.",
+          "status": "fragile"
+        },
+        "matches_expected_count_status": true,
+        "biological_action": "request_additional_evidence",
+        "next_test": "Run one arrayed no-IL6 perturbation-response experiment using all three eligible UBA3 guides plus non-targeting controls, jointly measuring per-guide UBA3 target suppression, a senescence phenotype panel, MSC identity markers, and longitudinal cell number, viability, and apoptosis. Change the recommendation to retain UBA3 for biological prioritization only if at least two independent guides achieve verified target suppression and yield a concordant senescence improvement while preserving MSC identity and without an explanation based on impaired fitness; otherwise reject UBA3 or restrict it to the published screen context.",
+        "evidence": [
+          {
+            "operation": "candidate",
+            "record_id": "85357dc729844f0688e554fe4dbdb3d2",
+            "input_sha256": "12954bffbb1ffe04019b9cf2164c9519ba9a9badcda4150f24d65efbcf75ef66",
+            "input_kind": "counterfactual_evaluation"
+          },
+          {
+            "operation": "guide-check",
+            "record_id": "9a56262409c849d8b612c4e7498962f9",
+            "input_sha256": "12954bffbb1ffe04019b9cf2164c9519ba9a9badcda4150f24d65efbcf75ef66",
+            "input_kind": "counterfactual_evaluation"
+          },
+          {
+            "operation": "dependence",
+            "record_id": "24ffb865a99b4aff90316b1afeabf5c8",
+            "input_sha256": "12954bffbb1ffe04019b9cf2164c9519ba9a9badcda4150f24d65efbcf75ef66",
+            "input_kind": "counterfactual_evaluation"
+          }
+        ]
+      }
+    ],
+    "failed_launches": [
+      {
+        "run_id": "b2bb7aebf7d84fbd909c0469ba357280",
+        "arm": "decisive",
+        "outcome": "Source-hash guard rejected the default-file/fixture mismatch before producing evidence; rerun after explicit per-run input binding."
+      },
+      {
+        "run_id": "68fc121ba2ea4364b7cc705d497af977",
+        "arm": "irrelevant",
+        "outcome": "Source-hash guard rejected the default-file/fixture mismatch before producing evidence; rerun after explicit per-run input binding."
+      }
+    ],
+    "limitations": [
+      "One case and one completed run per variant; no estimate of reliability or generalization.",
+      "Counterfactual data are synthetic fixtures and cannot establish a biological finding.",
+      "All runs still lack new phenotype, identity and fitness measurements; biological action need not change.",
+      "No before-versus-after model-performance comparison; this validates the integrated behavior only.",
+      "The calculation tool supplies rule verdicts; this checks faithful use of tool evidence, not independent scientific derivation.",
+      "A curator-label attribution error was found in the decisive arm and corrected in the current context pack after these runs; raw records are retained.",
+      "Two initial fixture launches failed safely and are included in this report."
+    ]
+  }
+}

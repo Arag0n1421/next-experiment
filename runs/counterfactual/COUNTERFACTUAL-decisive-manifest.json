@@ -1,0 +1,24 @@
+{
+  "synthetic": true,
+  "name": "decisive",
+  "created_utc": "2026-10-04T10:59:13.850894+00:00",
+  "description": "UBA3_-_69129128 without-IL6 counts set to 16x its D0 counts (6/8 reads -> 4880/4064), making the depleted guide concordant.",
+  "source": "countmatrix.xlsx",
+  "source_sha256": "64bb772834a1bacc0304826277546b9a2ec06972ead229ef5687b3fdc7cb6fe1",
+  "counterfactual_file": "COUNTERFACTUAL-decisive-countmatrix.xlsx",
+  "counterfactual_sha256": "928d26af1b23298f5ac5dbbe3c64e8087c34d0ebc3bd84ff876aa092f96dd97e",
+  "edited_cells": [
+    {
+      "sgRNA": "UBA3_-_69129128",
+      "column": "IL6m_rep1",
+      "before": 6,
+      "after": 4880
+    },
+    {
+      "sgRNA": "UBA3_-_69129128",
+      "column": "IL6m_rep2",
+      "before": 8,
+      "after": 4064
+    }
+  ]
+}

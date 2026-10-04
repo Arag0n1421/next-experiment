@@ -1,0 +1,36 @@
+{
+  "synthetic": true,
+  "name": "irrelevant",
+  "created_utc": "2026-10-04T10:59:14.083240+00:00",
+  "description": "Excluded guide UBA3_+_69129471 post counts tripled; it fails the starting-count filter so the eligible-guide verdict should not move.",
+  "source": "countmatrix.xlsx",
+  "source_sha256": "64bb772834a1bacc0304826277546b9a2ec06972ead229ef5687b3fdc7cb6fe1",
+  "counterfactual_file": "COUNTERFACTUAL-irrelevant-countmatrix.xlsx",
+  "counterfactual_sha256": "12954bffbb1ffe04019b9cf2164c9519ba9a9badcda4150f24d65efbcf75ef66",
+  "edited_cells": [
+    {
+      "sgRNA": "UBA3_+_69129471",
+      "column": "IL6m_rep1",
+      "before": 192,
+      "after": 576
+    },
+    {
+      "sgRNA": "UBA3_+_69129471",
+      "column": "IL6m_rep2",
+      "before": 157,
+      "after": 471
+    },
+    {
+      "sgRNA": "UBA3_+_69129471",
+      "column": "IL6p_rep1",
+      "before": 194,
+      "after": 582
+    },
+    {
+      "sgRNA": "UBA3_+_69129471",
+      "column": "IL6p_rep2",
+      "before": 184,
+      "after": 552
+    }
+  ]
+}

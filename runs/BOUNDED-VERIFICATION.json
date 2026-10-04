@@ -1,0 +1,36 @@
+{
+  "verified_utc": "2026-10-04T08:12:19.519203+00:00",
+  "status": "completed",
+  "run_id": "ede05eb6d8b549ddba04a08e7f684b49",
+  "child_count": 3,
+  "child_statuses": {
+    "ec676d3d430c4754930bbe0f9932e615": "idle",
+    "04550d0eeecf401fa580aacba64d0cc0": "idle",
+    "4d651e17d943437a9ab2bf275ad20b3f": "idle"
+  },
+  "analyses_used": 3,
+  "analysis_cap": 4,
+  "operations": [
+    "candidate",
+    "triage",
+    "guide-check"
+  ],
+  "analysis_statuses": [
+    "completed",
+    "completed",
+    "completed"
+  ],
+  "decision_id": "b15ad66286d040f7a540af55f126d0f0",
+  "updated_action": "request_additional_evidence",
+  "closed_run_analysis_denied": "Run is closed",
+  "tests_passed": 44,
+  "subtests_passed": 6,
+  "video_duration_seconds": 119.796468,
+  "publication_status": "local_only; not submitted",
+  "limitations": [
+    "Model-dollar/token cost not measured or capped.",
+    "Admission deadline does not preempt in-flight computation.",
+    "Benchmark gain is deterministic checklist computation, not end-to-end agent or biological improvement.",
+    "Demo replays the earlier verified scientific run; this separate fresh run verifies the new runtime policies."
+  ]
+}

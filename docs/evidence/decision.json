@@ -1,0 +1,40 @@
+{
+  "id": "9640dbe6abbb44d7b72e9141e4c1f1ac",
+  "kind": "decision",
+  "created_utc": "2026-10-03T23:01:45.839014+00:00",
+  "payload": {
+    "candidate_tests": [
+      {
+        "compute_cost_rationale": "Low-cost sensitivity analysis on existing counts; the executed analysis used 0 model calls, $0 API cost, and 5.3023 seconds.",
+        "expected_learning": "Determine whether the aggregate enrichment is supported across eligible guides or is sensitive to individual guides, off-target behavior, unequal representation, or pooled-count variability.",
+        "feasibility": "High; uses existing guide-level counts for 5 total guides, including 3 eligible guides.",
+        "operation": "guide-check"
+      },
+      {
+        "compute_cost_rationale": "Low incremental computation, but lower marginal discrimination because aggregate context separation was already observed and cannot resolve guide-specific explanations.",
+        "expected_learning": "Quantify repeat-level consistency of the without-IL-6 versus with-IL-6 contrast while carrying forward guide-level uncertainty.",
+        "feasibility": "High; the required context counts already exist.",
+        "operation": "context"
+      }
+    ],
+    "evaluation_status": "exploratory; no held-out advantage demonstrated",
+    "gene": "UBA3",
+    "limitations": [
+      "Exploratory approximate log2 count enrichments, not MAGeCK MLE beta scores, p-values, FDR, or proof of statistical significance.",
+      "Only two measured repeats and three eligible guides were available.",
+      "Leave-one-guide-out is a sensitivity analysis, not independent biological replication.",
+      "All measurements came from existing pooled-screen counts; no wet-lab experiment was performed.",
+      "The evidence does not establish causality, mechanism, biological benefit, preserved cell identity, senescence phenotype, safety, longevity, rejuvenation, or benchmark improvement."
+    ],
+    "measured_evidence": [
+      "452fda4c1e084b9d9b1ae4fea2e1e39f",
+      "d8edc9f95f0c4934ae9b4358fd89e98f"
+    ],
+    "next_test": "Run one arrayed, guide-resolved perturbation measurement: test each of the three eligible UBA3 guides separately in both IL-6 conditions, with non-targeting controls and biological replicates, measuring the same count-based phenotype at a prespecified endpoint.",
+    "previous_action": "consider following up because effect-only ranking is high",
+    "question": "Should UBA3 be followed up because its effect-only ranking is high, and what evidence should determine the next action?",
+    "reason": "The candidate aggregate was higher without IL-6 (4.174) than with IL-6 (1.628), but the executed guide-check showed that the without-IL-6 estimate was highly guide-sensitive: leave-one-out scores ranged from -0.055 to 4.241 with sign and threshold reversals, and the stricter baseline threshold left 2 guides with a without-IL-6 score of 0.011 versus 1.354 with IL-6. The with-IL-6 leave-one-out scores stayed positive (1.354 to 3.035), but neither condition passed the fixed checklist. Context dependence alone is not grounds for rejection; the current measurements instead require guide-resolved evidence before prioritizing UBA3.",
+    "selected_test": "guide-check",
+    "updated_action": "request_additional_evidence"
+  }
+}

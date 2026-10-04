@@ -1,0 +1,21 @@
+{
+  "created_utc": "2026-10-04T07:56:10.920790+00:00",
+  "protocol_sha256": "1ec241f61dba7a0dbd2362a83dc7d82097d990425a7891397123f02f39528246",
+  "parameters": {
+    "analysis_version": "0.1.0",
+    "normalization": "total library depth to geometric-mean depth, then non-targeting median centering per contrast",
+    "pseudocount_normalized_reads": 1.0,
+    "baseline_min_each_repeat": 20,
+    "min_eligible_guides": 3,
+    "effect_threshold_log2": 0.5,
+    "max_repeat_difference_log2": 1.0,
+    "min_positive_guide_fraction": 0.6,
+    "gene_summary": "median of guide mean log2 enrichments across two repeats",
+    "baseline_filter": "same guides pass baseline-count threshold in both D0 repeats"
+  },
+  "code_sha256": {
+    "benchmark/triage.py": "e8de9db88078d73e85f5538c811bc22c07b02a76ee593f092b5f80a94479a696",
+    "benchmark/run.py": "dcdff4dd16f79b409881681d41cca70c7ebf4b15114d9b32a6466713224a363a",
+    "science/screen.py": "0ceee379711885a24355acfa41dea3162cc9799fd2c889facbbeb31bbfefc119"
+  }
+}
